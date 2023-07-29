@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- SEO, Description, Keywords -->
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="author" content="Milos Radulovic">
+        <!-- Favicon -->
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        <!-- Page Title -->
+        <title>{% block head_title %}{% endblock head_title %}</title>
+    </head>
+
+    <body>
+        <main>
+            {% comment %} Main Content {% endcomment %}
+            {% block content %}
+            {% endblock content %}
+        </main>
+
+        <!-- Fontawsome JS -->
+        <script src="https://kit.fontawesome.com/c06e2d0b20.js" crossorigin="anonymous"></script>
+        <!-- Custom JavaScript -->
+        <script src="{% static 'js/scripts.js' %}"></script>
+    </body>
+
+</html>
