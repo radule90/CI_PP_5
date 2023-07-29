@@ -1,5 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
 {% block head_title %}Shop{% endblock head_title %}
-
 {% block content %}
-    {{ products }}
+<div class="wrapper">
+    <!-- Page Heading -->
+    <section class="page-heading">
+        {% if products %}
+            <h2 class="subheading">Shop</h2>
+        {% endif %}
+    </section>
+    <!-- Shop Filters -->
+    <div class="shop-section">
+        <aside>
+            <div class="filter-group">
+                <h3>Categories</h3>
+                <ul class="filter-list">
+                    <li class="filter-object"><a href="{% url 'shop' %}" class="custom-pointer">All Products</a></li>
+                    <li class="filter-object"><a href="" class="custom-pointer"></a></li>
+                </ul>
+            </div>
+        </aside>
+        <!-- Product List -->
+        <section class="product-list">
+            <p class="items-shop">
+                55 Product{{product_count|pluralize }} in Shop
+            </p>
+            <div class="product-grid">
+                {% for product in products %}
+                <div class="product-card">
+                    <div class="img-wrapper">
+                        <a href="" class="custom-pointer"><img src="{{ product.image.url }}" alt="{{ product.product_name }} Product Image"></a>
+                    </div>
+                    <h3>
+                        <a href="" class="custom-pointer">{{ product.product_name }}</a>
+                    </h3>
+                    <h4>{{ product.category }}</h4>
+                    <p><strong>€ {{ product.price }}</strong></p>
+                    <div>
+                        <a href="" class="btn btn-more custom-pointer">More</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+</div>
 {% endblock content %}

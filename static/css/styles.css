@@ -201,7 +201,134 @@ h4 {
 /* Main */
 main {
     flex: 1;
+    background: var(--light-background);
+    padding-block: 5rem;
+    margin-top: 96px;
+    display: flex;
 }
+
+/* Shop */
+/* Page Heading */
+.page-heading {
+    background: var(--green);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.subheading {
+    font-size: 2rem;
+    color: var(--light-background);
+}
+
+.shop-section {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.shop-section aside {
+    flex-basis: 15%;
+}
+
+.product-list {
+    flex-basis: 85%;
+}
+
+/* Filters */
+.filter-group {
+    width: fit-content;
+    padding: 2rem;
+    border: 1px solid var(--dark-background);
+    border-radius: 0.5rem;
+}
+
+.filter-group h3 {
+    font-size: 1.5rem;
+    width: fit-content;
+    border-bottom: 1px solid var(--dark-background);
+    margin-bottom: 0.75rem;
+    color: var(--dark-background);
+}
+
+.filter-group a {
+    color: var(--font-color);
+}
+
+.filter-list {
+    color: var(--dark-background);
+    list-style: none;
+}
+
+.filter-object {
+    margin-block: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.items-shop {
+    font-size: 1.25rem;
+    border-bottom: 1px solid var(--dark-background);
+    margin-bottom: 1.5rem;
+}
+
+.product-grid {
+    display: grid;
+    grid-auto-columns: max-content;
+    grid-auto-flow: dense;
+    grid-auto-rows: minmax(100px, auto);
+    grid-gap: 25px;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.product-card {
+    grid-column: span 1;
+    grid-row: span 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.product-card h3 a {
+    color: var(--dark-background);
+}
+
+.img-wrapper img {
+    width: 100%;
+    border-radius: .5rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5em;
+    border-radius: 0.5rem;
+    width: fit-content;
+    font-size: 1rem;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.btn-add {
+    background: var(--peach);
+    color: var(--light-background);
+}
+
+.btn-add:hover {
+    color: var(--dark-background);
+    background: var(--light-background);
+}
+
+.btn-more {
+    background: var(--green);
+    color: var(--light-background);
+    margin-block-start: .5rem;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-more:hover {
+    color: var(--green);
+    background: var(--light-background);
+}
+
 
 /* Footer */
 .footer {
