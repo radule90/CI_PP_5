@@ -23,3 +23,8 @@ document.querySelector("#close").onclick = (event) => {
     event.preventDefault();
     document.querySelector("#search-form").classList.remove("active");
 };
+
+// Footer
+// Add Current Year In Footer Section
+const year = document.querySelector("#year");
+year.textContent = new Date().getFullYear();

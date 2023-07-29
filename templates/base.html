@@ -18,7 +18,7 @@
     </head>
 
     <body>
-            {% comment %} Includes Header Component With Navbar, Search {% endcomment %}
+        {% comment %} Includes Header Component With Navbar, Search {% endcomment %}
         {% include 'includes/header.html' %}
 
         <main>
@@ -26,6 +26,9 @@
             {% block content %}
             {% endblock content %}
         </main>
+
+        {% comment %} Includes Footer Component With Shop Information, Social Links
+        {% endcomment %} {% include 'includes/footer.html' %}
 
         <!-- Fontawsome JS -->
         <script src="https://kit.fontawesome.com/c06e2d0b20.js" crossorigin="anonymous"></script>
