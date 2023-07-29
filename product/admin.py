@@ -6,11 +6,13 @@ from .models import Product
 
 class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('product_name',)}
-    list_display = ('is_available', 'product_name',
-                    'category', 'stock', 'price')
+    list_display = ('product_name', 'category',
+                    'stock', 'price', 'is_available')
     search_fields = ['product_name', 'description', 'price']
-    list_display_links = ('product_name', 'category',)
+    list_display_links = ('product_name',)
+    list_filter = ('product_name', 'category', 'price',
+                   'is_available')
+    list_editable = ('is_available',)
 
 
 admin.site.register(Product, ProductAdmin)
-
