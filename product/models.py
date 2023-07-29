@@ -16,7 +16,7 @@ class Product(models.Model):
                                  related_name='products')
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    image = models.ImageField(upload_to='images/product')
+    image = models.ImageField(upload_to='images/product', blank=False)
     banner = models.ImageField(upload_to='banner/product', blank=True)
     stock = models.PositiveIntegerField()
     is_available = models.BooleanField(default=True)
