@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from .forms import SignupForm
 from .models import Account
 # Create your views here.
@@ -40,3 +41,13 @@ def signin(request):
     context = {
     }
     return render(request, template, context)
+
+
+@login_required(login_url = 'signin')
+def signout(request):
+    if request.method == 'POST':
+        logout(request)
+        messages.success(request, 'You have successfully signed out.')
+        return redirect('signin')
+    template = 'account/signout_confirm.html'
+    return render(request, template)
