@@ -26,6 +26,12 @@ document.querySelector("#close").onclick = (event) => {
     document.querySelector("#search-form").classList.remove("active");
 };
 
+// Account Errors Disappear
+let errorList = document.querySelectorAll('.errorlist');
+if(errorList.length > 0) {
+    errorList.forEach(error => setTimeout(() => {error.style.display = 'none'}, 3000))
+}
+
 // Footer
 // Add Current Year In Footer Section
 const year = document.querySelector("#year");
