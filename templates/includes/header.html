@@ -15,8 +15,12 @@
             <i class="fa-solid fa-bars custom-pointer" id="menu-bars"></i>
 
             <!-- Icon Links For Profile, Logout, Cart, Search -->
+            {% if request.user.is_authenticated %}
             <a href="" class="fa-solid fa-user custom-pointer"></a>
             <a href="" class="fa-solid fa-arrow-right-to-bracket custom-pointer"></a>
+            {% else %}
+            <a href="{% url 'signup' %}" class="fa-solid fa-user custom-pointer"></a>
+            {% endif %}  
             <a href="" id="search-icon" class="fa-solid fa-magnifying-glass custom-pointer"></a>
             <a href="{% url 'cart' %}" class="fa-solid fa-cart-shopping custom-pointer"></a>
         </div>

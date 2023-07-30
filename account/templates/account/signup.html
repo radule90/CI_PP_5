@@ -7,10 +7,10 @@
     <div class="account-card">
     <h2>Sign Up</h2>
     <br>
-    <p>Already have an account? Then please <a href="" class="custom-pointer">sign in</a>.</p>
+    <p>Already have an account? Then please <a href="{% url 'signin' %}" class="custom-pointer">sign in</a>.</p>
     <br>
     <br>
-    <form action="{% url 'signup' %}" method="post">
+    <form action="{% url 'signup' %}" method="POST">
         {% csrf_token %}
         {% for field in form %}
         <div class="field-wrapper">
