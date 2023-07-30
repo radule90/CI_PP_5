@@ -361,11 +361,6 @@ main {
     margin-bottom: 0.75rem;
 }
 
-.product-detail-wrapper .right-detail button {
-    padding: .75rem;
-    font-size: 1rem;
-}
-
 .product-detail-wrapper .right-detail p a {
     color: var(--font-color);
 }
