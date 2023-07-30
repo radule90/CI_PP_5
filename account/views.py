@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import SignupForm
 from .models import Account
@@ -11,6 +11,7 @@ def signup(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'You have successfully signed up!')
+            return redirect('signup')
 
     else:
         form = SignupForm()

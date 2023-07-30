@@ -76,6 +76,11 @@ h4 {
     font-size: 1.15rem;
 }
 
+.errorlist,
+.messages-wrapper {
+    transition: opacity 2s ease-in-out;
+}
+
 .error {
     background-color: var(--red);
 }

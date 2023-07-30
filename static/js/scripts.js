@@ -29,12 +29,20 @@ document.querySelector("#close").onclick = (event) => {
 // Account Errors and Message Alert Disappear
 let errorList = document.querySelectorAll('.errorlist');
 if(errorList.length > 0) {
-    errorList.forEach(error => setTimeout(() => {error.style.display = 'none'}, 3000));
-};
+    errorList.forEach(error => {
+        setTimeout(() => {
+            error.style.opacity = 0;
+            setTimeout(() => {error.style.display = 'none'}, 2000);  
+        }, 2000);
+    });
+}
 
 let messageWrapper = document.querySelector('.messages-wrapper')
 if(messageWrapper) {
-    setTimeout(() => {messageWrapper.style.display = 'none'}, 3000);
+    setTimeout(() => {
+        messageWrapper.style.opacity = 0;
+        setTimeout(() => {messageWrapper.style.display = 'none'}, 2000);  
+    }, 2000);
 }
 
 // Footer
