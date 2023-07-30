@@ -60,6 +60,29 @@ h4 {
     font-family: 'Laila', sans-serif;
 }
 
+/* Alert Messages */
+.messages-wrapper {
+    margin: 0 auto 2rem;
+}
+.messages {
+    text-align: center;
+    list-style-type: none;
+}
+.messages li {
+    width: fit-content;
+    padding: .75em 1rem;
+    border-radius: .5rem;
+    color: var(--white);
+    font-size: 1.15rem;
+}
+
+.error {
+    background-color: var(--red);
+}
+
+.success {
+    background-color: var(--green);
+}
 
 /* Custom Pointer For Links */
 .custom-pointer {
@@ -205,6 +228,7 @@ main {
     padding-block: 5rem;
     margin-top: 96px;
     display: flex;
+    flex-direction: column;
 }
 
 /* Shop */

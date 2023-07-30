@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -80,6 +81,13 @@ WSGI_APPLICATION = 'sun_and_peaches.wsgi.application'
 
 # Override the default user model
 AUTH_USER_MODEL = 'account.Account'
+
+
+MESSAGE_TAGS = {
+    messages.ERROR: "error",
+    messages.SUCCESS: "success",
+}
+
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

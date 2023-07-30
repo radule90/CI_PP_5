@@ -26,10 +26,15 @@ document.querySelector("#close").onclick = (event) => {
     document.querySelector("#search-form").classList.remove("active");
 };
 
-// Account Errors Disappear
+// Account Errors and Message Alert Disappear
 let errorList = document.querySelectorAll('.errorlist');
+let messages = document.querySelectorAll('.messages li');
 if(errorList.length > 0) {
-    errorList.forEach(error => setTimeout(() => {error.style.display = 'none'}, 3000))
+    errorList.forEach(error => setTimeout(() => {error.style.display = 'none'}, 3000));
+};
+
+if(messages.length > 0) {
+    messages.forEach(message => setTimeout(() => {message.style.display = 'none'}, 3000));
 }
 
 // Footer
