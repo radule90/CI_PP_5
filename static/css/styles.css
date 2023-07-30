@@ -234,6 +234,38 @@ main {
     flex-basis: 85%;
 }
 
+/* Pagination Style */
+.custom-pagination {
+    margin-top: 3rem;
+}
+
+.page-item {
+    display: inline-block;
+}
+
+.page-item a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0.4rem 0.75rem;
+    text-align: center;
+    text-decoration: none;
+    color: var(--font-color);
+    border: 1px solid var(--dark-background);
+    border-radius: 3px;
+}
+
+.page-item a:hover {
+    background-color: var(--dark-background);
+    color: var(--white);
+}
+
+.page-item.active a {
+    background-color: var(--dark-background);
+    border-color: var(--dark-background);
+    color: var(--white);
+}
+
 /* Filters */
 .filter-group {
     width: fit-content;
@@ -727,6 +759,12 @@ td {
     .product-grid {
         grid-template-columns: repeat(1, 1fr);
     }
+
+    /* Pagination */
+    .custom-pagination ul {
+        text-align: center;
+    }
+
     /* Product Detail Page */
     .product-detail-wrapper {
         width: 100%;

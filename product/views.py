@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 from .models import Product
 from category.models import Category
-
+from django.core.paginator import Paginator
 # Create your views here.
 def shop(request, category_slug=None):
     '''
@@ -15,14 +15,25 @@ def shop(request, category_slug=None):
     if category_slug != None:
         category = get_object_or_404(Category, slug=category_slug)
         products = Product.objects.filter(category=category, is_available=True)
+
+        # Paginator setup
+        paginator = Paginator(products, 1)
+        page = request.GET.get('page')
+        page_obj = paginator.get_page(page)
+
         product_count = products.count()
     else:
         products = Product.objects.all().filter(is_available=True)
+
+        # Paginator setup
+        paginator = Paginator(products, 1)
+        page = request.GET.get('page')
+        page_obj = paginator.get_page(page)
         product_count = products.count()
 
     template = 'product/shop.html'
     context = {
-        'products': products,
+        'products': page_obj,
         'category': category,
         'product_count': product_count,
         'active_shop': 'active_shop',
