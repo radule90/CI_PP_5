@@ -23,7 +23,7 @@
         <!-- Product List -->
         <section class="product-list">
             <p class="items-shop">
-                55 Product{{product_count|pluralize }} in Shop
+                {{ product_count }} Product{{ product_count |pluralize }} in Shop
             </p>
             <div class="product-grid">
                 {% for product in products %}
