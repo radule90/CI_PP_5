@@ -22,7 +22,7 @@
                     </p>
                     <hr class="break">
                     <div>
-                        <p><strong>Category: </strong><a href="" class="custom-pointer">{{ product.category }}</a>
+                        <p><strong>Category: </strong><a href="{{ product.category.get_absolute_url }}" class="custom-pointer">{{ product.category }}</a>
                         </p>
                         <p><strong>Stock: </strong>{{ product.stock }}</p>
                     </div>
