@@ -12,11 +12,5 @@ class CartItemAdmin(admin.ModelAdmin):
     list_display = ('cart', 'product', 'quantity', 'is_active', 'created_at')
 
 
-class ProductAdmin(admin.ModelAdmin):
-    list_display_links = ('product',)
-    list_filter = ('cart', 'is_active', 'product',)
-    list_editable = ('is_active',)
-
-
 admin.site.register(Cart, CartAdmin)
 admin.site.register(CartItem, CartItemAdmin)
