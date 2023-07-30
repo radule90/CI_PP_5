@@ -16,7 +16,9 @@
                 <h3>Categories</h3>
                 <ul class="filter-list">
                     <li class="filter-object"><a href="{% url 'shop' %}" class="custom-pointer">All Products</a></li>
-                    <li class="filter-object"><a href="" class="custom-pointer"></a></li>
+                    {% for category_link in links %}
+                        <li class="filter-object"><a href="" class="custom-pointer">{{ category_link.category_name }}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
         </aside>
