@@ -10,7 +10,7 @@
                 <img src="{{ product.image.url }}" alt="{{ product.product_name }} Product Image">
             </div>
             <div class="right-detail">
-                <form action="" method="POST">
+                <form action="{% url 'add' product.id %}" method="POST">
                     {% csrf_token %}
                     <div>
                         <h2>{{ product.product_name }}</h2>
@@ -27,23 +27,23 @@
                         <p><strong>Stock: </strong>{{ product.stock }}</p>
                     </div>
                     <hr class="break">
-                    {% if product.variations.sizes %}
-                    <div class="variation-wrapper">
-                        <h4>Size:</h4>
-                        <select name="size" id="variation-size" required>
-                            <option value="" disabled selected>Select Size</option>
-                            {% for var in product.variations.sizes %}
-                                <option value="{{ var.value }}">{{ var.value }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    {% endif %}
                     {% if product.variations.colors %}
                     <div class="variation-wrapper">
                         <h4>Color:</h4>
                         <select name="color" id="variation-color" required>
                             <option value="" disabled selected>Select Color</option>
                             {% for var in product.variations.colors %}
+                                <option value="{{ var.value }}">{{ var.value }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    {% endif %}
+                    {% if product.variations.sizes %}
+                    <div class="variation-wrapper">
+                        <h4>Size:</h4>
+                        <select name="size" id="variation-size" required>
+                            <option value="" disabled selected>Select Size</option>
+                            {% for var in product.variations.sizes %}
                                 <option value="{{ var.value }}">{{ var.value }}</option>
                             {% endfor %}
                         </select>
@@ -64,9 +64,7 @@
                         <hr class="break">
                     {% endif %}
                     <div class="addcart-wrapper">
-                        <a href="{% url 'add' product.id %}" class="btn btn-add custom-pointer">Add to Cart</a>
-
-                        <button class="btn btn-add custom-pointer">Add to Cart</button>
+                        <button type="submit" class="btn btn-add custom-pointer">Add to Cart</button>
                     </div>
                 </form>
             </div>

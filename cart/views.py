@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Cart, CartItem
-from product.models import Product
+from product.models import Product, Variation
 
 # Create your views here.
+
 
 def _cart_id(request):
     '''
@@ -23,24 +24,81 @@ def add(request, product_id):
     Increments quantity
     '''
     product = Product.objects.get(id=product_id)
-    try:
-        cart = Cart.objects.get(cart_id=_cart_id(request))
-    except Cart.DoesNotExist:
-        cart = Cart.objects.create(cart_id=_cart_id(request))
-    cart.save()
+    print(product)
+    product_variation = []
+    if request.method == 'POST':
+        # Loop through the POST data to find variations and add them to the 'product variation list'.
+        print('requeset post: ',request.POST)
+        for item in request.POST:
+            key = item
+            print('key: ',key)
+            value = request.POST[key]
+            print('value: ',value)
+            try:
+                variation = Variation.objects.get(product=product,
+                                                  category__iexact=key,
+                                                  value__iexact=value)
+                product_variation.append(variation)
+                print('variation: ',variation)
+                print('product variation: ',product_variation)
+            except:
+                pass
 
     try:
-        cart_item = CartItem.objects.get(product=product, cart=cart)
-        cart_item.quantity += 1
-        cart_item.save()
-    except CartItem.DoesNotExist:
+        cart = Cart.objects.get(cart_id=_cart_id(request))
+        print('Cart: ',cart)
+    except Cart.DoesNotExist:
+        # If the cart with does not exist, create a new cart.
+        cart = Cart.objects.create(cart_id=_cart_id(request))
+    cart.save()
+    print('Cart: ',cart)
+    
+    item_already_in_cart = CartItem.objects.filter(product=product, cart=cart).exists()
+    print(item_already_in_cart)
+    if item_already_in_cart:
+        cart_item = CartItem.objects.filter(product=product, cart=cart)
+        print('cart_item: ',cart_item)
+        ex_var_list = []
+        id = []
+        for item in cart_item:
+            print('item ', item)
+            existing_variation = item.variations.all()
+            print('existing_variation ',existing_variation)
+            ex_var_list.append(list(existing_variation))
+            print('ex_var_list:',ex_var_list)
+            id.append(item.id)
+        print('ex_var_list:',ex_var_list)
+        if product_variation in ex_var_list:
+            index = ex_var_list.index(product_variation)
+            print('index: ',index)
+            item_id = id[index]
+            print('item_id ',item_id)
+            item = CartItem.objects.get(product=product, id=item_id)
+            print('item: ',item)
+            item.quantity += 1
+            print('qty: ', item.quantity)
+            item.save()
+        else:
+            item = CartItem.objects.create(
+                product=product, quantity=1, cart=cart)
+            if len(product_variation) > 0:
+                item.variations.clear()
+                item.variations.add(*product_variation)
+                print(item.variations)
+            item.save()
+    else:
         cart_item = CartItem.objects.create(
             product=product,
             cart=cart,
-            quantity=1
+            quantity=1,
         )
+        print(cart_item)
+        if len(product_variation) > 0:
+            cart_item.variations.clear()
+            print('Product Variations to Add:', product_variation)
+            cart_item.variations.add(*product_variation)
+            print('Product Variations to Add:', product_variation)
         cart_item.save()
-    print(cart_item)
     return redirect('cart')
 
 
@@ -80,19 +138,14 @@ def remove_item(request, product_id):
     return redirect('cart')
 
 
-def cart(request):
+def cart(request, total=0, quantity=0, cart_items=None):
     '''
     Function based view to display cart with cart items
     '''
-    total = 0
-    cart_items = None
-    quantity = 0
     tax = 0
     price_without_tax = 0
-    # Try to get cart object using the cart_id obtained from the session.
-    cart_id = _cart_id(request)
     try:
-        cart = Cart.objects.get(cart_id=cart_id)
+        cart = Cart.objects.get(cart_id=_cart_id(request))
         
         # Filter all active cart items for that cart.
         cart_items = CartItem.objects.filter(cart=cart, is_active=True)
@@ -102,9 +155,9 @@ def cart(request):
             total += (cart_item.product.price * cart_item.quantity)
             quantity += cart_item.quantity
 
-        # Calculate tax and price without tax
-        tax = round(((19 * total) / 100), 2)
-        price_without_tax = total - tax
+            # Calculate tax and price without tax
+            tax = round(((19 * total) / 100), 2)
+            price_without_tax = total - tax
 
     except ObjectDoesNotExist:
         # If doesn't exist send empty context
