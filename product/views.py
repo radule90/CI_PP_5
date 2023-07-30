@@ -1,8 +1,11 @@
 from django.shortcuts import render, get_object_or_404
+from django.db.models import Q
 from django.http import Http404
 from .models import Product
 from category.models import Category
 from django.core.paginator import Paginator
+
+
 # Create your views here.
 def shop(request, category_slug=None):
     '''
@@ -29,6 +32,7 @@ def shop(request, category_slug=None):
         paginator = Paginator(products, 1)
         page = request.GET.get('page')
         page_obj = paginator.get_page(page)
+
         product_count = products.count()
 
     template = 'product/shop.html'
@@ -56,5 +60,35 @@ def product_detail(request, category_slug, product_slug):
     context = {
         'product': product,
         'active_shop': 'active_shop',
+    }
+    return render(request, template, context)
+
+
+def search(request):
+    '''
+    Function based view to handle product search
+    '''
+    products = None
+    product_count = 0
+    page_obj = None
+    if 'q' in request.GET:
+        query = request.GET['q']
+        if query:
+            products = Product.objects.filter(
+                Q(product_name__icontains=query) |
+                Q(description__icontains=query) |
+                Q(price__icontains=query))
+            product_count = products.count()
+
+            # Paginator setup
+            paginator = Paginator(products, 1)
+            page = request.GET.get('page')
+            page_obj = paginator.get_page(page)
+    
+    template = 'product/shop.html'
+
+    context = {
+        'products': page_obj,
+        'product_count': product_count,
     }
     return render(request, template, context)

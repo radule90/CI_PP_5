@@ -22,8 +22,8 @@
         </div>
 
         <!-- Search Form -->
-        <form action="" id="search-form">
-            <input type="search" name="" id="search-box" placeholder="Search...">
+        <form action="{% url 'search' %}" id="search-form" method="GET">
+            <input type="search" name="q" id="search-box" placeholder="Search..." autofocus>
             <button type="submit" class="fa-solid fa-magnifying-glass custom-pointer"></button>
             <i class="fa-solid fa-xmark custom-pointer" id="close"></i>
         </form>

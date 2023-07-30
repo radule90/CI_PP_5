@@ -18,7 +18,9 @@ window.onscroll = () => {
 document.querySelector("#search-icon").onclick = (event) => {
     event.preventDefault();
     document.querySelector("#search-form").classList.toggle("active");
+    document.querySelector("#search-box").focus();
 };
+
 document.querySelector("#close").onclick = (event) => {
     event.preventDefault();
     document.querySelector("#search-form").classList.remove("active");
