@@ -18,6 +18,5 @@ class ProductAdmin(admin.ModelAdmin):
     list_editable = ('is_active',)
 
 
-
 admin.site.register(Cart, CartAdmin)
 admin.site.register(CartItem, CartItemAdmin)

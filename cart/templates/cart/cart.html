@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %}Shop Cart{% endblock head_title %}
+
+
+{% block content %}
+<div class="wrapper">
+    <!-- Cart -->
+    <div class="cart-wrapper">
+        <section class="cart-list">
+            <h3>Your Cart</h3>
+            <table>
+                <thead class="table-head">
+                    <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Price</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody class="table-body">
+                    <tr>
+                        <td>
+                            <div class="product-order-cart">
+                                <a href=""><img src=""
+                                        width="55" class="custom-pointer"></a>
+                                <div>
+                                    <a href="" class="custom-pointer"
+                                        alt=""><strong></strong></a>
+                                    <br>
+                                    <small><strong>Size: </strong>: <span>42 cm</span></small>
+                                    <br>
+                                </div>
+                        </td>
+                        <td>
+                            <div class="counter">
+                                <div class="counter-minus">
+                                    <a href="" class="custom-pointer"><i class="fa fa-minus"></i></a>
+                                </div>
+
+                                <input type="text" value="12">
+                                <div class="counter-plus">
+                                    <form action="" method="POST">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="" value="">
+                                        <button type="submit" class="custom-pointer"><i class="fa fa-plus"></i></a>
+                                    </form>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <p><strong>€ 124</strong></p>
+                            <small>€ 24 each</small>
+                        </td>
+                        <td>
+                            <a href="" class="btn btn-remove custom-pointer">Remove</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </section>
+        <aside class="checkout-wrapper">
+            <dl class="cart-price">
+                <dt class="cart-price-title">Total Price:</dt>
+                <dd class="cart-price-sum"><strong>€ 255</strong></dd>
+            </dl>
+            <dl class="cart-price">
+                <dt class="cart-price-title">Tax:</dt>
+                <dd class="cart-price-sum"><strong>€ 22</strong></dd>
+            </dl>
+            <dl class="cart-price">
+                <dt class="cart-price-title">Grand Total</dt>
+                <dd class="cart-price-sum"><strong>€ 277</strong></dd>
+            </dl>
+            <hr class="break">
+            <a href="" class="btn btn-checkout custom-pointer">Checkout</a>
+            <a href="{% url 'shop' %}" class="btn btn-continue custom-pointer">Shop</a>
+        </aside>
+    </div>
+</div>
+{% endblock content %}
