@@ -4,7 +4,18 @@
 
 {% block content %}
 <div class="wrapper">
-    Sign Up
-    {{ form.as_p }}
+    <div class="account-card">
+    <h2>Sign Up</h2>
+    <br>
+    <p>Already have an account? Then please <a href="" class="custom-pointer">sign in</a>.</p>
+    <br>
+    <br>
+    <form action="{% url 'signup' %}" method="post">
+        {{ form }}
+        <br>
+        <br>
+        <button type="submit" class="custom-pointer">Sign Up &raquo;</button>
+    </form>
+    </div>
 </div>
 {% endblock content %}
