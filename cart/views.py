@@ -79,6 +79,7 @@ def cart(request):
         'cart_items': cart_items,
         'tax': tax,
         'price_without_tax': price_without_tax,
+        'active_shop': 'active_shop',
     }
     template = 'cart/cart.html'
     return render(request, template, context)

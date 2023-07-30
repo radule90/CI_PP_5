@@ -25,6 +25,7 @@ def shop(request, category_slug=None):
         'products': products,
         'category': category,
         'product_count': product_count,
+        'active_shop': 'active_shop',
     }
     return render(request, template, context)
 
@@ -43,5 +44,6 @@ def product_detail(request, category_slug, product_slug):
     template = 'product/product_detail.html'
     context = {
         'product': product,
+        'active_shop': 'active_shop',
     }
     return render(request, template, context)
