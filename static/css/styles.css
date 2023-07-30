@@ -598,7 +598,7 @@ td {
 .account-card {
     align-self: center;
     height: fit-content;
-    width: 30%;
+    width: 35%;
     padding: 2.5rem;
     border: 1px solid var(--dark-background);
     border-radius: 0.5rem;
@@ -618,6 +618,7 @@ td {
     border: 1px solid var(--dark-background);
     border-radius: 0.5rem;
     font-size: 1rem;
+    color: var(--font-color)
 }
 
 .account-card a {
@@ -714,7 +715,7 @@ td {
 
     /* Account Card Wrapper */
     .account-card {
-        width: 35%;
+        width: 45%;
     }
 
     /* Product Detail Page */
@@ -728,7 +729,7 @@ td {
 
     /* Account Card Wrapper */
     .account-card {
-        width: 40%;
+        width: 50%;
     }
 
     /* Shop */
@@ -748,7 +749,7 @@ td {
 
     /* Account Card Wrapper */
     .account-card {
-        width: 45%;
+        width: 60%;
     }
 
     /* Product Detail Page */
@@ -772,7 +773,7 @@ td {
 
     /* Account Card Wrapper */
     .account-card {
-        width: 60%;
+        width: 75%;
     }
 
     /* Header */
@@ -847,7 +848,7 @@ td {
 
     /* Account Card Wrapper */
     .account-card {
-        width: 65%;
+        width: 85%;
     }
 
     /* Shop */
@@ -934,7 +935,7 @@ td {
 
     /* Account Card Wrapper */
     .account-card {
-        width: 80%;
+        width: 100%;
         padding: 1.5rem;
         font-size: 1rem;
     }
