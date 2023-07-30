@@ -5,9 +5,7 @@
 <div class="wrapper">
     <!-- Page Heading -->
     <section class="page-heading">
-        {% if products %}
-            <h2 class="subheading">Shop</h2>
-        {% endif %}
+        <h2 class="subheading">Shop</h2>
     </section>
     <!-- Shop Filters -->
     <div class="shop-section">
@@ -17,7 +15,7 @@
                 <ul class="filter-list">
                     <li class="filter-object"><a href="{% url 'shop' %}" class="custom-pointer">All Products</a></li>
                     {% for category_link in links %}
-                        <li class="filter-object"><a href="" class="custom-pointer">{{ category_link.category_name }}</a></li>
+                        <li class="filter-object"><a href="{{ category_link.get_absolute_url }}" class="custom-pointer">{{ category_link.category_name }}</a></li>
                     {% endfor %}
                 </ul>
             </div>
