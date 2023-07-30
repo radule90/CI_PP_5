@@ -39,10 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'account',
     'homepage',
     'category',
     'product',
     'cart',
+    'phonenumber_field',
     ]
 
 MIDDLEWARE = [
@@ -76,6 +78,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'sun_and_peaches.wsgi.application'
 
+# Override the default user model
+AUTH_USER_MODEL = 'account.Account'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
