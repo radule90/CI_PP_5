@@ -1,1 +1,38 @@
-{{ product }}
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %}{{ product.product_name }}{% endblock head_title %}
+{% block content %}
+<div class="wrapper">
+    <!-- Product Detail -->
+    <section>
+        <div class="product-detail-wrapper">
+            <div class="left-detail">
+                <img src="{{ product.image.url }}" alt="{{ product.product_name }} Product Image">
+            </div>
+            <div class="right-detail">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div>
+                        <h2>{{ product.product_name }}</h2>
+                        <h3><strong>€ {{ product.price }}</strong></h3>
+                    </div>
+                    <hr class="break">
+                    <p class="product-decription">
+                        {{ product.description }}
+                    </p>
+                    <hr class="break">
+                    <div>
+                        <p><strong>Category: </strong><a href="" class="custom-pointer">{{ product.category }}</a>
+                        </p>
+                        <p><strong>Stock: </strong>{{ product.stock }}</p>
+                    </div>
+                    <hr class="break">
+                    <div class="addcart-wrapper">
+                        <button class="btn btn-add custom-pointer">Add to Cart</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock content %}

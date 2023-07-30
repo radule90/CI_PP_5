@@ -329,6 +329,58 @@ main {
     background: var(--light-background);
 }
 
+/* Product Detail Page */
+.product-detail-wrapper {
+    width: 50%;
+    margin-inline: auto;
+    border: 1px solid var(--dark-background);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    display: flex;
+    text-align: center;
+}
+
+.left-detail {
+    flex-basis: 50%;
+}
+
+.left-detail img {
+    max-width: 100%;
+    border-radius: .5rem;
+}
+
+.right-detail {
+    padding-left: 1.5rem;
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.right-detail h2 {
+    margin-bottom: 0.75rem;
+}
+
+.product-detail-wrapper .right-detail button {
+    padding: .75rem;
+    font-size: 1rem;
+}
+
+.product-detail-wrapper .right-detail p a {
+    color: var(--font-color);
+}
+
+.addcart-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+
+.break {
+    border: 1px solid var(--brown-transparent);
+    margin-block: 0.75rem;
+    width: 50%;
+    margin-inline: auto;
+}
 
 /* Footer */
 .footer {
@@ -386,12 +438,36 @@ main {
 }
 
 /* Media Queries */
+/* For Screens Up To 1920px */
+@media (max-width: 1920px) {
+
+    /* Product Detail Page */
+    .product-detail-wrapper {
+        width: 65%;
+    }
+}
+
 /* For Screens Up To 1440px */
 @media (max-width: 1440px) {
 
     /* Shop */
     .product-grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Product Detail Page */
+    .product-detail-wrapper {
+        width: 75%;
+    }
+
+}
+
+/* For Screens Up To 1220px */
+@media (max-width: 1220px) {
+
+    /* Product Detail Page */
+    .product-detail-wrapper {
+        width: 90%;
     }
 }
 
@@ -472,11 +548,14 @@ main {
     .product-grid {
         grid-template-columns: repeat(1, 1fr);
     }
+    /* Product Detail Page */
+    .product-detail-wrapper {
+        width: 100%;
+    }
 }
 
 /* For Screens Up To 550px */
 @media (max-width: 550px) {
-
 
     /* Main */
     main {
@@ -497,6 +576,17 @@ main {
         height: 2rem;
         line-height: 2rem;
         width: 2rem;
+    }
+
+    /* Product Detail Page */
+    .product-detail-wrapper {
+        padding: 1rem;
+        flex-direction: column;
+    }
+    
+    .right-detail {
+        padding-top: 1.5rem;
+        padding-left: 0;
     }
 }
 
