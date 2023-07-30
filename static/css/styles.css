@@ -402,6 +402,17 @@ main {
     color: var(--font-color);
 }
 
+.variation-wrapper {
+    margin-block: .5rem;
+}
+
+.variation-wrapper select {
+    padding: .5rem;
+    border: 1px solid var(--dark-background);
+    border-radius: .5rem;
+    text-align: center;
+}
+
 .addcart-wrapper {
     display: flex;
     justify-content: space-around;

@@ -27,7 +27,7 @@
                         <p><strong>Stock: </strong>{{ product.stock }}</p>
                     </div>
                     <hr class="break">
-                    {% if product.variations.sizes.all %}
+                    {% if product.variations.sizes %}
                     <div class="variation-wrapper">
                         <h4>Size:</h4>
                         <select name="size" id="variation-size" required>
@@ -38,7 +38,7 @@
                         </select>
                     </div>
                     {% endif %}
-                    {% if product.variations.colors.all %}
+                    {% if product.variations.colors %}
                     <div class="variation-wrapper">
                         <h4>Color:</h4>
                         <select name="color" id="variation-color" required>
@@ -49,7 +49,7 @@
                         </select>
                     </div>
                     {% endif %}
-                    {% if product.variations.materials.all %}
+                    {% if product.variations.materials %}
                     <div class="variation-wrapper">
                         <h4>Material:</h4>
                         <select name="material" id="variation-material" required>
@@ -59,6 +59,9 @@
                             {% endfor %}
                         </select>
                     </div>
+                    {% endif %}
+                    {% if product.variations.count > 1 %}
+                        <hr class="break">
                     {% endif %}
                     <div class="addcart-wrapper">
                         <a href="{% url 'add' product.id %}" class="btn btn-add custom-pointer">Add to Cart</a>
