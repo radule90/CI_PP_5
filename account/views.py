@@ -20,3 +20,10 @@ def signup(request):
         'form': form,
     }
     return render(request, template, context)
+
+
+def signin(request):
+    template = 'account/signin.html'
+    context = {
+    }
+    return render(request, template, context)

@@ -682,13 +682,17 @@ td {
     color: var(--light-background);
 }
 
-.fieldWrapper .errorlist {
+.field-wrapper .errorlist {
     list-style-type: none;
     background-color: var(--red);
     color: var(--white);
     border-radius: .5rem;
     padding: .5em;
     font-size: 1rem;
+}
+
+.secondaryAction {
+    margin-inline-end: 0.5rem;
 }
 
 /* Footer */
@@ -993,6 +997,12 @@ td {
 
     .filter-object {
         font-size: 1rem;
+    }
+    /* Account Card Forgot Password */
+    .secondaryAction {
+        display: block;
+        margin-block-end: 1rem;
+        margin-inline-end: 0;
     }
 }
 
