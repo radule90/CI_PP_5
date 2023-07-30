@@ -54,12 +54,28 @@ def remove(request, product_id):
         cart_item = CartItem.objects.get(product=product, cart=cart)
     except (Product.DoesNotExist, Cart.DoesNotExist, CartItem.DoesNotExist):
         raise Http404
-    
+
     if cart_item.quantity > 1:
         cart_item.quantity -= 1
         cart_item.save()
     else:
         cart_item.delete()
+
+    return redirect('cart')
+
+
+def remove_item(request, product_id):
+    '''
+    Function based view to handle removing product completely from the cart.
+    '''
+    try:
+        product = Product.objects.get(id=product_id)
+        cart = Cart.objects.get(cart_id=_cart_id(request))
+        cart_item = CartItem.objects.get(product=product, cart=cart)
+    except (Product.DoesNotExist, Cart.DoesNotExist, CartItem.DoesNotExist):
+        raise Http404
+
+    cart_item.delete()
 
     return redirect('cart')
 

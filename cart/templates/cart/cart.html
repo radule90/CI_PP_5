@@ -62,7 +62,7 @@
                             <small>€ {{ cart_item.product.price }} each</small>
                         </td>
                         <td>
-                            <a href="" class="btn btn-remove custom-pointer">Remove</a>
+                            <a href="{% url 'remove_item' cart_item.product.id %}" class="btn btn-remove custom-pointer">Remove</a>
                         </td>
                     </tr>
                     {% endfor %}
