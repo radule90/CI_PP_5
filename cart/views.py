@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import Http404
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Cart, CartItem
 from product.models import Product
@@ -40,6 +41,26 @@ def add(request, product_id):
         )
         cart_item.save()
     print(cart_item)
+    return redirect('cart')
+
+
+def remove(request, product_id):
+    '''
+    Function based view to decrement quantity of product from the cart.
+    '''
+    try:
+        product = Product.objects.get(id=product_id)
+        cart = Cart.objects.get(cart_id=_cart_id(request))
+        cart_item = CartItem.objects.get(product=product, cart=cart)
+    except (Product.DoesNotExist, Cart.DoesNotExist, CartItem.DoesNotExist):
+        raise Http404
+    
+    if cart_item.quantity > 1:
+        cart_item.quantity -= 1
+        cart_item.save()
+    else:
+        cart_item.delete()
+
     return redirect('cart')
 
 
