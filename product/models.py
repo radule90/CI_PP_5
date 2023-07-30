@@ -39,3 +39,25 @@ class Product(models.Model):
 
     def __str__(self):
         return self.product_name
+
+
+class Variation(models.Model):
+    '''
+    Model represents product variations
+    Variations are optional for products
+    '''
+    VARIATION_CATEGORY_CHOICES = (
+        ('size', 'Size of the product'),
+        ('color', 'Color of the product'),
+        ('material', 'Material of the product'),)
+
+    product = models.ForeignKey(Product, on_delete=models.CASCADE,
+                                related_name='variations')
+    category = models.CharField(max_length=50,
+                                choices=VARIATION_CATEGORY_CHOICES)
+    value = models.CharField(max_length=50)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.value
