@@ -5,7 +5,15 @@
 <div class="wrapper">
     <!-- Page Heading -->
     <section class="page-heading">
-        <h2 class="subheading">Shop</h2>
+        {% if 'search' in request.path %}
+            {% if products %}
+                <h2 class="subheading">Search Results</h2>
+            {% else %}
+                <h3 class="subheading">No matching items found.</h3>
+            {% endif %}
+        {% else %}
+            <h2 class="subheading">Shop</h2>
+        {% endif %}
     </section>
     <!-- Shop Filters -->
     <div class="shop-section">
@@ -23,7 +31,7 @@
         <!-- Product List -->
         <section class="product-list">
             <p class="items-shop">
-                {{ product_count }} Product{{ product_count |pluralize }} in Shop
+                {{ product_count }} Product{{ product_count | pluralize }} in Shop
             </p>
             <div class="product-grid">
                 {% for product in products %}
