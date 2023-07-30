@@ -2,9 +2,14 @@
 {% load static %}
 {% block head_title %}Shop Cart{% endblock head_title %}
 
-
 {% block content %}
 <div class="wrapper">
+    {% if not cart_items %}
+    <div class="center">
+        <h2>Currently there are no items in your cart!</h2>
+        <a href="{% url 'shop' %}" class="btn btn-more">SHOP</a>
+    </div>
+    {% else %}
     <!-- Cart -->
     <div class="cart-wrapper">
         <section class="cart-list">
@@ -19,26 +24,29 @@
                     </tr>
                 </thead>
                 <tbody class="table-body">
+                    {% for cart_item in cart_items %}
                     <tr>
                         <td>
                             <div class="product-order-cart">
-                                <a href=""><img src=""
-                                        width="55" class="custom-pointer"></a>
+                                <a href="{{ cart_item.product.get_absolute_url }}">
+                                    <img src="{{ cart_item.product.image.url }}" width="55" class="custom-pointer" alt="{{ cart_item.product.product_name }} Product Image">
+                                </a>
                                 <div>
-                                    <a href="" class="custom-pointer"
-                                        alt=""><strong></strong></a>
+                                    <a href="{{ cart_item.product.get_absolute_url }}" class="custom-pointer">
+                                        <strong>{{ cart_item.product.product_name }}</strong>
+                                    </a>
                                     <br>
                                     <small><strong>Size: </strong>: <span>42 cm</span></small>
                                     <br>
                                 </div>
+                            </div>
                         </td>
                         <td>
                             <div class="counter">
                                 <div class="counter-minus">
                                     <a href="" class="custom-pointer"><i class="fa fa-minus"></i></a>
                                 </div>
-
-                                <input type="text" value="12">
+                                <input type="text" value="{{ cart_item.quantity }}">
                                 <div class="counter-plus">
                                     <form action="" method="POST">
                                         {% csrf_token %}
@@ -49,13 +57,14 @@
                             </div>
                         </td>
                         <td>
-                            <p><strong>€ 124</strong></p>
-                            <small>€ 24 each</small>
+                            <p><strong>€ {{ cart_item.subtotal }}</strong></p>
+                            <small>€ {{ cart_item.product.price }} each</small>
                         </td>
                         <td>
                             <a href="" class="btn btn-remove custom-pointer">Remove</a>
                         </td>
                     </tr>
+                    {% endfor %}
                 </tbody>
             </table>
 
@@ -63,20 +72,21 @@
         <aside class="checkout-wrapper">
             <dl class="cart-price">
                 <dt class="cart-price-title">Total Price:</dt>
-                <dd class="cart-price-sum"><strong>€ 255</strong></dd>
+                <dd class="cart-price-sum"><strong>€ {{price_without_tax}}</strong></dd>
             </dl>
             <dl class="cart-price">
                 <dt class="cart-price-title">Tax:</dt>
-                <dd class="cart-price-sum"><strong>€ 22</strong></dd>
+                <dd class="cart-price-sum"><strong>€ {{ tax }}</strong></dd>
             </dl>
             <dl class="cart-price">
                 <dt class="cart-price-title">Grand Total</dt>
-                <dd class="cart-price-sum"><strong>€ 277</strong></dd>
+                <dd class="cart-price-sum"><strong>€ {{ total }}</strong></dd>
             </dl>
             <hr class="break">
             <a href="" class="btn btn-checkout custom-pointer">Checkout</a>
             <a href="{% url 'shop' %}" class="btn btn-continue custom-pointer">Shop</a>
         </aside>
     </div>
+    {% endif %}
 </div>
 {% endblock content %}
