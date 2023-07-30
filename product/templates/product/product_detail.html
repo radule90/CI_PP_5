@@ -27,6 +27,39 @@
                         <p><strong>Stock: </strong>{{ product.stock }}</p>
                     </div>
                     <hr class="break">
+                    {% if product.variations.sizes.all %}
+                    <div class="variation-wrapper">
+                        <h4>Size:</h4>
+                        <select name="size" id="variation-size" required>
+                            <option value="" disabled selected>Select Size</option>
+                            {% for var in product.variations.sizes %}
+                                <option value="{{ var.value }}">{{ var.value }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    {% endif %}
+                    {% if product.variations.colors.all %}
+                    <div class="variation-wrapper">
+                        <h4>Color:</h4>
+                        <select name="color" id="variation-color" required>
+                            <option value="" disabled selected>Select Color</option>
+                            {% for var in product.variations.colors %}
+                                <option value="{{ var.value }}">{{ var.value }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    {% endif %}
+                    {% if product.variations.materials.all %}
+                    <div class="variation-wrapper">
+                        <h4>Material:</h4>
+                        <select name="material" id="variation-material" required>
+                            <option value="" disabled selected>Select Material</option>
+                            {% for var in product.variations.materials %}
+                                <option value="{{ var.value }}">{{ var.value }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    {% endif %}
                     <div class="addcart-wrapper">
                         <a href="{% url 'add' product.id %}" class="btn btn-add custom-pointer">Add to Cart</a>
 
