@@ -28,13 +28,13 @@ document.querySelector("#close").onclick = (event) => {
 
 // Account Errors and Message Alert Disappear
 let errorList = document.querySelectorAll('.errorlist');
-let messages = document.querySelectorAll('.messages li');
 if(errorList.length > 0) {
     errorList.forEach(error => setTimeout(() => {error.style.display = 'none'}, 3000));
 };
 
-if(messages.length > 0) {
-    messages.forEach(message => setTimeout(() => {message.style.display = 'none'}, 3000));
+let messageWrapper = document.querySelector('.messages-wrapper')
+if(messageWrapper) {
+    setTimeout(() => {messageWrapper.style.display = 'none'}, 3000);
 }
 
 // Footer
