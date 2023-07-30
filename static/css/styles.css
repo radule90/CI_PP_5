@@ -293,6 +293,10 @@ main {
     color: var(--dark-background);
 }
 
+.product-card h4 a {
+    color: var(--font-color)
+}
+
 .img-wrapper img {
     width: 100%;
     border-radius: .5rem;
