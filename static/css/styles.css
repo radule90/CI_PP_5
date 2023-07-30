@@ -385,8 +385,24 @@ main {
     margin-top: 2.5rem;
 }
 
+/* Media Queries */
+/* For Screens Up To 1440px */
+@media (max-width: 1440px) {
+
+    /* Shop */
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 /* For Screens Up To 1020px */
 @media (max-width: 1020px) {
+
+    /* Main */
+    main {
+        margin-top: 81.5px;
+    }
+
     /* General Style */
     .wrapper {
         width: 90%;
@@ -434,6 +450,13 @@ main {
         width: 80%;
         margin: 0 1rem;
     }
+
+    /* Shop */
+    .filter-group {
+        padding: 1.25rem;
+        position: sticky;
+        top: 100px;
+    }
 }
 
 /* For Screens Up To 768px */
@@ -444,10 +467,21 @@ main {
         top: 1rem;
         right: 1rem;
     }
+
+    /* Shop */
+    .product-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 /* For Screens Up To 550px */
 @media (max-width: 550px) {
+
+
+    /* Main */
+    main {
+        margin-top: 69.5px;
+    }
 
     /* Header, Navbar */
     .logo {
@@ -466,4 +500,30 @@ main {
     }
 }
 
+/* For Screens Up To 425px */
+@media (max-width: 425px) {
+
+    /* Filters */
+    .filter-group {
+        padding: 1rem;
+    }
+
+    .filter-group h3 {
+        font-size: 1.25rem;
+    }
+
+    .filter-object {
+        font-size: 1rem;
+    }
+}
+
+/* For Screens Up To 390px */
+@media (max-width: 390px) {
+
+    /* Main */
+    main {
+        margin-top: 107px;
+    }
+
+}
 
