@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django.urls import reverse
 
 # Create your models here.
 
@@ -16,6 +17,12 @@ class Category(models.Model):
         ordering = ['category_name']
         verbose_name = 'category'
         verbose_name_plural = 'categories'
+
+    def get_absolute_url(self):
+        '''
+        Method to return category url
+        '''
+        return reverse('filter_by_category', args=[self.slug])
 
     def save(self, *args, **kwargs):
         '''
