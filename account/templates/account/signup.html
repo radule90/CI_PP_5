@@ -11,10 +11,17 @@
     <br>
     <br>
     <form action="{% url 'signup' %}" method="post">
-        {{ form }}
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="fieldWrapper">
+            {{ field.errors }}
+            {{ field }}
+        </div>
+        {% endfor %}
         <br>
         <br>
         <button type="submit" class="custom-pointer">Sign Up &raquo;</button>
+        {{ form.non_field_errors }}
     </form>
     </div>
 </div>
