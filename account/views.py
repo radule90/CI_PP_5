@@ -6,7 +6,7 @@ from .forms import SignupForm
 from .models import Account
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
-from django.utils.http import urlsafe_base64_encode
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import EmailMessage
@@ -32,7 +32,7 @@ def signup(request):
             send_email = EmailMessage(mail_subject, message, to=[recipient])
             print(send_email)
             send_email.send()
-            messages.success(request, 'You have successfully signed up! Please confirm your email address to complete the registration.')
+            messages.success(request, 'Thank you for signing up at Sun & Peaches! An email has been sent to your provided email address. Please check your email and follow the instructions to complete the registration process.')
             return redirect('signup')
 
     else:
@@ -74,4 +74,16 @@ def signout(request):
 
 
 def activate(request, uidb64, token):
-    return
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = Account._default_manager.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, Account.DoesNotExist):
+        user = None
+    if user is not None and default_token_generator.check_token(user, token):
+        user.is_active = True
+        user.save()
+        messages.success(request, 'Welcome to Sun & Peaches! Your account has been activated successfully.')
+        return redirect('signin')
+    else:
+        messages.error(request, 'The account activation link is invalid or has expired.')
+        return redirect('signup')
