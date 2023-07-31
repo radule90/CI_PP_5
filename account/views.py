@@ -12,6 +12,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import EmailMessage
+import requests
 # Create your views here.
 
 
@@ -90,7 +91,16 @@ def signin(request):
                 pass
             login(request, user)
             messages.success(request, 'You have successfully signed in.')
-            return redirect('homepage')
+            url = request.META.get('HTTP_REFERER')
+            try:
+                # https://stackoverflow.com/questions/28328890/python-requests-extract-url-parameters-from-a-string
+                query = requests.utils.urlparse(url).query
+                params = dict(x.split('=') for x in query.split('&'))
+                if 'next' in params:
+                    next_page = params['next']
+                    return redirect(next_page)
+            except:
+                return redirect('homepage')
         else:
             messages.error(request, 'Invalid username or password.')
             return redirect('signin')
