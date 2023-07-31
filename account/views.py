@@ -111,3 +111,38 @@ def password_reset(request):
             return redirect('password_reset')
     template = 'account/password_reset.html'
     return render(request, template)
+
+
+def password_reset_validation(request, uidb64, token):
+    try:
+        uid = urlsafe_base64_decode(uidb64).decode()
+        user = Account._default_manager.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, Account.DoesNotExist):
+        user = None
+    if user is not None and default_token_generator.check_token(user, token):
+        request.session['uid'] = uid
+        messages.success(request, 'Reset Your Password')
+        return redirect('login')
+    else:
+        messages.error(request, 'The password reset link is invalid or has expired.')
+        return redirect('password_reset')
+
+
+def set_new_password(request):
+    if request.method == 'POST':
+        password = request.POST.get('password')
+        confirm_password = request.POST.get('confirm_password')
+        if password == confirm_password:
+            uid = request.session.get('uid')
+            user = Account.objects.get(pk=uid)
+            user.set_password(password)
+            user.save()
+            messages.success(request, 'Your password has been updated successfully.')
+            return redirect('signin')
+        else:
+            messages.error(request, 'Password and confirm password do not match.')
+            return redirect('set_new_password')
+    else:
+        template = 'account/set_new_password.html'
+        return render(request, template)
+    
