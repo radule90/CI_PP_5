@@ -38,7 +38,7 @@
                                     {% if cart_item.variations.all %}
                                         <br>
                                         {% for item in cart_item.variations.all %}
-                                            <small><strong>{{ item.category | capfirst }}</strong>: <span>{{ item.value }}</span></small>
+                                            <small><strong>{{ item.category | capfirst }}</strong>: <span>{{ item.value | capfirst }}</span></small>
                                             <br>
                                         {% endfor %}
                                     {% endif %}
