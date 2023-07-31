@@ -32,8 +32,7 @@ def signup(request):
             send_email = EmailMessage(mail_subject, message, to=[recipient])
             print(send_email)
             send_email.send()
-            messages.success(request, 'Thank you for signing up at Sun & Peaches! An email has been sent to your provided email address. Please check your email and follow the instructions to complete the registration process.')
-            return redirect('signup')
+            return redirect('account/signin/?command=verification&email='+recipient)
 
     else:
         form = SignupForm()

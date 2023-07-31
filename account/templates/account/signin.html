@@ -5,20 +5,30 @@
 {% block content %}
 <div class="wrapper">
     <div class="account-card">
-    <h2>Sign In</h2>
-    <br>
-    <p>If you have not created an account yet, then please <a href="{% url 'signup' %}" class="custom-pointer">sign up</a> first.</p>
-    <br>
-    <br>
-    <form action="{% url 'signin' %}" method="post">
-        {% csrf_token %}
-        <input type="email" name="email" id="email" placeholder="Email Address">
-        <input type="password" name="password" id="password" placeholder="Password">
+    {% if request.GET.command == 'verification' %}
+
+        <h2>Thank you for signing up at<br>Sun & Peaches!</h2>
         <br>
         <br>
-        <a class="secondaryAction custom-pointer" href="">Forgot Password?</a>
-        <button type="submit" class="custom-pointer">Sign In &raquo;</button>
-    </form>
+        <p>An email has been sent to your provided email address.</p>
+        <p>Please check your email and follow the instructions to complete the registration process.</p>
+    
+    {% else %}
+        <h2>Sign In</h2>
+        <br>
+        <p>If you have not created an account yet, then please <a href="{% url 'signup' %}" class="custom-pointer">sign up</a> first.</p>
+        <br>
+        <br>
+        <form action="{% url 'signin' %}" method="post">
+            {% csrf_token %}
+            <input type="email" name="email" id="email" placeholder="Email Address">
+            <input type="password" name="password" id="password" placeholder="Password">
+            <br>
+            <br>
+            <a class="secondaryAction custom-pointer" href="">Forgot Password?</a>
+            <button type="submit" class="custom-pointer">Sign In &raquo;</button>
+        </form>
+    {% endif %}
     </div>
 </div>
 {% endblock content %}
