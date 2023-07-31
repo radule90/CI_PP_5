@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %}Checkout{% endblock head_title %}
+
+
+{% block content %}
+<div class="wrapper">
+
+    <!-- Cart -->
+    <form action="" method="POST">
+        {% csrf_token %}
+    <div class="cart-wrapper">
+
+            <section class="cart-list checkout-billing">
+                <h3>Checkout</h3>
+                    <div class="details-checkout">
+                        <h4>Details</h4>
+                        <br>
+                        <input type="text" name="first_name" placeholder="First Name *" required>
+                        <input type="text" name="last_name" placeholder="Last Name *" required>
+                        <input type="email" name="email" placeholder="Email Address *" required>
+                    </div>
+                    <br>
+                    <div class="delivery">
+                        <h4>Delivery</h4>
+                        <br>
+                        <input type="text" name="phone" placeholder="Phone Number *" required>
+                        <input type="text" name="address_line_1" placeholder="Address Line 1 *" required>
+                        <input type="text" name="address_line_2" placeholder="Address Line 2">
+                        <input type="text" name="city" placeholder="City *" required>
+                        <input type="text" name="state" placeholder="County / State *" required>
+                        <input type="text" name="country" placeholder="Country *" required>
+                        <textarea name="order_note" rows="8" placeholder="Order Note"></textarea>
+                    </div>
+            </section>
+            <aside class="checkout-wrapper checkout-wrapper-order">
+                <h3>Order Summary</h3>
+                
+                <table>
+                    <thead class="table-head">
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Qty</th>
+                            <th scope="col">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-body table-body-checkout">
+                        <tr>
+                            <td>
+                                <div class="product-order-cart">
+                                    <a href=""><img src="" alt=" product image" width="55"
+                                            class="custom-pointer"></a>
+                                    <div>
+                                        <a href="" class="custom-pointer"><strong>Ring</strong></a>
+                                            <br>
+                                            <small><strong>Size</strong>: <span>1</span></small>
+                                            <br>
+
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                    <p><strong>12</strong></p>
+                            </td>
+                            <td>
+                                <p><strong>€ </strong></p>
+                                <small>€  each</small>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="submit" class="btn btn-checkout custom-pointer">Complete Order</button>
+                <a href="{% url 'cart' %}" class="btn btn-continue custom-pointer">Back to Cart</a>
+
+            </aside>
+    </div>
+</form>
+
+</div>
+
+{% endblock content %}

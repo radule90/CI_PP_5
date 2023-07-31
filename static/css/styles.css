@@ -623,6 +623,32 @@ td {
     background: var(--light-background);
 }
 
+/* Checkout Page*/
+.checkout-billing {
+    flex-basis: 50%;
+}
+
+.details-checkout {
+    margin-block-end: 2rem;
+}
+
+.checkout-wrapper-order {
+    flex-basis: 50%;
+}
+
+.checkout-wrapper-order th:first-of-type,
+.checkout-wrapper-order td:first-of-type {
+    text-align: start;
+}
+
+.table-body-checkout td {
+    text-align: center;
+}
+
+.checkout-wrapper-order h3 {
+    font-size: 1.5rem;
+}
+
 /* Account Pages */
 .account-card {
     align-self: center;
@@ -639,7 +665,8 @@ td {
     border-bottom: 1px solid var(--font-color);
     width: fit-content;
 }
-
+.checkout-billing input,
+.checkout-billing textarea,
 .account-card input {
     width: 100%;
     padding: 1rem;
@@ -873,8 +900,14 @@ td {
     }
         
     .checkout-wrapper {
-        width: 60%;
+        width: 100%;
         align-self: center;
+    }
+    .btn-checkout,
+    .btn-continue {
+        width:50%;
+        display: block;
+        margin-inline: auto;
     }
 }
 
@@ -968,10 +1001,6 @@ td {
         align-items: center;
         text-align: center;
         gap: 0.5rem;
-    }
-
-    .checkout-wrapper {
-        width: 80%;
     }
 
     /* Account Card Wrapper */

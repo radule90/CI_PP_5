@@ -151,3 +151,9 @@ def cart(request, total=0, quantity=0, cart_items=None):
     }
     template = 'cart/cart.html'
     return render(request, template, context)
+
+
+def checkout(request):
+    template = 'cart/checkout.html'
+    return render(request, template)
+    
