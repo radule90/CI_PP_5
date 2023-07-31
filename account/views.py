@@ -12,6 +12,8 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import EmailMessage
+from django.shortcuts import get_object_or_404
+
 # Create your views here.
 
 
@@ -51,28 +53,49 @@ def signin(request):
         user = authenticate(request, email=email, password=password)
 
         if user is not None:
-            try:
-                cart = Cart.objects.get(cart_id=_cart_id(request))
-                item_already_in_cart = CartItem.objects.filter(cart=cart).exists()
-                print(item_already_in_cart)
-                if item_already_in_cart:
-                    cart_items = CartItem.objects.filter(cart=cart)
-                    print(cart_items)
-                    for cart_item in cart_items:
+            cart = get_object_or_404(Cart, cart_id=_cart_id(request))
+            item_already_in_cart = CartItem.objects.filter(cart=cart).exists()
+            if item_already_in_cart:
+                cart_items = CartItem.objects.filter(cart=cart)
+
+                # Retrieve variations of product
+                product_variation = []
+                for cart_item in cart_items:
+                    variation = cart_item.variations.all()
+                    product_variation.append(list(variation))
+
+                # Retrieve user product variations
+                cart_items = CartItem.objects.filter(user=user)
+                ex_var_list = []
+                id = []
+                for cart_item in cart_items:
+                    existing_variation = cart_item.variations.all()
+                    ex_var_list.append(list(existing_variation))
+                    id.append(cart_item.id)
+
+                for product in product_variation:
+                    if product in ex_var_list:
+                        index = ex_var_list.index(product)
+                        cart_item_id = id[index]
+                        cart_item = CartItem.objects.get(id=cart_item_id)
+                        cart_item.quantity += 1
                         cart_item.user = user
-                        print(cart_item.user)
                         cart_item.save()
-            except:
-                pass
+                    else:
+                        cart_items = CartItem.objects.filter(cart=cart)
+                        for cart_item in cart_items:
+                            cart_item.user = user
+                            cart_item.save()
+
             login(request, user)
             messages.success(request, 'You have successfully signed in.')
             return redirect('homepage')
         else:
             messages.error(request, 'Invalid username or password.')
             return redirect('signin')
+
     template = 'account/signin.html'
-    context = {
-    }
+    context = {}
     return render(request, template, context)
 
 
