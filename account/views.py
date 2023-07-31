@@ -85,3 +85,7 @@ def activate(request, uidb64, token):
     else:
         messages.error(request, 'The account activation link is invalid or has expired.')
         return redirect('signup')
+
+def password_reset(request):
+    template = 'account/password_reset.html'
+    return render(request, template)
