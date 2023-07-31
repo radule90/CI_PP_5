@@ -30,9 +30,8 @@ def signup(request):
             })
             recipient = form.cleaned_data.get('email')
             send_email = EmailMessage(mail_subject, message, to=[recipient])
-            print(send_email)
             send_email.send()
-            return redirect('account/signin/?command=verification&email='+recipient)
+            return redirect('/account/signin/?command=verification&email='+recipient)
 
     else:
         form = SignupForm()
