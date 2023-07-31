@@ -162,8 +162,11 @@ def remove_item(request, product_id, cart_item_id):
     '''
     try:
         product = Product.objects.get(id=product_id)
-        cart = Cart.objects.get(cart_id=_cart_id(request))
-        cart_item = CartItem.objects.get(product=product, cart=cart, id=cart_item_id)
+        if request.user.is_authenticated:
+            cart_item = CartItem.objects.get(product=product, user=request.user, id=cart_item_id)
+        else:
+            cart = Cart.objects.get(cart_id=_cart_id(request))
+            cart_item = CartItem.objects.get(product=product, cart=cart, id=cart_item_id)
     except (Product.DoesNotExist, Cart.DoesNotExist, CartItem.DoesNotExist):
         raise Http404
 
