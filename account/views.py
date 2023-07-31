@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import SignupForm
 from .models import Account
+from cart.models import Cart, CartItem
+from cart.views import _cart_id
 from django.contrib.sites.shortcuts import get_current_site
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -49,6 +51,19 @@ def signin(request):
         user = authenticate(request, email=email, password=password)
 
         if user is not None:
+            try:
+                cart = Cart.objects.get(cart_id=_cart_id(request))
+                item_already_in_cart = CartItem.objects.filter(cart=cart).exists()
+                print(item_already_in_cart)
+                if item_already_in_cart:
+                    cart_items = CartItem.objects.filter(cart=cart)
+                    print(cart_items)
+                    for cart_item in cart_items:
+                        cart_item.user = user
+                        print(cart_item.user)
+                        cart_item.save()
+            except:
+                pass
             login(request, user)
             messages.success(request, 'You have successfully signed in.')
             return redirect('homepage')

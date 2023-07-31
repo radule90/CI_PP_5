@@ -123,10 +123,13 @@ def cart(request, total=0, quantity=0, cart_items=None):
     tax = 0
     price_without_tax = 0
     try:
-        cart = Cart.objects.get(cart_id=_cart_id(request))
-        
-        # Filter all active cart items for that cart.
-        cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+        if request.user.is_authenticated:
+            cart_items = CartItem.objects.filter(user=request.user, is_active=True)
+        else:
+            cart = Cart.objects.get(cart_id=_cart_id(request))
+            
+            # Filter all active cart items for that cart.
+            cart_items = CartItem.objects.filter(cart=cart, is_active=True)
 
         for cart_item in cart_items:
             # Calculate the total price, tax and product quantity in cart.
@@ -156,4 +159,3 @@ def cart(request, total=0, quantity=0, cart_items=None):
 def checkout(request):
     template = 'cart/checkout.html'
     return render(request, template)
-    
