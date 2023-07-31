@@ -3,7 +3,7 @@ from django.http import Http404
 from django.core.exceptions import ObjectDoesNotExist
 from .models import Cart, CartItem
 from product.models import Product, Variation
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -215,6 +215,38 @@ def cart(request, total=0, quantity=0, cart_items=None):
     return render(request, template, context)
 
 
-def checkout(request):
+@login_required(login_url='signin')
+def checkout(request, total=0, quantity=0, cart_items=None):
+    tax = 0
+    price_without_tax = 0
+    try:
+        if request.user.is_authenticated:
+            cart_items = CartItem.objects.filter(user=request.user, is_active=True)
+        else:
+            cart = Cart.objects.get(cart_id=_cart_id(request))
+            
+            # Filter all active cart items for that cart.
+            cart_items = CartItem.objects.filter(cart=cart, is_active=True)
+
+        for cart_item in cart_items:
+            # Calculate the total price, tax and product quantity in cart.
+            total += (cart_item.product.price * cart_item.quantity)
+            quantity += cart_item.quantity
+
+            # Calculate tax and price without tax
+            tax = round(((19 * total) / 100), 2)
+            price_without_tax = total - tax
+
+    except ObjectDoesNotExist:
+        # If doesn't exist send empty context
+        pass
+    context = {
+        'total': total,
+        'quantity': quantity,
+        'cart_items': cart_items,
+        'tax': tax,
+        'price_without_tax': price_without_tax,
+        'active_shop': 'active_shop',
+    }
     template = 'cart/checkout.html'
-    return render(request, template)
+    return render(request, template, context)
