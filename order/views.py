@@ -11,7 +11,7 @@ def payments(request):
     template = 'order/payments.html'
     return render(request, template)
 
-    
+
 def place_order(request, quantity=0, total=0):
     '''
     Function based view to handle order placement
@@ -65,6 +65,16 @@ def place_order(request, quantity=0, total=0):
             order_number = timezone.now().strftime("%Y%m%d") + str(data.id)
             data.order_number = order_number
             data.save()
-            return redirect('checkout')
+
+            order = Order.objects.get(user=current_user, is_ordered=False, order_number=order_number)
+            context = {
+                'order': order,
+                'cart_items': cart_items,
+                'total': total,
+                'tax': tax,
+                'price_without_tax': price_without_tax,
+            }
+            template = 'order/payments.html'
+            return render(request, template, context)
     else:
         return redirect('checkout')

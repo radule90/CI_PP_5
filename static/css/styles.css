@@ -494,11 +494,11 @@ table {
 }
 
 th {
-    margin-block: 1rem;
+    padding-block: 1rem;
 }
 
 td {
-    margin-block-end: 1rem;
+    padding-block-end: 1rem;
 }
 
 .cart-list th:nth-child(1) {
@@ -641,7 +641,10 @@ td {
     text-align: start;
 }
 
-.table-body-checkout td {
+.table-body-checkout td,
+.payment-review th:nth-child(2),
+.payment-review th:nth-child(3),
+.payment-review td {
     text-align: center;
 }
 
@@ -733,9 +736,13 @@ td {
     margin-block-end: .5rem;
 }
 
+.payment-review p {
+    margin-block: .25rem;
+}
+
 .break-payment {
     border: 1px solid var(--brown-transparent);
-    margin-block: 0.75rem;
+    margin-block: 1.25rem;
 }
 
 /* Footer */

@@ -8,62 +8,50 @@
     <div class="cart-wrapper">
         <section class="cart-list payment-review">
             <h4>Billing Address</h4>
+            <p>{{order.full_name}}</p>
+            <p>{{order.full_address}}</p>
+            <p>{{order.city}}, {{order.state}}</p>
+            <p>{{order.country}}</p>
+            <p>{{order.email}}</p>
+            <p>{{order.phone}}</p>
+            {% if order.order_note %}
+            <strong>Order Note: </strong>{{ order.order_note}}
+            {% endif %}
             <hr class="break-payment">
-            <h4>Products</h4>
+            <h4>Order Summary</h4>
             <table>
                 <thead class="table-head">
                     <tr>
                         <th scope="col">Product</th>
                         <th scope="col">Qty</th>
                         <th scope="col">Price</th>
-                        <th scope="col"></th>
                     </tr>
                 </thead>
-                <tbody class="table-body">
+                <tbody class="table-body table-body-checkout">
                     {% for cart_item in cart_items %}
                     <tr>
                         <td>
                             <div class="product-order-cart">
-                                <a href="{{ cart_item.product.get_absolute_url }}">
-                                    <img src="{{ cart_item.product.image.url }}" width="55" class="custom-pointer" alt="{{ cart_item.product.product_name }} Product Image">
-                                </a>
+                                <a href="{{ cart_item.product.get_url }}"><img src="{{ cart_item.product.image.url }}" alt="{{cart_item.product.product_name}} product image" width="55"
+                                        class="custom-pointer"></a>
                                 <div>
-                                    <a href="{{ cart_item.product.get_absolute_url }}" class="custom-pointer">
-                                        <strong>{{ cart_item.product.product_name }}</strong>
-                                    </a>
+                                    <a href="{{ cart_item.product.get_url }}" class="custom-pointer"><strong>{{ cart_item.product.product_name }}</strong></a>
                                     {% if cart_item.variations.all %}
                                         <br>
                                         {% for item in cart_item.variations.all %}
-                                            <small><strong>{{ item.category | capfirst }}</strong>: <span>{{ item.value | capfirst }}</span></small>
-                                            <br>
+                                        <small><strong>{{ item.category | capfirst }}</strong>: <span>{{ item.value }}</span></small>
+                                        <br>
                                         {% endfor %}
                                     {% endif %}
                                 </div>
                             </div>
                         </td>
                         <td>
-                            <div class="counter">
-                                <div class="counter-minus">
-                                    <a href="{% url 'remove' cart_item.product.id cart_item.id %}" class="custom-pointer"><i class="fa fa-minus"></i></a>
-                                </div>
-                                <input type="text" value="{{ cart_item.quantity }}">
-                                <div class="counter-plus">
-                                    <form action="{% url 'add' cart_item.product.id %}" method="POST">
-                                        {% csrf_token %}
-                                        {% for item in cart_item.variations.all %}
-                                            <input type="hidden" name="{{ item.category }}" value="{{ item.value }}">
-                                        {% endfor %}
-                                        <button type="submit" class="custom-pointer"><i class="fa fa-plus"></i></a>
-                                    </form>
-                                </div>
-                            </div>
+                                <p><strong>{{ cart_item.quantity }}</strong></p>
                         </td>
                         <td>
                             <p><strong>€ {{ cart_item.subtotal }}</strong></p>
                             <small>€ {{ cart_item.product.price }} each</small>
-                        </td>
-                        <td>
-                            <a href="{% url 'remove_item' cart_item.product.id cart_item.id %}" class="btn btn-remove custom-pointer">Remove</a>
                         </td>
                     </tr>
                     {% endfor %}
