@@ -73,9 +73,12 @@
                 <dd class="cart-price-sum"><strong>€ {{ total }}</strong></dd>
             </dl>
             <hr class="break">
-            <div id="card-element"></div>
             <div id="card-errors"></div>
-            <a href="{% url 'checkout' %}" class="btn btn-checkout custom-pointer">Pay</a>
+            <form method="POST" action="{% url 'payments' %}" id="payment-form">
+                {% csrf_token %}
+                <div id="card-element"></div>
+                <button type="submit" class="btn btn-checkout custom-pointer" id="submit-button">Pay</button>
+            </form>
         </aside>
     </div>
 </div>
@@ -84,6 +87,12 @@
 {% block postload_js %}
     {{ block.super }}
     {{ stripe_public_key|json_script:"id_stripe_public_key" }}
-    {{ stripe_client_secret|json_script:"id_client_secret" }}
+    {{ client_secret|json_script:"id_client_secret" }}
+    {% comment %}Pass Django variable to JavaScript{% endcomment %}
+    <script type="text/javascript">
+        let orderId = "{{ order_id }}"; 
+        console.log(orderId);
+    </script>
     <script src="{% static 'order/js/stripe.js' %}"></script>
+
 {% endblock postload_js %}

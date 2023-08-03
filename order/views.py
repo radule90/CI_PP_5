@@ -1,15 +1,29 @@
 from django.shortcuts import render, redirect
 from cart.models import CartItem
-from .models import Order
+from .models import Order, OrderProduct, Payment
 from .forms import OrderForm
 from django.utils import timezone
 from django.conf import settings
+from django.contrib import messages
+import stripe
+
 
 # Create your views here.
 
+
 def payments(request):
-    template = 'order/payments.html'
-    return render(request, template)
+    if request.method == "POST":
+        print(request.POST)
+        # Retrieve the order id and payment id from the POST data
+        order_id = request.POST.get('order_id')
+        print(order_id) 
+        payment_id = request.POST.get('payment_id')
+        print(payment_id)
+        
+        # Retreive paid order
+        order = Order.objects.get(user=request.user, id=order_id, is_ordered=False )
+        print(order.id)
+        return redirect('shop')
 
 
 def place_order(request, quantity=0, total=0):
@@ -31,6 +45,7 @@ def place_order(request, quantity=0, total=0):
 
     tax = 0
     price_without_tax = 0
+    # Loop through items in cart
     for cart_item in cart_items:
         # Calculate the total price, tax and product quantity in cart.
         total += (cart_item.product.price * cart_item.quantity)
@@ -41,9 +56,10 @@ def place_order(request, quantity=0, total=0):
         price_without_tax = total - tax
 
     if request.method == 'POST':
-        # Check if methods is post and form data is submitted
+        # Check if methods is post and form data is valid
         form = OrderForm(request.POST)
         if form.is_valid():
+            # Creates new instance of Order
             data = Order()
             data.user = current_user
             data.first_name = form.cleaned_data['first_name']
@@ -66,17 +82,27 @@ def place_order(request, quantity=0, total=0):
             data.order_number = order_number
             data.save()
 
+            # Retreive new Order data
             order = Order.objects.get(user=current_user, is_ordered=False, order_number=order_number)
+
+            # Create stripe payment intent 
+            stripe.api_key = settings.STRIPE_SECRET_KEY
+            intent = stripe.PaymentIntent.create(
+                amount=round(total * 100),
+                currency=settings.STRIPE_CURRENCY,
+            )
+
             context = {
                 'order': order,
                 'cart_items': cart_items,
                 'total': total,
                 'tax': tax,
                 'price_without_tax': price_without_tax,
-                'stripe_public_key': settings.STRIPE_PUBLISHABLE_KEY,
-                'stripe_client_secret': settings.STRIPE_SECRET_KEY
+                'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
+                'client_secret': intent.client_secret,
+                'order_id': order.id,
             }
             template = 'order/payments.html'
             return render(request, template, context)
-    else:
-        return redirect('checkout')
+        else:
+            return redirect('checkout')
