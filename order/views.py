@@ -51,6 +51,13 @@ def payments(request):
             order_product.ordered = True
             order_product.save()
 
+            # Get product variation and assign to OrderProduct instance
+            item = CartItem.objects.get(id=cart_item.id)
+            item_variations = item.variations.all()
+            order_product = OrderProduct.objects.get(id=order_product.id)
+            order_product.variations.set(item_variations)
+            order_product.save()
+            
         return redirect('shop')
 
 
