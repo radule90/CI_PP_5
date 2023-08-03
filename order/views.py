@@ -13,16 +13,26 @@ import stripe
 
 def payments(request):
     if request.method == "POST":
-        print(request.POST)
-        # Retrieve the order id and payment id from the POST data
+        # Retrieve the order id, payment id and status from the POST data
         order_id = request.POST.get('order_id')
-        print(order_id) 
         payment_id = request.POST.get('payment_id')
-        print(payment_id)
-        
+        payement_status = request.POST.get('status')
+
+
         # Retreive paid order
-        order = Order.objects.get(user=request.user, id=order_id, is_ordered=False )
+        order = Order.objects.get(user=request.user, id=order_id, is_ordered=False)
         print(order.id)
+
+        # Creating and saving new Payment instance
+        payment = Payment(
+            user=request.user,
+            payment_id=payment_id,
+            payment_method="Stripe",
+            amount_paid=order.order_total,
+            status=payement_status
+        )
+        payment.save()
+
         return redirect('shop')
 
 

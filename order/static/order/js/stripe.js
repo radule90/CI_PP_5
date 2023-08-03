@@ -96,12 +96,17 @@ form.addEventListener('submit', function(ev) {
                 hiddenInput.setAttribute('type', 'hidden');
                 hiddenInput.setAttribute('name', 'payment_id');
                 hiddenInput.setAttribute('value', result.paymentIntent.id);
+                let statusInput = document.createElement('input');
+                statusInput.setAttribute('type', 'hidden');
+                statusInput.setAttribute('name', 'status');
+                statusInput.setAttribute('value', result.paymentIntent.status);
                 let orderIdInput = document.createElement('input');
                 orderIdInput.setAttribute('type', 'hidden');
                 orderIdInput.setAttribute('name', 'order_id');
                 orderIdInput.setAttribute('value', orderId);
-                form.appendChild(orderIdInput);
                 form.appendChild(hiddenInput);
+                form.appendChild(statusInput);
+                form.appendChild(orderIdInput);
                 form.submit();
             }
         }
