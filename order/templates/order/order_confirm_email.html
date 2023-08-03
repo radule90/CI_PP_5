@@ -10,11 +10,10 @@ Order Date: {{ order.created_at }}
 Payment Method: {{ order.payment.payment_method }}
 
 {% for item in order.orderproduct_set.all %}
-    Product Name: {{ item.product.product_name }}
-    Quantity: {{ item.quantity }}
-    Price: {{ item.product_price }}
+Product Name: {{ item.product.product_name }}
+Quantity: {{ item.quantity }}
+Price: {{ item.product_price }}
 {% endfor %}
-
 Total Price: {{ order.order_total }}
 
 
