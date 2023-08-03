@@ -33,6 +33,10 @@ def payments(request):
         )
         payment.save()
 
+        order.payment = payment
+        order.is_ordered = True
+        order.save()
+
         return redirect('shop')
 
 
