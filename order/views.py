@@ -64,6 +64,9 @@ def payments(request):
             product.stock -= item.quantity
             product.save()
 
+        # Remove products from cart
+        CartItem.objects.filter(user=request.user).delete()
+        
         return redirect('shop')
 
 
