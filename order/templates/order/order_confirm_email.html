@@ -6,17 +6,24 @@ Thank you for shopping with us!
 This email is to confirm your recent order with the following details:
 
 Order Number: {{ order.order_number }}
-Order Date: {{ order.order_date }}
-Payment Method: {{ order.payment_method }}
-Delivery Address: {{ order.delivery_address }}
+Order Date: {{ order.created_at }}
+Payment Method: {{ order.payment.payment_method }}
 
-{% for item in order_items %}
-    Product Name: {{ item.product_name }}
+{% for item in order.orderproducts_set.all %}
+    Product Name: {{ item.product.product_name }}
     Quantity: {{ item.quantity }}
-    Price: {{ item.price }}
+    Price: {{ item.product_price }}
 {% endfor %}
 
-Total Price: {{ order.total_price }}
+Total Price: {{ order.order_total }}
+
+Delivery Address: 
+{{ order.full_name }},
+{{ order.address_line_1 }},
+{% if order.address_line_2 %}{{ order.address_line_2 }},{% endif %}
+{{ order.city }},
+{% if order.state %}{{ order.state }},{% endif %}
+{{ order.country }}.
 
 Your order will be shipped to your address as soon as possible. We will send you another email when your order has been dispatched.
 
