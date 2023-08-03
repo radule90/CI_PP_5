@@ -677,13 +677,13 @@ td {
     color: var(--font-color)
 }
 
-.account-card a {
+.sign-link {
     text-decoration: underline;
     color: var(--dark-background);
 }
 
-.account-card a:active,
-.account-card a:hover {
+.sign-link:active,
+.sign-link:hover {
     color: var(--dark-background);
     padding: 0.25rem;
     border-radius: 0.5rem;
@@ -721,6 +721,12 @@ td {
 .secondaryAction {
     margin-inline-end: 0.5rem;
 }
+
+/* Error Pages */
+.center .error-btn {
+    width: 80%;
+}
+
 
 /* Footer */
 .footer {
