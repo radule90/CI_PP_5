@@ -38,6 +38,19 @@ def payments(request):
         order.is_ordered = True
         order.save()
 
+        # Create new instance of OrderProduct and move all products from cart
+        cart_items = CartItem.objects.filter(user=request.user)
+        for cart_item in cart_items:
+            order_product = OrderProduct()
+            order_product.order_id = order.id
+            order_product.payment = payment
+            order_product.user_id = request.user.id
+            order_product.product_id = cart_item.product.id
+            order_product.quantity = cart_item.quantity
+            order_product.product_price = cart_item.product.price
+            order_product.ordered = True
+            order_product.save()
+
         return redirect('shop')
 
 
