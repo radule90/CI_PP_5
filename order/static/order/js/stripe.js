@@ -33,3 +33,28 @@ let style = {
 let card = elements.create('card', {style: style});
 
 card.mount('#card-element');
+
+// Handle validation errors
+card.addEventListener('change', (event) => {
+    let errorsDiv = document.getElementById('card-errors');
+    if(event.error) {
+        // let html = `
+        // <span class="stripe" role="alert">
+        // <i class="fas fa-times"></i>
+        // </span>
+        // <span>${event.error.message}</span>`;
+        let html = `
+            <dialog open>
+                <form method="dialog">
+                    ${event.error.message}
+                    <button class="custom-pointer">
+                        <i class="fa-solid fa-xmark custom-pointer"></i>
+                    </button>
+                </form>
+            </dialog>
+      `
+      errorsDiv.innerHTML = html;
+    } else {
+        errorsDiv.textContent = '';
+    }
+})
