@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from cart.models import CartItem
 from .models import Order, OrderProduct, Payment
 from .forms import OrderForm
+from product.models import Product
 from django.utils import timezone
 from django.conf import settings
 from django.contrib import messages
@@ -57,7 +58,12 @@ def payments(request):
             order_product = OrderProduct.objects.get(id=order_product.id)
             order_product.variations.set(item_variations)
             order_product.save()
-            
+
+            # Decrease stock after payment
+            product = Product.objects.get(id=item.product.id)
+            product.stock -= item.quantity
+            product.save()
+
         return redirect('shop')
 
 
