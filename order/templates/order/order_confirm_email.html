@@ -1,0 +1,27 @@
+{% autoescape off %}
+Hello {{ user.first_name }},
+
+Thank you for shopping with us!
+
+This email is to confirm your recent order with the following details:
+
+Order Number: {{ order.order_number }}
+Order Date: {{ order.order_date }}
+Payment Method: {{ order.payment_method }}
+Delivery Address: {{ order.delivery_address }}
+
+{% for item in order_items %}
+    Product Name: {{ item.product_name }}
+    Quantity: {{ item.quantity }}
+    Price: {{ item.price }}
+{% endfor %}
+
+Total Price: {{ order.total_price }}
+
+Your order will be shipped to your address as soon as possible. We will send you another email when your order has been dispatched.
+
+We appreciate your business and look forward to serving you again. If you have any questions about your order, please feel free to reply to this email.
+
+Best,
+Sun & Peaches Team
+{% endautoescape %}

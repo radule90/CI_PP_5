@@ -7,6 +7,8 @@ from django.utils import timezone
 from django.conf import settings
 from django.contrib import messages
 import stripe
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
 
 
 # Create your views here.
@@ -22,7 +24,6 @@ def payments(request):
 
         # Retreive paid order
         order = Order.objects.get(user=request.user, id=order_id, is_ordered=False)
-        print(order.id)
 
         # Creating and saving new Payment instance
         payment = Payment(
@@ -66,7 +67,16 @@ def payments(request):
 
         # Remove products from cart
         CartItem.objects.filter(user=request.user).delete()
-        
+
+        # Confirmation Mail
+        mail_subject = 'Order Confirmation'
+        message = render_to_string('order/order_confirm_email.html', {
+                'user': request.user,
+                'order': order
+            })
+        recipient = request.user.email
+        send_email = EmailMessage(mail_subject, message, to=[recipient])
+        send_email.send()
         return redirect('shop')
 
 
