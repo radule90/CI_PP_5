@@ -3,7 +3,7 @@ from cart.models import CartItem
 from .models import Order
 from .forms import OrderForm
 from django.utils import timezone
-
+from django.conf import settings
 
 # Create your views here.
 
@@ -73,6 +73,8 @@ def place_order(request, quantity=0, total=0):
                 'total': total,
                 'tax': tax,
                 'price_without_tax': price_without_tax,
+                'stripe_public_key': settings.STRIPE_PUBLISHABLE_KEY,
+                'stripe_client_secret': settings.STRIPE_SECRET_KEY
             }
             template = 'order/payments.html'
             return render(request, template, context)

@@ -731,6 +731,10 @@ td {
 }
 
 /* Payment Review */
+.payment-review {
+    flex-basis: 60%;
+}
+
 .payment-review h4 {
     font-size: 1.25rem;
     margin-block-end: .5rem;
@@ -740,9 +744,21 @@ td {
     margin-block: .25rem;
 }
 
+.payment-review p:nth-child(2) {
+    margin-block-start: 1rem;
+}
 .break-payment {
     border: 1px solid var(--brown-transparent);
-    margin-block: 1.25rem;
+    margin-block: 1.5rem;
+}
+.stripe-payment-wrapper {
+    flex-basis: 40%;
+}
+.StripeElement {
+    margin-block: 1.5rem;
+    border: 1px solid var(--green);
+    border-radius: .5rem;
+    padding: 1.5rem;
 }
 
 /* Footer */
@@ -846,6 +862,15 @@ td {
     /* Product Detail Page */
     .product-detail-wrapper {
         width: 90%;
+    }
+
+    /* Payment */
+    .payment-review {
+        flex-basis: 50%;
+    }
+    
+    .stripe-payment-wrapper {
+        flex-basis: 50%;
     }
 }
 

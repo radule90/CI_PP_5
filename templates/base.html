@@ -35,6 +35,11 @@
         <script src="https://kit.fontawesome.com/c06e2d0b20.js" crossorigin="anonymous"></script>
         <!-- Custom JavaScript -->
         <script src="{% static 'js/scripts.js' %}"></script>
+        <!-- Stripe JS -->
+        <script src="https://js.stripe.com/v3/"></script>
+        
+        {% block postload_js %}
+        {% endblock postload_js %}
     </body>
 
 </html>

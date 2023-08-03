@@ -59,7 +59,7 @@
             </table>
 
         </section>
-        <aside class="checkout-wrapper">
+        <aside class="checkout-wrapper stripe-payment-wrapper">
             <dl class="cart-price">
                 <dt class="cart-price-title">Total Price:</dt>
                 <dd class="cart-price-sum"><strong>€ {{ price_without_tax }}</strong></dd>
@@ -73,8 +73,16 @@
                 <dd class="cart-price-sum"><strong>€ {{ total }}</strong></dd>
             </dl>
             <hr class="break">
+            <div class="" id="card-element"></div>
             <a href="{% url 'checkout' %}" class="btn btn-checkout custom-pointer">Pay</a>
         </aside>
     </div>
 </div>
 {% endblock content %}
+
+{% block postload_js %}
+    {{ block.super }}
+    {{ stripe_public_key|json_script:"id_stripe_public_key" }}
+    {{ stripe_client_secret|json_script:"id_client_secret" }}
+    <script src="{% static 'order/js/stripe.js' %}"></script>
+{% endblock postload_js %}
