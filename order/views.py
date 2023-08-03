@@ -7,7 +7,11 @@ from django.utils import timezone
 
 # Create your views here.
 
+def payments(request):
+    template = 'order/payments.html'
+    return render(request, template)
 
+    
 def place_order(request, quantity=0, total=0):
     '''
     Function based view to handle order placement

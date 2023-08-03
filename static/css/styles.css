@@ -494,11 +494,11 @@ table {
 }
 
 th {
-    padding-block: 1rem;
+    margin-block: 1rem;
 }
 
 td {
-    padding-block-end: 1rem;
+    margin-block-end: 1rem;
 }
 
 .cart-list th:nth-child(1) {
@@ -727,6 +727,16 @@ td {
     width: 80%;
 }
 
+/* Payment Review */
+.payment-review h4 {
+    font-size: 1.25rem;
+    margin-block-end: .5rem;
+}
+
+.break-payment {
+    border: 1px solid var(--brown-transparent);
+    margin-block: 0.75rem;
+}
 
 /* Footer */
 .footer {
