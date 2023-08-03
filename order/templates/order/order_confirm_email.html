@@ -9,13 +9,14 @@ Order Number: {{ order.order_number }}
 Order Date: {{ order.created_at }}
 Payment Method: {{ order.payment.payment_method }}
 
-{% for item in order.orderproducts_set.all %}
+{% for item in order.orderproduct_set.all %}
     Product Name: {{ item.product.product_name }}
     Quantity: {{ item.quantity }}
     Price: {{ item.product_price }}
 {% endfor %}
 
 Total Price: {{ order.order_total }}
+
 
 Delivery Address: 
 {{ order.full_name }},
@@ -24,6 +25,9 @@ Delivery Address:
 {{ order.city }},
 {% if order.state %}{{ order.state }},{% endif %}
 {{ order.country }}.
+Order Note:
+{% if order.order_note %}{{ order.order_note }}{% endif %}
+
 
 Your order will be shipped to your address as soon as possible. We will send you another email when your order has been dispatched.
 
