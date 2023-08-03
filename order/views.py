@@ -27,12 +27,13 @@ def payments(request):
         payment = Payment(
             user=request.user,
             payment_id=payment_id,
-            payment_method="Stripe",
+            payment_method='Stripe',
             amount_paid=order.order_total,
             status=payement_status
         )
         payment.save()
 
+        # Update order instance
         order.payment = payment
         order.is_ordered = True
         order.save()
@@ -78,7 +79,7 @@ def place_order(request, quantity=0, total=0):
             data.user = current_user
             data.first_name = form.cleaned_data['first_name']
             data.last_name = form.cleaned_data['last_name']
-            data.phone = form.cleaned_data['phone_number']
+            data.phone_number = form.cleaned_data['phone_number']
             data.email = form.cleaned_data['email']
             data.address_line_1 = form.cleaned_data['address_line_1']
             data.address_line_2 = form.cleaned_data['address_line_2']
