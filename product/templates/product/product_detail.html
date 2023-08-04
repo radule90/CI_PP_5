@@ -78,10 +78,11 @@
                 <div class="comment-inputs">
                     <h3>Leave a Review</h3>
                     <form action="" method="POST">
-                        <input type="email" id="email" name="email" placeholder="Email *" required>
+                        {% csrf_token %}
+                        <input type="subject" id="subject" name="subject" placeholder="Subject *" required>
                         <br>
                         <br>
-                        <textarea id="comment" name="comment" rows="5" placeholder="Product Review *" required></textarea>
+                        <textarea id="review" name="review" rows="5" placeholder="Product Review *" required></textarea>
                         <br>
                         <br>
 						<div class="rate">
