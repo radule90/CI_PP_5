@@ -1,7 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
 from django.db.models import Q
 from django.http import Http404
-from .models import Product
+from .models import Product, Review
+from .forms import ReviewForm
 from category.models import Category
 from django.core.paginator import Paginator
 
@@ -92,3 +94,29 @@ def search(request):
         'product_count': product_count,
     }
     return render(request, template, context)
+
+
+def create_review(request, product_id):
+    url = request.META.get('HTTP_REFERER')
+    if request.method == 'POST':
+        try:
+        # If user already left review, then update existing
+            review = Review.objects.get(user__id=request.user.id, product__id=product_id)
+            form = ReviewForm(request.POST, instance=review)
+            form.save()
+            messages.success(request, 'Review updated successfully.')
+            return redirect(url)
+        except Review.DoesNotExist:
+        # If user didn't leave review, create new
+            form = ReviewForm(request.POST)
+            if form.is_valid():
+                review = Review()
+                review.subject = form.cleaned_data['subject']
+                review.review = form.cleaned_data['review']
+                review.rating = form.cleaned_data['rating']
+                review.ip = request.META.get('REMOTE_ADDR')
+                review.product_id = product_id
+                review.user_id = request.user.id
+                review.save()
+                messages.success(request, 'Review created successfully.')
+                return redirect(url)
