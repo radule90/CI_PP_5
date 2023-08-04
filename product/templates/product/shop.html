@@ -44,9 +44,7 @@
                     </h3>
                     <h4><a href="{{ category_link.get_absolute_url }}" class="custom-pointer">{{ product.category }}</a></h4>
                     <p><strong>€ {{ product.price }}</strong></p>
-                    <div>
-                        <a href="{{ product.get_absolute_url }}" class="btn btn-more custom-pointer">More</a>
-                    </div>
+                    <a href="{{ product.get_absolute_url }}" class="btn btn-more custom-pointer">More</a>
                 </div>
                 {% endfor %}
             </div>

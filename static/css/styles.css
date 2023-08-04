@@ -60,9 +60,25 @@ h4 {
     font-family: 'Laila', sans-serif;
 }
 
+/* General style for input fields */
+input,
 textarea {
     font-family: 'Quicksand', sans-serif;
+    width: 100%;
+    padding: 1rem;
+    margin-block: 0.5rem 1rem;
+    border: 1px solid var(--dark-background);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color: var(--font-color)
 }
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--dark-background);
+    font-size: 1rem;
+}
+
 
 /* Alert Messages */
 .messages-wrapper {
@@ -507,21 +523,6 @@ main {
     margin-bottom: 0.75rem;
 }
 
-.comment-inputs textarea,
-.comment-inputs input {
-    width: 100%;
-    border: 1px solid var(--dark-background);
-    border-radius: 0.25rem;
-    padding: 0.5rem;
-    color: var(--font-color);
-    font-size: 1rem;
-}
-.comment-inputs textarea::placeholder,
-.comment-inputs input::placeholder {
-    color: var(--dark-background);
-    font-size: 1rem;
-}
-
 /* Star Ratings */
 /* Hide Radio button */
 .rate>input {
@@ -556,16 +557,16 @@ main {
 }
 
 /* Click and hover */
-input:checked~label,
-label:hover~label {
+.rate input:checked~label,
+.rate label:hover~label {
     color: #ffb503;
 }
 
 /* Hover hightlight */
-input:checked+label:hover,
-input:checked~label:hover,
-input:checked~label:hover~label,
-label:hover~input:checked~label {
+.rate input:checked+label:hover,
+.rate input:checked~label:hover,
+.rate input:checked~label:hover~label,
+.rate label:hover~input:checked~label {
     color: #cc9000;
 }
 
@@ -793,17 +794,6 @@ td {
     border-bottom: 1px solid var(--font-color);
     width: fit-content;
 }
-.checkout-billing input,
-.checkout-billing textarea,
-.account-card input {
-    width: 100%;
-    padding: 1rem;
-    margin-block: 0.5rem 1rem;
-    border: 1px solid var(--dark-background);
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    color: var(--font-color)
-}
 
 .sign-link {
     text-decoration: underline;
@@ -912,6 +902,27 @@ dialog button i {
 /* Order Confirmation */
 .icon-confirm {
     color: var(--green);
+}
+
+/* Contact Page */
+.contact-wrapper {
+    margin-top: 3rem;
+    display: flex;
+    gap: 5%;
+    font-size: 1.25rem;
+}
+
+.contact-form {
+    flex-basis: 60%;
+}
+
+.address-page {
+    flex-basis: 40%;
+}
+
+.address-page img {
+    margin-top: 2rem;
+    width: 60%;
 }
 
 /* Footer */
@@ -1159,6 +1170,15 @@ dialog button i {
     .comments-wrapper {
         flex-direction: column;
     }
+    
+    /* Contact Page */
+    .contact-wrapper {
+        flex-direction: column;
+    }
+
+    .address-page {
+        margin-top: 5rem;
+    }
 }
 
 /* For Screens Up To 550px */
@@ -1264,4 +1284,3 @@ dialog button i {
     }
 
 }
-
