@@ -7,7 +7,7 @@
         <nav class="navbar">
             <a href="{% url 'homepage' %}" class="{% if active_homepage %} active {% endif %} custom-pointer">Home</a>
             <a href="{% url 'shop' %}" class="{% if active_shop %} active {% endif %} custom-pointer">Shop</a>
-            <a href="" class="{% if active_contact %} active {% endif %} custom-pointer">Contact</a>
+            <a href="{% url 'contact' %}" class="{% if active_contact %} active {% endif %} custom-pointer">Contact</a>
         </nav>
 
         <div class="icons">
