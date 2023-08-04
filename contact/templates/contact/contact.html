@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %}Contact Page{% endblock head_title %}
+{% block content %}
+<div class="wrapper">
+    <!-- Page Heading -->
+    <section class="page-heading">
+        <h2 class="subheading">Contact Us</h2>
+    </section>
+    <!-- Contact Section -->
+    <div class="contact-wrapper">
+        <section class="contact-form">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <label for="full_name">Full Name</label>
+                <input type="text" id="full_name" name="full_name" placeholder="Full Name *" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Email *" required>
+
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="Subject *" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Your message..." required></textarea>
+
+                <button type="submit" class="btn">Send</button>
+            </form>
+        </section>
+        <aside class="address-page">
+            <h3>Visit Us</h3>
+            <br>
+            <address>
+                Comic Galaxy<br />
+                123 Stellar Street,<br />
+                Galaxy City,<br />
+                Cosmoverse 98765<br />
+                Phone: (555) COMIC-GAL
+            </address>
+            <img src="{% static 'images/antarctica.svg' %}" alt="Location of the store">
+        </aside>
+    </div>
+</div>
+{% endblock content %}
