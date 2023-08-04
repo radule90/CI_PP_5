@@ -4,7 +4,7 @@ from category.models import Category
 from django.urls import reverse
 from account.models import Account
 from django.core.validators import MaxValueValidator, MinValueValidator
-
+from django.db.models import Avg
 # Create your models here.
 
 
@@ -33,6 +33,17 @@ class Product(models.Model):
         Method to return product url
         '''
         return reverse('product_detail', args=[self.category.slug, self.slug])
+
+    def average_rating(self):
+        '''
+        Mehod that calculates average review for product
+        '''
+        reviews = Review.objects.filter(product=self, status=True).aggregate(
+            average=Avg('rating'))
+        avg = 0
+        if reviews['average'] is not None:
+            avg = float(reviews['average'])
+        return avg
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.product_name)

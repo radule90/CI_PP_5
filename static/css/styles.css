@@ -427,8 +427,8 @@ main {
     justify-content: space-between;
 }
 
-.right-detail h2 {
-    margin-bottom: 0.75rem;
+.product-detail-price {
+    margin-block-start: 0.75rem;
 }
 
 .product-detail-wrapper .right-detail p a {
