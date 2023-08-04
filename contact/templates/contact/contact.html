@@ -12,8 +12,9 @@
         <section class="contact-form">
             <form action="{% url 'contact' %}" method="POST">
                 {% csrf_token %}
-                <input type="text" id="full_name" name="full_name" placeholder="Full Name *" required>
-                <input type="email" id="email" name="email" placeholder="Email *" required>
+                {% comment %}Full name and email field are prefilled if user is registred and logged in{% endcomment %}
+                <input type="text" id="full_name" name="full_name" placeholder="Full Name *" value="{% if request.user.is_authenticated %}{{ request.user.full_name }}{% endif %}" required>
+                <input type="email" id="email" name="email" placeholder="Email *" value="{% if request.user.is_authenticated %}{{ request.user.email }}{% endif %}" required>
                 <input type="text" id="subject" name="subject" placeholder="Subject *" required>
                 <textarea id="message" name="message" rows="10" placeholder="Your message..." required></textarea>
                 <button type="submit" class="btn btn-checkout custom-pointer">Send Message</button>
@@ -23,11 +24,11 @@
             <h3>Visit Us</h3>
             <br>
             <address>
-                Comic Galaxy<br />
-                123 Stellar Street,<br />
-                Galaxy City,<br />
-                Cosmoverse 98765<br />
-                Phone: (555) COMIC-GAL
+                Sun & Peaches Jewelry Store<br>
+                123 Sparkle Street<br>
+                Gemstone City<br>
+                Luxuria 98765<br>
+                Phone: (555) 123-4567
             </address>
             <img src="{% static 'images/antarctica.svg' %}" alt="Location of the store">
         </aside>
