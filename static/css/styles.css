@@ -493,7 +493,8 @@ main {
     display: flex;
     justify-content: space-between;
     border-block-end: 1px solid var(--dark-background);
-    margin-block: .5rem 1.5rem;
+    margin-block-end: 1rem;
+    padding-block-end: .5rem;
 }
 
 /* Comment Inputs */
