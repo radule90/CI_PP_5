@@ -2,6 +2,8 @@ from django.db import models
 from django.utils.text import slugify
 from category.models import Category
 from django.urls import reverse
+from account.models import Account
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 
@@ -13,8 +15,7 @@ class Product(models.Model):
     '''
     product_name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=150, unique=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE,
-                                 related_name='products')
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2)
     image = models.ImageField(upload_to='images/product', blank=False)
@@ -70,8 +71,7 @@ class Variation(models.Model):
         ('color', 'Color of the product'),
         ('material', 'Material of the product'),)
 
-    product = models.ForeignKey(Product, on_delete=models.CASCADE,
-                                related_name='variations')
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     category = models.CharField(max_length=50,
                                 choices=VARIATION_CATEGORY_CHOICES)
     value = models.CharField(max_length=50)
@@ -79,6 +79,25 @@ class Variation(models.Model):
     created_at = models.DateTimeField(auto_now=True)
 
     objects = VariationManager()
-    
+
     def __str__(self):
         return self.value
+
+
+class Review(models.Model):
+    '''
+    Model represents product review with rating system
+    '''
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    user = models.ForeignKey(Account, on_delete=models.CASCADE)
+    subject = models.CharField(max_length=20, blank=True)
+    review = models.TextField(blank=True)
+    rating = models.FloatField(validators=[MinValueValidator(0.0),
+                               MaxValueValidator(5.0)], default=0.0)
+    ip = models.CharField(max_length=20, blank=True)
+    status = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.user} - {self.product} - {self.rating}"
