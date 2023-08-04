@@ -573,6 +573,12 @@ label:hover~input:checked~label {
     color: #ffb503 !important;
 }
 
+/* Product detail review count */
+.review-count {
+    margin-block-start: .25rem;
+}
+
+
 /* Cart Style */
 .cart-wrapper {
     display: flex;

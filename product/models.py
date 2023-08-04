@@ -4,7 +4,7 @@ from category.models import Category
 from django.urls import reverse
 from account.models import Account
 from django.core.validators import MaxValueValidator, MinValueValidator
-from django.db.models import Avg
+from django.db.models import Avg, Count
 # Create your models here.
 
 
@@ -36,7 +36,7 @@ class Product(models.Model):
 
     def average_rating(self):
         '''
-        Mehod that calculates average review for product
+        Mehod that calculates average review rating for product
         '''
         reviews = Review.objects.filter(product=self, status=True).aggregate(
             average=Avg('rating'))
@@ -44,6 +44,16 @@ class Product(models.Model):
         if reviews['average'] is not None:
             avg = float(reviews['average'])
         return avg
+    
+    def reveiw_count(self):
+        '''
+        Mehod that calculates number of reviews
+        '''
+        reviews = Review.objects.filter(product=self, status=True).aggregate(
+            count=Count('id'))
+        if reviews['count'] is not None:
+            count = int(reviews['count'])
+        return count
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.product_name)
