@@ -1,9 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block head_title %}Order Confirmation{% endblock head_title %}
+{% block head_title %}Payment Successful!{% endblock head_title %}
 
 {% block content %}
 <div class="wrapper">
-
+    <div class="account-card">
+        <h2><i class="fa-regular fa-circle-check icon-confirm"></i> Payment Successful!</h2>
+        <br>
+        <br>
+        <h3>Order Number: {{ order.order_number }}</h3>
+        <br>
+        <p>Thank you for your payment.</p>
+        <p>Your order has been successfully processed.</p>
+        <p>An email with all the order details will be sent to you shortly.</p>
+        <div class="center">
+            <a href="{% url 'homepage' %}" class="btn btn-more">Homepage</a>
+        </div>
+    </div>
+</body>
 </div>
 {% endblock content %}

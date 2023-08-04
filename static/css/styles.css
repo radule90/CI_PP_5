@@ -783,6 +783,12 @@ dialog button i {
 #payment-form button {
     margin-block: 0;
 }
+
+/* Order Confirmation */
+.icon-confirm {
+    color: var(--green);
+}
+
 /* Footer */
 .footer {
     background: var(--dark-background);

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, Http404
 from cart.models import CartItem
 from .models import Order, OrderProduct, Payment
 from .forms import OrderForm
@@ -9,8 +9,6 @@ from django.contrib import messages
 import stripe
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
-
-
 # Create your views here.
 
 
@@ -77,12 +75,31 @@ def payments(request):
         recipient = request.user.email
         send_email = EmailMessage(mail_subject, message, to=[recipient])
         #send_email.send()
+
+        # Storing order id in session so that it can be accessed in success
+        order_id = order.id
+        request.session['order_id'] = order_id
+
         return redirect('payments_success')
 
 
 def payments_success(request):
+    '''
+    Function based view to display success page
+    '''
+    # Get oreder_id from session
+    order_id = request.session.get('order_id')
+    
+    try:
+        order = Order.objects.get(id=order_id, user=request.user)
+    except Order.DoesNotExist:
+        raise Http404
+
     template = 'order/payments_success.html'
-    return render(request, template)
+    context = {
+        'order': order,
+    }
+    return render(request, template, context)
 
 
 def place_order(request, quantity=0, total=0):
