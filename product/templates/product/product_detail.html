@@ -99,7 +99,15 @@
 						</div>
                         <br>
                         <br>
-                        <button type="submit" class="btn btn-add custom-pointer">Submit</button>
+                        {% if request.user.is_authenticated %}
+                            {% if order_product %}
+                                <button type="submit" class="btn btn-add custom-pointer">Submit</button>
+                            {% else %}
+                                <p>Only users who have bought the product can leave a review.</p>
+                            {% endif %}
+                        {% else %}    
+                            <p>Only registered users who have bought the product can leave a review.</p>
+                        {% endif %}
                     </form>
                 </div>
                 <div class="user-comments-wrapper">

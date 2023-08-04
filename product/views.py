@@ -6,7 +6,7 @@ from .models import Product, Review
 from .forms import ReviewForm
 from category.models import Category
 from django.core.paginator import Paginator
-
+from order.models import OrderProduct
 
 # Create your views here.
 def shop(request, category_slug=None):
@@ -57,11 +57,21 @@ def product_detail(request, category_slug, product_slug):
         product = Product.objects.get(category__slug=category_slug, slug=product_slug)
     except Product.DoesNotExist:
         raise Http404('Product does not exist!')
-        
+    
+    # Check if the user has bought product, so that can leave review
+    if request.user.is_authenticated:
+        try:
+            order_product = OrderProduct.objects.filter(user=request.user, product_id=product.id).exists()
+        except OrderProduct.DoesNotExist:
+            order_product = None
+    else:
+        order_product = None
+
     template = 'product/product_detail.html'
     context = {
         'product': product,
         'active_shop': 'active_shop',
+        'order_product': order_product,
     }
     return render(request, template, context)
 
