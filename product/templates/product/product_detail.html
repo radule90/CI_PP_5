@@ -70,5 +70,80 @@
             </div>
         </div>
     </section>
+    <!-- Review Section -->
+    <section>
+        <div class="review-wrapper">
+            <h2>Product Reviews</h2>
+            <div class="comments-wrapper">
+                <div class="comment-inputs">
+                    <h3>Leave a Review</h3>
+                    <form action="" method="POST">
+                        <input type="email" id="email" name="email" placeholder="Email *" required>
+                        <br>
+                        <br>
+                        <textarea id="comment" name="comment" rows="5" placeholder="Product Review *" required></textarea>
+                        <br>
+                        <br>
+						<div class="rate">
+							<input type="radio" name="rating" id="rating10" value="5" required><label for="rating10" title="5"></label>
+							<input type="radio" name="rating" id="rating9" value="4.5" required><label for="rating9" title="4.5" class="half-star"></label>
+							<input type="radio" name="rating" id="rating8" value="4" required><label for="rating8" title="4"></label>
+							<input type="radio" name="rating" id="rating7" value="3.5" required><label for="rating7" title="3.5" class="half-star"></label>
+							<input type="radio" name="rating" id="rating6" value="3" required><label for="rating6" title="3"></label>
+							<input type="radio" name="rating" id="rating5" value="2.5" required><label for="rating5" title="2.5" class="half-star"></label>
+							<input type="radio" name="rating" id="rating4" value="2" required><label for="rating4" title="2"></label>
+							<input type="radio" name="rating" id="rating3" value="1.5" required><label for="rating3" title="1.5" class="half-star"></label>
+							<input type="radio" name="rating" id="rating2" value="1" required><label for="rating2" title="1"></label>
+							<input type="radio" name="rating" id="rating1" value="0.5" required><label for="rating1" title="0.5" class="half-star"></label>
+						</div>
+                        <br>
+                        <br>
+                        <button type="submit" class="btn btn-add custom-pointer">Submit</button>
+                    </form>
+                </div>
+                <div class="user-comments-wrapper">
+                    <div class="comment">
+                        <div class="comment-user-data">
+                            <h4>Test User</h4>
+                            <p>2023.12.12</p>
+                        </div>
+
+                        <div>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
+                            omnis dolor numquam fugiat atque labore ex consequuntur sapiente
+                            iure iusto? Rerum commodi omnis, voluptates rem veritatis cumque
+                            eum amet veniam!
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <div class="comment-user-data">
+                            <h4>Test User</h4>
+                            <p>2023.12.12</p>
+                        </div>
+
+                        <div>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
+                            omnis dolor numquam fugiat atque labore ex consequuntur sapiente
+                            iure iusto? Rerum commodi omnis, voluptates rem veritatis cumque
+                            eum amet veniam!
+                        </div>
+                    </div>
+                    <div class="comment">
+                        <div class="comment-user-data">
+                            <h4>Test User</h4>
+                            <p>2023.12.12</p>
+                        </div>
+
+                        <div>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
+                            omnis dolor numquam fugiat atque labore ex consequuntur sapiente
+                            iure iusto? Rerum commodi omnis, voluptates rem veritatis cumque
+                            eum amet veniam!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 {% endblock content %}

@@ -454,6 +454,119 @@ main {
     margin-inline: auto;
 }
 
+/* Reviews, Ratings */
+.review-wrapper {
+    margin-top: 6rem;
+    width: 60%;
+    margin-inline: auto;
+    color: var(--font-color);
+}
+
+.review-wrapper h2 {
+    font-size: 2.5rem;
+}
+
+.comments-wrapper {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 5rem;
+}
+
+.user-comments-wrapper {
+    flex-basis: 60%;
+}
+
+.comment {
+    margin-block-end: 1rem;
+    width: 100%;
+    border: 1px solid var(--dark-background);
+    border-radius: 0.25rem;
+    padding: 0.75rem;
+}
+
+.comment-user-data {
+    display: flex;
+    justify-content: space-between;
+    border-block-end: 1px solid var(--dark-background);
+    margin-block: .5rem 1.5rem;
+}
+
+/* Comment Inputs */
+.comment-inputs {
+    flex-basis: 40%;
+}
+
+.comment-inputs h3 {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.comment-inputs textarea,
+.comment-inputs input {
+    width: 100%;
+    border: 1px solid var(--dark-background);
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    color: var(--font-color);
+    font-size: 1rem;
+}
+.comment-inputs textarea::placeholder,
+.comment-inputs input::placeholder {
+    color: var(--dark-background);
+}
+
+/* Star Ratings */
+/* Hide Radio button */
+.rate>input {
+    display: none;
+}
+
+.rate {
+    display: inline-block;
+    border: 0;
+}
+
+.rate>label {
+    float: right;
+}
+
+/* Showing the stars */
+.rate>label:before {
+    display: inline-block;
+    font-size: 1.5rem;
+    font-family: FontAwesome;
+    content: "\f005";
+    margin: 0;
+    padding: 0.3rem .2rem;
+    cursor: pointer;
+}
+
+/* Half star */
+.rate .half-star:before {
+    content: "\f089";
+    position: absolute;
+    padding-right: 0;
+}
+
+/* Click and hover */
+input:checked~label,
+label:hover~label {
+    color: #ffb503;
+}
+
+/* Hover hightlight */
+input:checked+label:hover,
+input:checked~label:hover,
+input:checked~label:hover~label,
+label:hover~input:checked~label {
+    color: #cc9000;
+}
+
+.rating-star i {
+    color: #ffb503 !important;
+}
+
 /* Cart Style */
 .cart-wrapper {
     display: flex;
@@ -857,6 +970,10 @@ dialog button i {
     .product-detail-wrapper {
         width: 65%;
     }
+    /* Reviews, Ratings */
+    .review-wrapper {
+        width: 75%;
+    }
 }
 
 /* For Screens Up To 1440px */
@@ -877,6 +994,11 @@ dialog button i {
         width: 75%;
     }
 
+    /* Reviews, Ratings */
+    .review-wrapper {
+        width: 90%;
+    }
+
 }
 
 /* For Screens Up To 1220px */
@@ -890,6 +1012,11 @@ dialog button i {
     /* Product Detail Page */
     .product-detail-wrapper {
         width: 90%;
+    }
+
+    /* Reviews, Ratings */
+    .review-wrapper {
+        width: 100%;
     }
 
     /* Payment */
@@ -1014,6 +1141,11 @@ dialog button i {
     /* Product Detail Page */
     .product-detail-wrapper {
         width: 100%;
+    }
+
+    /* Reviews, Ratings */
+    .comments-wrapper {
+        flex-direction: column;
     }
 }
 
