@@ -70,7 +70,8 @@ textarea {
     border: 1px solid var(--dark-background);
     border-radius: 0.5rem;
     font-size: 1rem;
-    color: var(--font-color)
+    color: var(--font-color);
+    resize: vertical;
 }
 
 input::placeholder,
@@ -1170,7 +1171,7 @@ dialog button i {
     .comments-wrapper {
         flex-direction: column;
     }
-    
+
     /* Contact Page */
     .contact-wrapper {
         flex-direction: column;
