@@ -111,45 +111,20 @@
                     </form>
                 </div>
                 <div class="user-comments-wrapper">
-                    <div class="comment">
-                        <div class="comment-user-data">
-                            <h4>Test User</h4>
-                            <p>2023.12.12</p>
-                        </div>
-
-                        <div>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-                            omnis dolor numquam fugiat atque labore ex consequuntur sapiente
-                            iure iusto? Rerum commodi omnis, voluptates rem veritatis cumque
-                            eum amet veniam!
-                        </div>
-                    </div>
-                    <div class="comment">
-                        <div class="comment-user-data">
-                            <h4>Test User</h4>
-                            <p>2023.12.12</p>
-                        </div>
-
-                        <div>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-                            omnis dolor numquam fugiat atque labore ex consequuntur sapiente
-                            iure iusto? Rerum commodi omnis, voluptates rem veritatis cumque
-                            eum amet veniam!
-                        </div>
-                    </div>
-                    <div class="comment">
-                        <div class="comment-user-data">
-                            <h4>Test User</h4>
-                            <p>2023.12.12</p>
-                        </div>
-
-                        <div>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias
-                            omnis dolor numquam fugiat atque labore ex consequuntur sapiente
-                            iure iusto? Rerum commodi omnis, voluptates rem veritatis cumque
-                            eum amet veniam!
-                        </div>
-                    </div>
+                    {% if reviews %}
+                        {% for review in reviews %}
+                            <div class="comment">
+                                <div class="comment-user-data">
+                                    <h4>{{ review.user.full_name }}</h4>
+                                    <p>{{ review.updated_at | date:"M d, Y" }}</p>
+                                </div>
+                                <p>{{ review.review }}</p>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                            <h4>Have you bought our product?</h4>
+                            <p>Leave a review and help others make informed decisions!</p>
+                    {% endif %}
                 </div>
             </div>
         </div>

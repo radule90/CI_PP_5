@@ -67,11 +67,15 @@ def product_detail(request, category_slug, product_slug):
     else:
         order_product = None
 
+    # Get all reviews for the product
+    reviews = Review.objects.filter(product_id=product.id, status=True)
+
     template = 'product/product_detail.html'
     context = {
         'product': product,
         'active_shop': 'active_shop',
         'order_product': order_product,
+        'reviews': reviews,
     }
     return render(request, template, context)
 
