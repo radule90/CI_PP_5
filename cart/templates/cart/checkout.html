@@ -2,23 +2,19 @@
 {% load static %}
 {% block head_title %}Checkout{% endblock head_title %}
 
-
 {% block content %}
 <div class="wrapper">
-
     <!-- Cart -->
     <form action="{% url 'place_order' %}" method="POST">
         {% csrf_token %}
-    <div class="cart-wrapper">
-
+        <div class="cart-wrapper">
             <section class="cart-list checkout-billing">
                 <h3>Checkout</h3>
-
                     <div class="details-checkout">
                         <h4>Details</h4>
-                        <input type="text" name="first_name" placeholder="First Name *" required>
-                        <input type="text" name="last_name" placeholder="Last Name *" required>
-                        <input type="email" name="email" placeholder="Email Address *" required>
+                        <input type="text" name="first_name" placeholder="First Name *" value="{% if request.user.is_authenticated %}{{ request.user.first_name}}{% endif %}" required>
+                        <input type="text" name="last_name" placeholder="Last Name *" value="{% if request.user.is_authenticated %}{{ request.user.last_name}}{% endif %}" required>
+                        <input type="email" name="email" placeholder="Email Address *" value="{% if request.user.is_authenticated %}{{ request.user.email }}{% endif %}" required>
                     </div>
                     <div class="delivery">
                         <h4>Delivery</h4>
@@ -43,42 +39,37 @@
                     </thead>
                     <tbody class="table-body table-body-checkout">
                         {% for cart_item in cart_items %}
-                        <tr>
-                            <td>
-                                <div class="product-order-cart">
-                                    <a href="{{ cart_item.product.get_url }}"><img src="{{ cart_item.product.image.url }}" alt="{{cart_item.product.product_name}} product image" width="55"
-                                            class="custom-pointer"></a>
-                                    <div>
-                                        <a href="{{ cart_item.product.get_url }}" class="custom-pointer"><strong>{{ cart_item.product.product_name }}</strong></a>
-                                        {% if cart_item.variations.all %}
-                                            <br>
-                                            {% for item in cart_item.variations.all %}
-                                            <small><strong>{{ item.category | capfirst }}</strong>: <span>{{ item.value }}</span></small>
-                                            <br>
-                                            {% endfor %}
-                                        {% endif %}
+                            <tr>
+                                <td>
+                                    <div class="product-order-cart">
+                                        <a href="{{ cart_item.product.get_url }}"><img src="{{ cart_item.product.image.url }}" alt="{{cart_item.product.product_name}} product image" width="55" class="custom-pointer"></a>
+                                        <div>
+                                            <a href="{{ cart_item.product.get_url }}" class="custom-pointer"><strong>{{ cart_item.product.product_name }}</strong></a>
+                                            {% if cart_item.variations.all %}
+                                                <br>
+                                                {% for item in cart_item.variations.all %}
+                                                    <small><strong>{{ item.category | capfirst }}</strong>: <span>{{ item.value }}</span></small>
+                                                    <br>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td>
+                                </td>
+                                <td>
                                     <p><strong>{{ cart_item.quantity }}</strong></p>
-                            </td>
-                            <td>
-                                <p><strong>€ {{ cart_item.subtotal }}</strong></p>
-                                <small>€ {{ cart_item.product.price }} each</small>
-                            </td>
-                        </tr>
+                                </td>
+                                <td>
+                                    <p><strong>€ {{ cart_item.subtotal }}</strong></p>
+                                    <small>€ {{ cart_item.product.price }} each</small>
+                                </td>
+                            </tr>
                         {% endfor %}
                     </tbody>
                 </table>
                 <button type="submit" class="btn btn-checkout custom-pointer">Complete Order</button>
                 <a href="{% url 'cart' %}" class="btn btn-continue custom-pointer">Back to Cart</a>
-
             </aside>
-
-    </div>
-</form>
-
+        </div>
+    </form>
 </div>
-
 {% endblock content %}
