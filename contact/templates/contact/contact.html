@@ -10,7 +10,7 @@
     <!-- Contact Section -->
     <div class="contact-wrapper">
         <section class="contact-form">
-            <form action="" method="POST">
+            <form action="{% url 'contact' %}" method="POST">
                 {% csrf_token %}
                 <input type="text" id="full_name" name="full_name" placeholder="Full Name *" required>
                 <input type="email" id="email" name="email" placeholder="Email *" required>
