@@ -115,9 +115,11 @@
                         {% for review in reviews %}
                             <div class="comment">
                                 <div class="comment-user-data">
-                                    <h4>{{ review.user.full_name }}</h4>
+                                    <p><strong>{{ review.user.full_name }}</strong></p>
                                     <p>{{ review.updated_at | date:"M d, Y" }}</p>
                                 </div>
+                                <h4>{{ review.subject }}</h4>
+                                <br>
                                 <p>{{ review.review }}</p>
                             </div>
                         {% endfor %}
