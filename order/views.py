@@ -76,8 +76,13 @@ def payments(request):
             })
         recipient = request.user.email
         send_email = EmailMessage(mail_subject, message, to=[recipient])
-        send_email.send()
-        return redirect('shop')
+        #send_email.send()
+        return redirect('payments_success')
+
+
+def payments_success(request):
+    template = 'order/payments_success.html'
+    return render(request, template)
 
 
 def place_order(request, quantity=0, total=0):
