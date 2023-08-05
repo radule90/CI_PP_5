@@ -12,7 +12,7 @@
         <p>Subscribe to our newsletter for a sunshine-filled dose of exclusive deals and sparkling new arrivals from Sun & Peaches Jewelry.</p>
         <p>Be the first to shine with our latest designs and special offers. Join our community today!</p>
         <br>
-        <form action="" method="POST">
+        <form action="{% url 'subscribe' %}" method="POST">
             {% csrf_token %}
             <div class="form-row">
                 <input type="text" id="name" name="full_name" placeholder="Full Name *" required>
