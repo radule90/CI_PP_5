@@ -14,10 +14,10 @@
             <h3>Sun & Peaches</h3>
             <div>
                 <ul class="order-invoice">
-                    <li><strong>Order Number: </strong></li>
-                    <li><strong>Transaction ID: </strong></li>
-                    <li><strong>Order Date: </strong></li>
-                    <li><strong>Status: </strong></li>
+                    <li><strong>Order Number: </strong>{{ order.order_number }}</li>
+                    <li><strong>Transaction ID: </strong>{{ order.payment.payment_id }}</li>
+                    <li><strong>Order Date: </strong>{{ order.created_at | date:"M d, Y" }}</li>
+                    <li><strong>Status: </strong>{{ order.payment.status | capfirst }}</li>
                 </ul>
                 <table>
                     <thead class="table-head">
@@ -28,23 +28,25 @@
                         </tr>
                     </thead>
                     <tbody class="table-body table-body-checkout">
+                        {% for item in order_detail %}
                             <tr>
                                 <td>
                                     <div class="product-order-cart">
-                                        <a href=""><img src="" alt=" product image" width="55" class="custom-pointer"></a>
+                                        <a href="{{ item.product.get_url }}"><img src="{{ item.product.image.url }}" alt=" product image" width="55" class="custom-pointer"></a>
                                         <div>
-                                            <a href="" class="custom-pointer"><strong></strong></a>
+                                            <a href="{{ item.product.get_url }}" class="custom-pointer"><strong>{{ item.product.product_name }}</strong></a>
                                         </div>
                                     </div>
                                 </td>
                                 <td>
-                                    <p><strong></strong></p>
+                                    <p><strong>{{ item.quantity }}</strong></p>
                                 </td>
                                 <td>
-                                    <p><strong>€ </strong></p>
-                                    <small>€  each</small>
+                                    <p><strong>€ {{ subtotal }}</strong></p>
+                                    <small>€ {{ item.product.price }} each</small>
                                 </td>
                             </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>

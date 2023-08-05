@@ -12,7 +12,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import EmailMessage
-from order.models import Order
+from order.models import Order, OrderProduct
 import requests
 # Create your views here.
 
@@ -230,9 +230,17 @@ def user_orders(request):
 
 
 def order_details(request, order_id):
+    order_detail = OrderProduct.objects.filter(order__order_number=order_id)
+    order = Order.objects.get(order_number=order_id)
+    subtotal = 0
+    for i in order_detail:
+        subtotal += i.product_price * i.quantity
     template = 'account/order_details.html'
     context = {
         'user_orders_active': 'user_orders_active',
+        'order_detail': order_detail,
+        'order': order,
+        'subtotal': subtotal,
     }
     return render(request, template, context)
 
