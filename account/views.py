@@ -226,17 +226,14 @@ def update_profile(request):
     Function based view to update user profile data
     '''
     # Get profile of request user
-    try:
-        user_profile = Profile.objects.get(user=request.user)
-    except Profile.DoesNotExist:
-        user_profile = None
+    user_profile = get_object_or_404(Profile, user=request.user)
     if request.method == 'POST':
         user_form = UserProfileForm(request.POST, instance=request.user)
         profile_form = ProfileForm(request.POST, instance=user_profile)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success('Your profile has been updated successfully.')
+            messages.success(request, 'Your profile has been updated successfully.')
             return redirect('update_profile')
     else:
         user_form = UserProfileForm(instance=request.user)
@@ -245,6 +242,7 @@ def update_profile(request):
     context = {
         'user_profile_active': 'user_profile_active',
         'user_form': user_form,
-        'profile_form': profile_form
+        'profile_form': profile_form,
+        'user_profile': user_profile,
     }
     return render(request, template, context)

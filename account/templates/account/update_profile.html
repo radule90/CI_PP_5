@@ -13,7 +13,8 @@
         <section class="dashboard-page">
             <h3>Update Your Profile</h3>
             <div class="">
-                <form action="" method="=POST">
+                <form action="{% url 'update_profile' %}" method="POST">
+                    {% csrf_token %}
                     <div class="form-row">
                         {{ user_form.first_name }}
                         {{ user_form.last_name }}
