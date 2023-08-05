@@ -232,15 +232,16 @@ def user_orders(request):
 def order_details(request, order_id):
     order_detail = OrderProduct.objects.filter(order__order_number=order_id)
     order = Order.objects.get(order_number=order_id)
-    subtotal = 0
-    for i in order_detail:
-        subtotal += i.product_price * i.quantity
+    total = 0
+
+    price_without_tax = order.order_total - order.tax
     template = 'account/order_details.html'
     context = {
         'user_orders_active': 'user_orders_active',
         'order_detail': order_detail,
         'order': order,
-        'subtotal': subtotal,
+        'total': total,
+        'price_without_tax': price_without_tax
     }
     return render(request, template, context)
 

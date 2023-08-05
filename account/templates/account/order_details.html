@@ -12,7 +12,7 @@
         {% include 'account/includes/dashboard_sidebar.html' %}
         <section class="dashboard-page">
             <h3>Sun & Peaches</h3>
-            <div>
+            <div class="order-detail-wrapper">
                 <ul class="order-invoice">
                     <li><strong>Order Number: </strong>{{ order.order_number }}</li>
                     <li><strong>Transaction ID: </strong>{{ order.payment.payment_id }}</li>
@@ -32,9 +32,16 @@
                             <tr>
                                 <td>
                                     <div class="product-order-cart">
-                                        <a href="{{ item.product.get_url }}"><img src="{{ item.product.image.url }}" alt=" product image" width="55" class="custom-pointer"></a>
+                                        <a href="{{ item.product.get_absolute_url }}"><img src="{{ item.product.image.url }}" alt=" product image" width="55" class="custom-pointer"></a>
                                         <div>
-                                            <a href="{{ item.product.get_url }}" class="custom-pointer"><strong>{{ item.product.product_name }}</strong></a>
+                                            <a href="{{ item.product.get_absolute_url }}" class="custom-pointer"><strong>{{ item.product.product_name }}</strong></a>
+                                            {% if item.variations.all %}
+                                            <br>
+                                                {% for i in item.variations.all %}
+                                                    <small><strong>{{ i.category | capfirst }}</strong>: <span>{{ i.value | capfirst }}</span></small>
+                                                    <br>
+                                                {% endfor %}
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </td>
@@ -42,12 +49,26 @@
                                     <p><strong>{{ item.quantity }}</strong></p>
                                 </td>
                                 <td>
-                                    <p><strong>€ {{ subtotal }}</strong></p>
+                                    <p><strong>€ {{ total }}</strong></p>
                                     <small>€ {{ item.product.price }} each</small>
                                 </td>
                             </tr>
                         {% endfor %}
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="2" class="text-right">Total Price:</th>
+                            <th>€ {{ price_without_tax }}</th>
+                        </tr>
+                        <tr>
+                            <th colspan="2" class="text-right">Tax:</th>
+                            <th>€ {{ order.tax }}</th>
+                        </tr>
+                        <tr>
+                            <th colspan="2" class="text-right">Grand Total:</th>
+                            <th>€ {{ order.order_total }}</th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
         </section>

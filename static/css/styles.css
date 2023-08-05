@@ -80,6 +80,9 @@ textarea::placeholder {
     font-size: 1rem;
 }
 
+table {
+    border-collapse: collapse;
+}
 
 /* Alert Messages */
 .messages-wrapper {
@@ -1048,11 +1051,6 @@ dialog button i {
     text-align: start;
 }
 
-.dasboard-inner-wrapper table {
-    border-collapse: collapse;
-
-}
-
 .dasboard-inner-wrapper table th,
 .dasboard-inner-wrapper table td {
     border-block-end: 1px solid var(--font-color);
@@ -1065,6 +1063,18 @@ dialog button i {
 /* Order Detail */
 .order-invoice {
     list-style-type: none;
+}
+
+.order-detail-wrapper table tr th:first-child {
+    text-align: start;
+}
+
+.order-detail-wrapper table tr th.text-right {
+    text-align: right;
+}
+
+.order-detail-wrapper table tbody tr:last-child td {
+    border-block-end: 1px solid var(--dark-background);
 }
 
 /* User Profile */
