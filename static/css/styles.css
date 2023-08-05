@@ -977,6 +977,68 @@ dialog button i {
     color: var(--white);
 }
 
+/* Dashboard Main Page */
+
+.dashboard-page {
+    flex-basis: 80%;
+    border-radius: 0.5rem;
+}
+
+.dashboard-page h3 {
+    font-size: 1.5rem;
+    border-bottom: 1px solid var(--dark-background);
+    width: fit-content;
+}
+
+.dasboard-inner-wrapper {
+    margin-block-start: 1.5rem;
+    display: flex;
+    gap: 5%;
+}
+
+.dasboard-inner-wrapper h4 {
+    font-size: 1.5rem;
+}
+
+.total-order,
+.profile-address-data {
+    border: 1px solid var(--dark-background);
+    border-radius: .5rem;
+    padding: 1rem;
+}
+
+.total-order {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 30%;
+}
+
+.number-of-orders {
+    font-size: 2.5rem;
+    background: var(--peach);
+    color: var(--white);
+    border-radius: 5000000px;
+    padding: 1rem;
+    margin-block: 1.5rem
+}
+
+.total-order a {
+    color: var(--dark-background);
+    text-decoration: underline;
+    display: block;
+
+}
+
+.profile-address-data {
+    flex-basis: 65%;
+}
+
+.profile-address-data h4 {
+    margin-block-end: 1.5rem;
+}
+
 
 /* Footer */
 .footer {

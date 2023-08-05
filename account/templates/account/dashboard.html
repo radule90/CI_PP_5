@@ -10,6 +10,28 @@
     </section>
     <div class="dashboard-wrapper">
         {% include 'account/includes/dashboard_sidebar.html' %}
+        <section class="dashboard-page">
+            <h3>Welcome, {{ request.user.first_name }}</h3>
+            <div class="dasboard-inner-wrapper">
+                <div class="total-order">
+                    <h4>Orders</h4>
+                    <p class="number-of-orders"><strong>12</strong></p>
+                    <a href="" class="custom-pointer">View Orders</a>
+                </div>
+                <div class="profile-address-data">
+                    <h4>Delivery Address</h4>
+                    <address>
+                        <p><strong>Full Name: </strong>{{ user.full_name }}</p>
+                        <p><strong>Email: </strong>{{ user.email }}</p>
+                        <p><strong>Phone: </strong>test</p>
+                        <p><strong>Address:</strong>test</p>
+                        <p><strong>City:</strong>test</p>
+                        <p><strong>State:</strong>test</p>
+                        <p><strong>Country:</strong>test</p>
+                    </address>
+                </div>
+            </div>
+        </section>
     </div>
 </div>
 {% endblock content %}
