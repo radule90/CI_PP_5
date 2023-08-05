@@ -44,7 +44,7 @@ class Product(models.Model):
         if reviews['average'] is not None:
             avg = float(reviews['average'])
         return avg
-    
+
     def reveiw_count(self):
         '''
         Mehod that calculates number of reviews
@@ -92,7 +92,8 @@ class Variation(models.Model):
         ('color', 'Color of the product'),
         ('material', 'Material of the product'),)
 
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE,
+                                related_name='variations')
     category = models.CharField(max_length=50,
                                 choices=VARIATION_CATEGORY_CHOICES)
     value = models.CharField(max_length=50)
