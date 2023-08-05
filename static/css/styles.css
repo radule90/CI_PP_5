@@ -939,7 +939,7 @@ dialog button i {
 
 /* Dashboard Navigation */
 .dashboard-nav {
-    flex-basis: 15%;
+    flex-basis: 20%;
 }
 
 .dashboard-nav ul {
@@ -1018,7 +1018,7 @@ dialog button i {
 
 .number-of-orders {
     font-size: 2.5rem;
-    background: var(--peach);
+    background: var(--green);
     color: var(--white);
     border-radius: 5000000px;
     padding: 1rem;
@@ -1040,6 +1040,18 @@ dialog button i {
     margin-block-end: 1.5rem;
 }
 
+/* User Orders */
+.dasboard-inner-wrapper table th {
+    border-block-end: 1px solid var(--font-color);
+}
+.dasboard-inner-wrapper table td {
+    border-block-end: 1px solid var(--dark-background);
+    padding-block: 1rem;
+
+}
+.dasboard-inner-wrapper table th {
+    text-align: start;
+}
 
 /* Footer */
 .footer {

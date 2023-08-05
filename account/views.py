@@ -206,3 +206,11 @@ def dashboard(request):
         'dashboard_active': 'dashboard_active',
     }
     return render(request, template, context)
+
+
+def user_orders(request):
+    template = 'account/user_orders.html'
+    context = {
+        'user_orders_active': 'user_orders_active',
+    }
+    return render(request, template, context)

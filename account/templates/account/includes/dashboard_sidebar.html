@@ -1,8 +1,8 @@
 <!-- Dashboard Navigation -->
 <aside class="dashboard-nav">
   <ul>
-    <a href="" class="{% if dashboard_active %} active {% endif %} custom-pointer"><li>Dasboard</li></a>
-    <a href="" class="custom-pointer"><li>Profile</li></a>
+    <a href="{% url 'dashboard' %}" class="{% if dashboard_active %} active {% endif %} custom-pointer"><li>Dasboard</li></a>
+    <a href="{% url 'user_orders' %}" class="{% if user_orders_active %} active {% endif %} custom-pointer"><li>Orders</li></a>
     <a href="" class="custom-pointer"><li>Profile</li></a>
     <a href="" class="custom-pointer"><li>Profile</li></a>
     <a href="{% url 'signout' %}" class="custom-pointer"><li><i class="fa-solid fa-power-off"></i> Sign Out</li></a>
