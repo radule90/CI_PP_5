@@ -1,3 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block content %} Hello World {% endblock content %}
+{% block head_title %}Home Page{% endblock head_title %}
+
+{% block content %}
+<div class="wrapper">
+    hello world
+</div>
+<section class="subscription-wrapper">
+    <section class="subscription-inner-wrapper">
+        <h2>Subscribe to our Newsletter</h2>
+        <p>Subscribe to our newsletter for a sunshine-filled dose of exclusive deals and sparkling new arrivals from Sun & Peaches Jewelry.</p>
+        <p>Be the first to shine with our latest designs and special offers. Join our community today!</p>
+        <br>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="form-row">
+                <input type="text" id="name" name="full_name" placeholder="Full Name *" required>
+                <input type="email" name="email" placeholder="Email Address *" required>
+            </div>
+            <button type="submit" class="btn btn-add custom-pointer">Subscribe</button>
+        </form>
+    </section>
+</section>
+{% endblock content %}

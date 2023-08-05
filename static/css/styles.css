@@ -263,6 +263,22 @@ main {
     flex-direction: column;
 }
 
+/* Home Page */
+
+/* Subscription wrapper */
+.subscription-wrapper {
+    background: var(--green);
+    color: var(--white);
+    text-align: center;
+}
+
+.subscription-inner-wrapper {
+    padding: 3rem 6rem;
+}
+.subscription-inner-wrapper input {
+    border: none;
+}
+
 /* Shop */
 /* Page Heading */
 .page-heading {
