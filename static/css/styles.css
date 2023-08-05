@@ -212,6 +212,8 @@ textarea::placeholder {
 
 #search-form #search-box {
     width: 50rem;
+    border-radius: 0;
+    border: none;
     border-block-end: 0.1rem solid var(--dark-white);
     padding: 1rem 0;
     color: var(--dark-white);
@@ -222,6 +224,7 @@ textarea::placeholder {
 
 #search-form #search-box::placeholder {
     color: var(--light-background);
+    font-size: 2rem;
 }
 
 #search-form #search-box::--webkit-search-cancel-button {
