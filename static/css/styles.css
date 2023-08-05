@@ -1042,16 +1042,24 @@ dialog button i {
 
 /* User Orders */
 .dasboard-inner-wrapper table th {
-    border-block-end: 1px solid var(--font-color);
-}
-.dasboard-inner-wrapper table td {
-    border-block-end: 1px solid var(--dark-background);
-    padding-block: 1rem;
-
-}
-.dasboard-inner-wrapper table th {
     text-align: start;
 }
+
+.dasboard-inner-wrapper table {
+    border-collapse: collapse;
+
+}
+
+.dasboard-inner-wrapper table th,
+.dasboard-inner-wrapper table td {
+    border-block-end: 1px solid var(--font-color);
+}
+
+.dasboard-inner-wrapper table td {
+    padding-block: 1rem;
+}
+
+
 
 /* Footer */
 .footer {

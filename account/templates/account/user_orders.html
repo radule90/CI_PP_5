@@ -18,23 +18,19 @@
                         <tr>
                             <th scope="col">Order Number</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Order Date</th>
                             <th scope="col">Amount</th>
+                            <th scope="col">Order Date</th>
                         </tr>
                     </thead>
                     <tbody class="table-body">
-                        <tr>
-                            <td>test</td>
-                            <td>test</td>
-                            <td>test</td>
-                            <td>test</td>
-                        </tr>
-                        <tr>
-                            <td>test</td>
-                            <td>test</td>
-                            <td>test</td>
-                            <td>test</td>
-                        </tr>
+                        {% for order in orders %}
+                            <tr>
+                                <th scope="row">{{ order.order_number}}</th>
+                                <td>{{ order.full_name }}</td>
+                                <td>€ {{ order.order_total }}</td>
+                                <td>{{ order.created_at | date:"M d, Y" }}</td>
+                            </tr>
+                        {% endfor %}
                     </tbody>
                 </table>
             </div>

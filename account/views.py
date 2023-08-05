@@ -209,8 +209,13 @@ def dashboard(request):
 
 
 def user_orders(request):
+    '''
+    Function based view displays list of orders for the current user.
+    '''
+    orders = Order.objects.filter(user=request.user, is_ordered=True).order_by('-created_at')
     template = 'account/user_orders.html'
     context = {
         'user_orders_active': 'user_orders_active',
+        'orders': orders,
     }
     return render(request, template, context)
