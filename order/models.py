@@ -39,6 +39,7 @@ class Order(models.Model):
     country = models.CharField(max_length=50)
     state = models.CharField(max_length=50, blank=True)
     city = models.CharField(max_length=50)
+    postcode = models.CharField(max_length=20)
     order_note = models.CharField(max_length=100, blank=True)
     order_total = models.DecimalField(max_digits=10, decimal_places=2)
     tax = models.DecimalField(max_digits=10, decimal_places=2)
