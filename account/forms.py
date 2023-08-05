@@ -65,6 +65,23 @@ class UserProfileForm(forms.ModelForm):
         model = Account
         fields = ('first_name', 'last_name', 'email', 'phone_number')
 
+    def __init__(self, *args, **kwargs):
+        super(UserProfileForm, self).__init__(*args, **kwargs)
+        placeholders = {
+            'first_name': 'First Name',
+            'last_name': 'Last Name',
+            'email': 'Email Address',
+            'phone_number': 'Phone Number',
+        }
+
+        for field in self.fields:
+            if self.fields[field].required:
+                placeholder = f'{placeholders[field]} *'
+            else:
+                placeholder = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].label = False
+
 
 class ProfileForm(forms.ModelForm):
     '''
@@ -74,3 +91,21 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ('address_line_1', 'address_line_2', 'city', 'postcode',
                   'state', 'country')
+
+    def __init__(self, *args, **kwargs):
+        super(ProfileForm, self).__init__(*args, **kwargs)
+        placeholders = {
+            'address_line_1': 'Address Line 1',
+            'address_line_2': 'Address Line 2',
+            'city': 'City',
+            'postcode': 'Postcode',
+            'state': 'State / County',
+            'country': 'Country'
+        }
+        for field in self.fields:
+            if self.fields[field].required:
+                placeholder = f'{placeholders[field]} *'
+            else:
+                placeholder = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].label = False
