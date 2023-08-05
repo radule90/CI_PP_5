@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %}Dashboard{% endblock head_title %}
+
+{% block content %}
+<div class="wrapper">
+    <!-- Page Heading -->
+    <section class="page-heading">
+        <h2 class="subheading">Dashboard</h2>
+    </section>
+    <div class="dashboard-wrapper">
+        {% include 'account/includes/dashboard_sidebar.html' %}
+        <section class="dashboard-page">
+            <h3>Update Your Profile</h3>
+            <div class="dasboard-inner-wrapper">
+            
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock content %}

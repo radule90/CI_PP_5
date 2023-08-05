@@ -219,3 +219,11 @@ def user_orders(request):
         'orders': orders,
     }
     return render(request, template, context)
+
+
+def update_profile(request):
+    template = 'account/update_profile.html'
+    context = {
+        'user_profile_active': 'user_profile_active',
+    }
+    return render(request, template, context)
