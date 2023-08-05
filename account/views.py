@@ -254,3 +254,11 @@ def update_profile(request):
         'user_profile': user_profile,
     }
     return render(request, template, context)
+
+
+def password_change(request):
+    template = 'account/password_change.html'
+    context = {
+        'change_password_active': 'change_password_active',
+    }
+    return render(request, template, context)
