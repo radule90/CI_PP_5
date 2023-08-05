@@ -1,5 +1,5 @@
 from django import forms
-from .models import Account
+from .models import Account, Profile
 from phonenumber_field.formfields import PhoneNumberField
 
 
@@ -12,7 +12,7 @@ class SignupForm(forms.ModelForm):
     class Meta:
         model = Account
         fields = ('first_name', 'last_name', 'phone_number', 'email',
-                'password', 'confirm_password')
+                  'password', 'confirm_password')
 
     def __init__(self, *args, **kwargs):
         super(SignupForm, self).__init__(*args, **kwargs)
@@ -36,10 +36,10 @@ class SignupForm(forms.ModelForm):
         cleaned_data = super().clean()
         password = cleaned_data.get('password')
         confirm_password = cleaned_data.get('confirm_password')
-        
+
         if password != confirm_password:
             self.add_error('confirm_password', 'Password does not match!')
-        
+
         return cleaned_data
 
     def save(self, commit=True):
@@ -55,3 +55,22 @@ class SignupForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class UserProfileForm(forms.ModelForm):
+    '''
+    Form to update account fields of profile
+    '''
+    class Meta:
+        model = Account
+        fields = ('first_name', 'last_name', 'email', 'phone_number')
+
+
+class ProfileForm(forms.ModelForm):
+    '''
+    Form to update user profile
+    '''
+    class Meta:
+        model = Profile
+        fields = ('address_line_1', 'address_line_2', 'city', 'postcode',
+                  'state', 'country')
