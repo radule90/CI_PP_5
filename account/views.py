@@ -257,6 +257,32 @@ def update_profile(request):
 
 
 def password_change(request):
+    '''
+    Function-based view to handle password changes for authenticated users. 
+    '''
+    if request.method == 'POST':
+        # Get current, new and confirmed new password
+        password = request.POST.get('password')
+        new_password = request.POST.get('new_password')
+        confirm_password = request.POST.get('confirm_password')
+
+        # Get current logged in user
+        user = Account.objects.get(username__exact=request.user.username)
+
+        if new_password == confirm_password:
+            # Verify current password of the user and set new
+            success = user.check_password(password)
+            if success:
+                user.set_password(new_password)
+                user.save()
+                messages.success(request, 'Your password has been updated successfully.')
+                return redirect('signin')
+            else:
+                messages.error(request, 'The old password is incorrect.')
+        else:
+            messages.error(request, 'New password and Confirm password does not match.')
+            return redirect('password_change')
+
     template = 'account/password_change.html'
     context = {
         'change_password_active': 'change_password_active',
