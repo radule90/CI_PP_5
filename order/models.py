@@ -72,5 +72,11 @@ class OrderProduct(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def subtotal(self):
+        '''
+        Method to calculate the subtotal for each OrderProduct.
+        '''
+        return self.product.price * self.quantity
+
     def __str__(self):
         return self.product.product_name
