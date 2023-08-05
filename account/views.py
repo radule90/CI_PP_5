@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .forms import SignupForm
-from .models import Account
+from .forms import SignupForm, UserProfileForm, ProfileForm
+from .models import Account, Profile
 from cart.models import Cart, CartItem
 from cart.views import _cart_id
 from django.contrib.sites.shortcuts import get_current_site
@@ -222,8 +222,29 @@ def user_orders(request):
 
 
 def update_profile(request):
+    '''
+    Function based view to update user profile data
+    '''
+    # Get profile of requeste user
+    try:
+        user_profile = Profile.objects.get(user=request.user)
+    except Profile.DoesNotExist:
+        user_profile = None
+    if request.method == 'POST':
+        user_form = UserProfileForm(request.POST, instance=request.user)
+        profile_form = ProfileForm(request.POST, instance=user_profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success('Your profile has been updated successfully.')
+            return redirect('update_profile')
+    else:
+        user_form = UserProfileForm(instance=request.user)
+        profile_form = ProfileForm(instance=user_profile)
     template = 'account/update_profile.html'
     context = {
         'user_profile_active': 'user_profile_active',
+        'user_form': user_form,
+        'profile_form': profile_form
     }
     return render(request, template, context)
