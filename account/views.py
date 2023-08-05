@@ -18,10 +18,18 @@ import requests
 
 
 def signup(request):
+    '''
+    Fucntion based to register account and profile
+    '''
     if request.method == 'POST':
         form = SignupForm(request.POST)
         if form.is_valid():
             user = form.save()
+
+            # Create Profile automaticly
+            profile = Profile()
+            profile.user_id = user.id
+            profile.save()
 
             # Activation Email
             current_site = get_current_site(request)
