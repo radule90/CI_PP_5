@@ -1062,13 +1062,16 @@ dialog button i {
     padding-block: 1rem;
 }
 
+/* Order Detail */
+.order-invoice {
+    list-style-type: none;
+}
+
 /* User Profile */
 .form-row {
     display: flex;
     gap: 5%;
 }
-
-
 
 /* Footer */
 .footer {

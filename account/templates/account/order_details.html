@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %}Orders List{% endblock head_title %}
+
+{% block content %}
+<div class="wrapper">
+    <!-- Page Heading -->
+    <section class="page-heading">
+        <h2 class="subheading">Dashboard</h2>
+    </section>
+    <div class="dashboard-wrapper">
+        {% include 'account/includes/dashboard_sidebar.html' %}
+        <section class="dashboard-page">
+            <h3>Sun & Peaches</h3>
+            <div>
+                <ul class="order-invoice">
+                    <li><strong>Order Number: </strong></li>
+                    <li><strong>Transaction ID: </strong></li>
+                    <li><strong>Order Date: </strong></li>
+                    <li><strong>Status: </strong></li>
+                </ul>
+                <table>
+                    <thead class="table-head">
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Qty</th>
+                            <th scope="col">Price</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-body table-body-checkout">
+                            <tr>
+                                <td>
+                                    <div class="product-order-cart">
+                                        <a href=""><img src="" alt=" product image" width="55" class="custom-pointer"></a>
+                                        <div>
+                                            <a href="" class="custom-pointer"><strong></strong></a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <p><strong></strong></p>
+                                </td>
+                                <td>
+                                    <p><strong>€ </strong></p>
+                                    <small>€  each</small>
+                                </td>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock content %}

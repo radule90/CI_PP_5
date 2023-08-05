@@ -229,6 +229,14 @@ def user_orders(request):
     return render(request, template, context)
 
 
+def order_details(request, order_id):
+    template = 'account/order_details.html'
+    context = {
+        'user_orders_active': 'user_orders_active',
+    }
+    return render(request, template, context)
+
+
 def update_profile(request):
     '''
     Function based view to update user profile data
