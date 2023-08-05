@@ -104,12 +104,12 @@ class Profile(models.Model):
     User profile information
     '''
     user = models.OneToOneField(Account, on_delete=models.CASCADE)
-    address_line_1 = models.CharField(max_length=50)
+    address_line_1 = models.CharField(max_length=50, blank=True)
     address_line_2 = models.CharField(max_length=50, blank=True)
-    city = models.CharField(max_length=50)
-    postcode = models.CharField(max_length=20)
+    city = models.CharField(max_length=50, blank=True)
+    postcode = models.CharField(max_length=20, blank=True)
     state = models.CharField(max_length=50, blank=True)
-    country = models.CharField(max_length=50)
+    country = models.CharField(max_length=50, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

@@ -225,7 +225,7 @@ def update_profile(request):
     '''
     Function based view to update user profile data
     '''
-    # Get profile of requeste user
+    # Get profile of request user
     try:
         user_profile = Profile.objects.get(user=request.user)
     except Profile.DoesNotExist:
