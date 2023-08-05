@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block head_title %}Dashboard{% endblock head_title %}
+{% block head_title %}Profile Page{% endblock head_title %}
 
 {% block content %}
 <div class="wrapper">
@@ -12,8 +12,30 @@
         {% include 'account/includes/dashboard_sidebar.html' %}
         <section class="dashboard-page">
             <h3>Update Your Profile</h3>
-            <div class="dasboard-inner-wrapper">
-            
+            <div class="">
+                <form action="" method="=POST">
+                    <div class="form-row">
+                        <input type="text" name="first_name" placeholder="First Name *" value="{% if request.user.is_authenticated %}{{ request.user.first_name}}{% endif %}" required>
+                        <input type="text" name="last_name" placeholder="Last Name *" value="{% if request.user.is_authenticated %}{{ request.user.last_name}}{% endif %}" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="email" name="email" placeholder="Email Address *" value="{% if request.user.is_authenticated %}{{ request.user.email }}{% endif %}" required>
+                        <input type="text" name="phone_number" placeholder="Phone Number *" value="{% if request.user.is_authenticated %}{{ request.user.phone_number}}{% endif %}" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" name="address_line_1" placeholder="Address Line 1 *" required>
+                        <input type="text" name="address_line_2" placeholder="Address Line 2">
+                    </div>
+                    <div class="form-row">
+                        <input type="text" name="city" placeholder="City *" required>
+                        <input type="text" name="postcode" placeholder="Postcode *" required>
+                    </div>
+                    <div class="form-row">
+                        <input type="text" name="state" placeholder="County / State">
+                        <input type="text" name="country" placeholder="Country *" required>
+                    </div>
+                    <button type="submit" class="btn btn-checkout">Update</button>
+                </form>
             </div>
         </section>
     </div>

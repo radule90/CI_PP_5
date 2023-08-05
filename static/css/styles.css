@@ -989,10 +989,10 @@ dialog button i {
     font-size: 1.5rem;
     border-bottom: 1px solid var(--dark-background);
     width: fit-content;
+    margin-block-end: 1.5rem;
 }
 
 .dasboard-inner-wrapper {
-    margin-block-start: 1.5rem;
     display: flex;
     gap: 5%;
 }
@@ -1057,6 +1057,12 @@ dialog button i {
 
 .dasboard-inner-wrapper table td {
     padding-block: 1rem;
+}
+
+/* User Profile */
+.form-row {
+    display: flex;
+    gap: 5%;
 }
 
 
