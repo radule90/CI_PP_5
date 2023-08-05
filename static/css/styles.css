@@ -929,6 +929,55 @@ dialog button i {
     width: 60%;
 }
 
+
+/* Profile, Dashboard */
+.dashboard-wrapper {
+    display: flex;
+    gap: 5%;
+    margin-top: 3rem;
+}
+
+/* Dashboard Navigation */
+.dashboard-nav {
+    flex-basis: 15%;
+}
+
+.dashboard-nav ul {
+    list-style-type: none;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.dashboard-nav ul a li {
+    border: 1px solid var(--dark-background);
+    padding: 1rem;
+}
+
+.dashboard-nav ul a:first-child li {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
+
+.dashboard-nav ul a:last-child li {
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+.dashboard-nav ul a {
+    color: var(--font-color);
+}
+
+.dashboard-nav ul a i,
+.dashboard-nav ul a i::before {
+    transition: none !important;
+}
+
+.dashboard-nav ul a li:hover {
+    background: var(--dark-background);
+    color: var(--white);
+}
+
+
 /* Footer */
 .footer {
     background: var(--dark-background);

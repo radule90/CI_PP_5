@@ -194,4 +194,8 @@ def set_new_password(request):
     else:
         template = 'account/set_new_password.html'
         return render(request, template)
-    
+
+
+def dashboard(request):
+    template = 'account/dashboard.html'
+    return render(request, template)
