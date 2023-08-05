@@ -12,6 +12,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import EmailMessage
+from order.models import Order
 import requests
 # Create your views here.
 
@@ -197,5 +198,11 @@ def set_new_password(request):
 
 
 def dashboard(request):
+    orders = Order.objects.order_by('-created_at').filter(user_id=request.user.id, is_ordered=True)
+    orders_count = orders.count()
     template = 'account/dashboard.html'
-    return render(request, template)
+    context = {
+        'orders_count': orders_count,
+        'dashboard_active': 'dashboard_active',
+    }
+    return render(request, template, context)

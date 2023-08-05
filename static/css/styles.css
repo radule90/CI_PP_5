@@ -972,7 +972,8 @@ dialog button i {
     transition: none !important;
 }
 
-.dashboard-nav ul a li:hover {
+.dashboard-nav ul a li:hover,
+.dashboard-nav ul a.active li {
     background: var(--dark-background);
     color: var(--white);
 }
