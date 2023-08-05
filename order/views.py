@@ -147,6 +147,7 @@ def place_order(request, quantity=0, total=0):
             data.country = form.cleaned_data['country']
             data.state = form.cleaned_data['state']
             data.city = form.cleaned_data['city']
+            data.postcode = form.cleaned_data['postcode']
             data.order_note = form.cleaned_data['order_note']
             data.order_total = total
             data.tax = tax
