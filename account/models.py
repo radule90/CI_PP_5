@@ -97,3 +97,27 @@ class Account(AbstractBaseUser):
         Check if user hase specific permission for certain modul
         '''
         return True
+
+
+class Profile(models.Model):
+    '''
+    User profile information
+    '''
+    user = models.OneToOneField(Account, on_delete=models.CASCADE)
+    address_line_1 = models.CharField(max_length=50)
+    address_line_2 = models.CharField(max_length=50, blank=True)
+    city = models.CharField(max_length=50)
+    postcode = models.CharField(max_length=20)
+    state = models.CharField(max_length=50, blank=True)
+    country = models.CharField(max_length=50)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.user.first_name
+    
+    def full_address(self):
+        if self.address_line_2:
+            return f'{self.address_line_1}, {self.address_line_2}, {self.city}, {self.state}, {self.postcode}, {self.country}'
+        else:
+            return f'{self.address_line_1}, {self.city}, {self.state}, {self.postcode}, {self.country}'
