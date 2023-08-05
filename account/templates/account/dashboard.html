@@ -23,11 +23,12 @@
                     <address>
                         <p><strong>Full Name: </strong>{{ user.full_name }}</p>
                         <p><strong>Email: </strong>{{ user.email }}</p>
-                        <p><strong>Phone: </strong>test</p>
-                        <p><strong>Address:</strong>test</p>
-                        <p><strong>City:</strong>test</p>
-                        <p><strong>State:</strong>test</p>
-                        <p><strong>Country:</strong>test</p>
+                        <p><strong>Phone: </strong>{{ user.phone_number }}</p>
+                        <p><strong>Address: </strong>{{ user.profile.address_line_1 }}</p>
+                        <p><strong>City: </strong>{{ user.profile.city }}</p>
+                        <p><strong>Postcode: </strong>{{ user.profile.postcode }}</p>
+                        <p><strong>State: </strong>{{ user.profile.state }}</p>
+                        <p><strong>Country: </strong>{{ user.profile.country }}</p>
                     </address>
                 </div>
             </div>
