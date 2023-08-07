@@ -275,6 +275,7 @@ main {
 .subscription-inner-wrapper {
     padding: 3rem 6rem;
 }
+
 .subscription-inner-wrapper input {
     border: none;
 }
@@ -1334,6 +1335,11 @@ dialog button i {
         right: 1rem;
     }
 
+    /* Subscription */
+    .subscription-inner-wrapper {
+        padding-inline: 3rem;
+    }
+
     /* Account Card Wrapper */
     .account-card {
         width: 85%;
@@ -1502,4 +1508,8 @@ dialog button i {
         margin-top: 107px;
     }
 
+    /* Subscription */
+    .subscription-inner-wrapper {
+        padding-inline: 1rem;
+    }
 }
