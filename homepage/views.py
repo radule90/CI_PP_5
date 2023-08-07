@@ -78,5 +78,6 @@ def newsletter(request):
     template = 'homepage/newsletter.html'
     context = {  
         'form': form,
+        'newsletter_active': 'newsletter_active',
     }
     return render(request, template, context)
