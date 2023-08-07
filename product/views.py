@@ -22,7 +22,7 @@ def shop(request, category_slug=None):
         products = Product.objects.filter(category=category, is_available=True)
 
         # Paginator setup
-        paginator = Paginator(products, 1)
+        paginator = Paginator(products, 20)
         page = request.GET.get('page')
         page_obj = paginator.get_page(page)
 
@@ -31,7 +31,7 @@ def shop(request, category_slug=None):
         products = Product.objects.all().filter(is_available=True)
 
         # Paginator setup
-        paginator = Paginator(products, 1)
+        paginator = Paginator(products, 20)
         page = request.GET.get('page')
         page_obj = paginator.get_page(page)
 
@@ -97,7 +97,7 @@ def search(request):
             product_count = products.count()
 
             # Paginator setup
-            paginator = Paginator(products, 1)
+            paginator = Paginator(products, 20)
             page = request.GET.get('page')
             page_obj = paginator.get_page(page)
     
