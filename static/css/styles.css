@@ -962,11 +962,11 @@ dialog button i {
 /* Dashboard Navigation */
 .dashboard-nav {
     flex-basis: 20%;
+    font-size: 1.25rem;
 }
 
 .dashboard-nav ul {
     list-style-type: none;
-    font-size: 1.25rem;
     text-align: center;
 }
 
@@ -1056,6 +1056,8 @@ dialog button i {
 
 .profile-address-data {
     flex-basis: 65%;
+    word-break: break-word;
+
 }
 
 .profile-address-data h4 {
@@ -1076,9 +1078,15 @@ dialog button i {
     padding-block: 1rem;
 }
 
+.dasboard-inner-wrapper table a {
+    color: var(--font-color);
+}
+
 /* Order Detail */
 .order-invoice {
     list-style-type: none;
+    margin-block-end: 2rem;
+    word-break: break-all;
 }
 
 .order-detail-wrapper table tr th:first-child {
@@ -1089,7 +1097,7 @@ dialog button i {
     text-align: right;
 }
 
-.order-detail-wrapper table tbody tr:last-child td {
+.order-detail-wrapper table tbody tr:last-child {
     border-block-end: 1px solid var(--dark-background);
 }
 
@@ -1309,6 +1317,12 @@ dialog button i {
         display: block;
         margin-inline: auto;
     }
+
+    /* Dashboard */
+    .dashboard-nav ul {
+        position: sticky;
+        top: 100px;
+    }
 }
 
 /* For Screens Up To 768px */
@@ -1352,6 +1366,25 @@ dialog button i {
 
     .address-page {
         margin-top: 5rem;
+    }
+
+    /* Dashboard */
+
+    .dashboard-nav {
+        flex-basis: 15%;
+        font-size: 1rem;
+    }
+
+    .dasboard-inner-wrapper {
+        flex-direction: column;
+    }
+
+    .dasboard-inner-wrapper .total-order {
+        margin-block-end: 2rem;
+    }
+
+    .form-row {
+        flex-direction: column;
     }
 }
 
@@ -1424,6 +1457,18 @@ dialog button i {
         font-size: 1rem;
     }
 
+    /* Dashboard */
+    .dasboard-inner-wrapper tr {
+        align-items: flex-start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 5%;
+        border-bottom: 1px solid var(--font-color)
+    }
+    .dasboard-inner-wrapper table th,
+    .dasboard-inner-wrapper table td {
+        border: none;
+    }
 }
 
 /* For Screens Up To 425px */
