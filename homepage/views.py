@@ -64,6 +64,7 @@ def newsletter(request):
             recipients = form.cleaned_data.get('recipients').split(',')
             message_body = form.cleaned_data.get('message_body')
             newsletter = EmailMessage(subject, message_body, to=recipients)
+            newsletter.content_subtype = 'html'
             if newsletter.send():
                 messages.success(
                     request, 'You have successfully sent the newsletter.')
