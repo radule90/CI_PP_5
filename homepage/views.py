@@ -3,7 +3,8 @@ from django.contrib import messages
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from .models import Subscriber
-
+from .forms import NewsletterForm
+from django.core.mail import EmailMessage
 
 # Create your views here.
 
@@ -31,7 +32,8 @@ def subscribe(request):
 
         # Check if already exsists
         if Subscriber.objects.filter(email=email).exists():
-            messages.error(request, 'You are already subscribed to our newsletter.')
+            messages.error(
+                request, 'You are already subscribed to our newsletter.')
             return redirect('homepage')
 
         # Validate email
@@ -45,9 +47,36 @@ def subscribe(request):
         subscriber.full_name = full_name
         subscriber.email = email
         subscriber.save()
-        messages.success(request, 'You have successfully subscribed to our newsletter.')
+        messages.success(
+            request, 'You have successfully subscribed to our newsletter.')
         return redirect('homepage')
 
 
 def newsletter(request):
-    return redirect('homepage')
+    '''
+    Function based view to handle newsletter
+    '''
+    # Chek for post method and validate form
+    if request.method == 'POST':
+        form = NewsletterForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data.get('subject')
+            recipients = form.cleaned_data.get('recipients').split(',')
+            message_body = form.cleaned_data.get('message_body')
+            newsletter = EmailMessage(subject, message_body, to=recipients)
+            if newsletter.send():
+                messages.success(
+                    request, 'You have successfully sent the newsletter.')
+            else:
+                messages.error(
+                    request, 'There was an error sending the newsletter.')
+    # Render newsletter form on page
+    form = NewsletterForm()
+    subscribers = Subscriber.objects.all()
+    form.fields['recipients'].initial = ','.join(
+        sub.email for sub in subscribers)
+    template = 'homepage/newsletter.html'
+    context = {  
+        'form': form,
+    }
+    return render(request, template, context)
