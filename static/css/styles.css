@@ -1024,6 +1024,10 @@ dialog button i {
     font-size: 1.5rem;
 }
 
+.dasboard-inner-wrapper form {
+    width: 100%;
+}
+
 .total-order,
 .profile-address-data {
     border: 1px solid var(--dark-background);

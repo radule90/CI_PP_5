@@ -16,6 +16,7 @@
                 <form action="" method="POST">
                     {% csrf_token %}
                     {{ form }}
+                    {{ form.media }}
                     <button type="submit" class="btn btn-checkout custom-pointer">Send</button>
                 </form>
             </div>

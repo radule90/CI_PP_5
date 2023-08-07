@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get("DEBUG", False)
 
 ALLOWED_HOSTS = ['sun-and-peaches-72eca0ee8a6a.herokuapp.com',
-    '8000-radule90-ci-pp-5-rbkhrj4fkf.us2.codeanyapp.com', 'localhost']
+                 '8000-radule90-ci-pp-5-rbkhrj4fkf.us2.codeanyapp.com', 'localhost']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tinymce',
     'account',
     'homepage',
     'category',
@@ -51,7 +52,7 @@ INSTALLED_APPS = [
     'storages',
     'order',
     'contact',
-    ]
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -194,3 +195,19 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 STRIPE_CURRENCY = 'eur'
+
+
+# TinyMCE
+TINYMCE_DEFAULT_CONFIG = {
+    "theme": "silver",
+    "width": '100%',
+    "height": "500px",
+    "menubar": False,
+    "plugins": "advlist,autolink,lists,link,image,charmap,print,preview,anchor,"
+    "searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,"
+    "code,help,wordcount",
+    "toolbar": "undo redo | formatselect | "
+    "bold italic backcolor | alignleft aligncenter "
+    "alignright alignjustify | bullist numlist outdent indent | "
+    "removeformat | help",
+}

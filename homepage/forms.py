@@ -1,4 +1,5 @@
 from django import forms
+from tinymce.widgets import TinyMCE
 
 
 class NewsletterForm(forms.Form):
@@ -7,7 +8,7 @@ class NewsletterForm(forms.Form):
     '''
     subject = forms.CharField(max_length=120)
     recipients = forms.CharField()
-    message_body = forms.CharField()
+    message_body = forms.CharField(widget=TinyMCE())
 
     def __init__(self, *args, **kwargs):
         super(NewsletterForm, self).__init__(*args, **kwargs)
