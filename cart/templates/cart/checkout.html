@@ -18,13 +18,13 @@
                     </div>
                     <div class="delivery">
                         <h4>Delivery</h4>
-                        <input type="text" name="phone_number" placeholder="Phone Number *" required>
-                        <input type="text" name="address_line_1" placeholder="Address Line 1 *" required>
-                        <input type="text" name="address_line_2" placeholder="Address Line 2">
-                        <input type="text" name="city" placeholder="City *" required>
-                        <input type="text" name="postcode" placeholder="Postcode *" required>
-                        <input type="text" name="state" placeholder="County / State">
-                        <input type="text" name="country" placeholder="Country *" required>
+                        <input type="text" name="phone_number" placeholder="Phone Number *" value="{% if request.user.is_authenticated %}{{ request.user.phone_number}}{% endif %}" required>
+                        <input type="text" name="address_line_1" placeholder="Address Line 1 *" value="{% if request.user.is_authenticated %}{{ request.user.profile.address_line_1}}{% endif %}" required>
+                        <input type="text" name="address_line_2" placeholder="Address Line 2" value="{% if request.user.is_authenticated %}{{ request.user.profile.address_line_2}}{% endif %}">
+                        <input type="text" name="city" placeholder="City *" value="{% if request.user.is_authenticated %}{{ request.user.profile.city}}{% endif %}" required>
+                        <input type="text" name="postcode" placeholder="Postcode *" value="{% if request.user.is_authenticated %}{{ request.user.profile.postcode}}{% endif %}" required>
+                        <input type="text" name="state" placeholder="County / State"value="{% if request.user.is_authenticated %}{{ request.user.profile.state}}{% endif %}" >
+                        <input type="text" name="country" placeholder="Country *" value="{% if request.user.is_authenticated %}{{ request.user.profile.country}}{% endif %}" required>
                         <textarea name="order_note" rows="8" placeholder="Order Note"></textarea>
                     </div>
             </section>
