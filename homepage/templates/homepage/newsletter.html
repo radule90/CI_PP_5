@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head_title %}Newsletter{% endblock head_title %}
+
+{% block content %}
+<div class="wrapper">
+    <!-- Page Heading -->
+    <section class="page-heading">
+        <h2 class="subheading">Dashboard</h2>
+    </section>
+    <div class="dashboard-wrapper">
+        {% include 'account/includes/dashboard_sidebar.html' %}
+        <section class="dashboard-page">
+            <h3>Send Newsletter</h3>
+            <div class="dasboard-inner-wrapper">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+{% endblock content %}

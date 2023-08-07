@@ -47,3 +47,7 @@ def subscribe(request):
         subscriber.save()
         messages.success(request, 'You have successfully subscribed to our newsletter.')
         return redirect('homepage')
+
+
+def newsletter(request):
+    return redirect('homepage')
