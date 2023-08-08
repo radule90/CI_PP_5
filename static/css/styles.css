@@ -820,6 +820,8 @@ td {
     align-self: center;
     height: fit-content;
     width: 35%;
+    border: 1px solid var(--dark-background);
+    padding: 3rem;
     border-radius: 0.5rem;
     margin-inline: auto;
     font-size: 1.1rem;
@@ -1470,6 +1472,8 @@ dialog button i {
 
     /* Account Card Wrapper */
     .account-card {
+        border: none;
+        padding: 0%;
         width: 90%;
         font-size: 1rem;
     }
