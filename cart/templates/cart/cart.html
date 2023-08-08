@@ -4,11 +4,14 @@
 
 {% block content %}
 <div class="wrapper">
+    {% comment %} Conditional rendering {% endcomment %}
+    {% comment %} Shows message if cart is empty {% endcomment %}
     {% if not cart_items %}
-    <div class="center">
+    <section class="center">
         <h2>Currently there are no items in your cart!</h2>
         <a href="{% url 'shop' %}" class="btn btn-more">SHOP</a>
-    </div>
+    </section>
+    {% comment %} If cart is not empty show products {% endcomment %}
     {% else %}
     <!-- Cart -->
     <div class="cart-wrapper">
@@ -24,17 +27,19 @@
                     </tr>
                 </thead>
                 <tbody class="table-body">
+                    {% comment %} List all products in cart {% endcomment %}
                     {% for cart_item in cart_items %}
                     <tr>
                         <td>
                             <div class="product-order-cart">
-                                <a href="{{ cart_item.product.get_absolute_url }}">
+                                <a href="{{ cart_item.product.get_absolute_url }}" aria-label="View details of {{ cart_item.product.product_name }}">
                                     <img src="{{ cart_item.product.image.url }}" width="55" class="custom-pointer" alt="{{ cart_item.product.product_name }} Product Image">
                                 </a>
                                 <div>
-                                    <a href="{{ cart_item.product.get_absolute_url }}" class="custom-pointer">
+                                    <a href="{{ cart_item.product.get_absolute_url }}" class="custom-pointer" aria-label="View details of {{ cart_item.product.product_name }}">
                                         <strong>{{ cart_item.product.product_name }}</strong>
                                     </a>
+                                    {% comment %} Render variations of products if exist {% endcomment %}
                                     {% if cart_item.variations.all %}
                                         <br>
                                         {% for item in cart_item.variations.all %}
@@ -48,16 +53,17 @@
                         <td>
                             <div class="counter">
                                 <div class="counter-minus">
-                                    <a href="{% url 'remove' cart_item.product.id cart_item.id %}" class="custom-pointer"><i class="fa fa-minus"></i></a>
+                                    <a href="{% url 'remove' cart_item.product.id cart_item.id %}" class="custom-pointer" aria-label="Decrease quantity by one"><i class="fa fa-minus"></i></a>
                                 </div>
                                 <input type="text" value="{{ cart_item.quantity }}">
                                 <div class="counter-plus">
+                                    <!-- Increment Form For Product Quantity -->
                                     <form action="{% url 'add' cart_item.product.id %}" method="POST">
                                         {% csrf_token %}
                                         {% for item in cart_item.variations.all %}
                                             <input type="hidden" name="{{ item.category }}" value="{{ item.value }}">
                                         {% endfor %}
-                                        <button type="submit" class="custom-pointer"><i class="fa fa-plus"></i></a>
+                                        <button type="submit" class="custom-pointer" aria-label="Increase quantity by one"><i class="fa fa-plus"></i></a>
                                     </form>
                                 </div>
                             </div>
@@ -67,7 +73,7 @@
                             <small>€ {{ cart_item.product.price }} each</small>
                         </td>
                         <td>
-                            <a href="{% url 'remove_item' cart_item.product.id cart_item.id %}" class="btn btn-remove custom-pointer">Remove</a>
+                            <a href="{% url 'remove_item' cart_item.product.id cart_item.id %}" class="btn btn-remove custom-pointer" aria-label="Remove product from cart">Remove</a>
                         </td>
                     </tr>
                     {% endfor %}
@@ -75,6 +81,7 @@
             </table>
 
         </section>
+        <!-- Sidebar with price informations -->
         <aside class="checkout-wrapper">
             <dl class="cart-price">
                 <dt class="cart-price-title">Total Price:</dt>
@@ -89,8 +96,8 @@
                 <dd class="cart-price-sum"><strong>€ {{ total }}</strong></dd>
             </dl>
             <hr class="break">
-            <a href="{% url 'checkout' %}" class="btn btn-checkout custom-pointer">Checkout</a>
-            <a href="{% url 'shop' %}" class="btn btn-continue custom-pointer">Shop</a>
+            <a href="{% url 'checkout' %}" class="btn btn-checkout custom-pointer" aria-label="Proceed to checkout">Checkout</a>
+            <a href="{% url 'shop' %}" class="btn btn-continue custom-pointer" aria-label="Continue shopping">Shop</a>
         </aside>
     </div>
     {% endif %}
