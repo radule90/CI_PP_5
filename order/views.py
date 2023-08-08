@@ -13,15 +13,18 @@ from django.template.loader import render_to_string
 
 
 def payments(request):
+    '''
+    Function based view that handle payment of user order and clean cart items
+    '''
     if request.method == "POST":
         # Retrieve the order id, payment id and status from the POST data
         order_id = request.POST.get('order_id')
         payment_id = request.POST.get('payment_id')
         payement_status = request.POST.get('status')
 
-
         # Retreive paid order
-        order = Order.objects.get(user=request.user, id=order_id, is_ordered=False)
+        order = Order.objects.get(
+            user=request.user, id=order_id, is_ordered=False)
 
         # Creating and saving new Payment instance
         payment = Payment(
@@ -69,12 +72,12 @@ def payments(request):
         # Confirmation Mail
         mail_subject = 'Order Confirmation'
         message = render_to_string('order/order_confirm_email.html', {
-                'user': request.user,
-                'order': order
-            })
+            'user': request.user,
+            'order': order
+        })
         recipient = request.user.email
         send_email = EmailMessage(mail_subject, message, to=[recipient])
-        #send_email.send()
+        send_email.send()
 
         # Storing order id in session so that it can be accessed in success
         order_id = order.id
@@ -89,7 +92,7 @@ def payments_success(request):
     '''
     # Get oreder_id from session
     order_id = request.session.get('order_id')
-    
+
     try:
         order = Order.objects.get(id=order_id, user=request.user)
     except Order.DoesNotExist:
@@ -160,9 +163,10 @@ def place_order(request, quantity=0, total=0):
             data.save()
 
             # Retreive new Order data
-            order = Order.objects.get(user=current_user, is_ordered=False, order_number=order_number)
+            order = Order.objects.get(
+                user=current_user, is_ordered=False, order_number=order_number)
 
-            # Create stripe payment intent 
+            # Create stripe payment intent
             stripe.api_key = settings.STRIPE_SECRET_KEY
             intent = stripe.PaymentIntent.create(
                 amount=round(total * 100),

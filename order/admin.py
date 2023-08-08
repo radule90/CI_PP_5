@@ -8,7 +8,7 @@ class OrderProductInline(admin.TabularInline):
     model = OrderProduct
     extra = 0
     readonly_fields = ['payment', 'user', 'product', 'quantity',
-                    'product_price', 'ordered']
+                       'product_price', 'ordered']
 
 
 class OrderAdmin(admin.ModelAdmin):
@@ -21,7 +21,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 
 class PaymentAdmin(admin.ModelAdmin):
-    list_display = ['payment_id', 'payment_method', 'amount_paid', 'status'] 
+    list_display = ['payment_id', 'payment_method', 'amount_paid', 'status']
     list_filter = ['status', 'payment_method']
 
 
