@@ -64,21 +64,40 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Dashboard Collapsable Menu
-const dashboard = document.querySelector("#dashboard-nav-icon");
-const dashboardNav = document.querySelector(".dashboard-list");
+document.addEventListener('DOMContentLoaded', function() {
+    const dashboard = document.querySelector("#dashboard-nav-icon");
+    const dashboardNav = document.querySelector(".dashboard-list");
 
-dashboard.addEventListener('mouseover', () => {
-    dashboard.classList.toggle("fa-bounce");
+    if (dashboard) {
+        dashboard.addEventListener('mouseover', () => {
+            dashboard.classList.toggle("fa-bounce");
+        });
+
+        dashboard.addEventListener('mouseout', () => {
+            dashboard.classList.toggle("fa-bounce");
+        });
+
+        dashboard.onclick = (event) => {
+            event.preventDefault();
+            dashboardNav.classList.toggle("active");
+        };
+    }
 });
 
-dashboard.addEventListener('mouseout', () => {
-    dashboard.classList.toggle("fa-bounce");
-});
+// dashboard.addEventListener('mouseover', (event) => {
+//     event.preventDefault();
+//     dashboard.classList.toggle("fa-bounce");
+// });
 
-dashboard.onclick = (event) => {
-    event.preventDefault();
-    dashboardNav.classList.toggle("active");
-};
+// dashboard.addEventListener('mouseout', (event) => {
+//     event.preventDefault();
+//     dashboard.classList.toggle("fa-bounce");
+// });
+
+// dashboard.onclick = (event) => {
+//     event.preventDefault();
+//     dashboardNav.classList.toggle("active");
+// };
 
 
 // Footer
