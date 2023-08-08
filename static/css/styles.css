@@ -820,8 +820,6 @@ td {
     align-self: center;
     height: fit-content;
     width: 35%;
-    padding: 2.5rem;
-    border: 1px solid var(--dark-background);
     border-radius: 0.5rem;
     margin-inline: auto;
     font-size: 1.1rem;
@@ -846,10 +844,10 @@ td {
 
 .account-card input[type="submit"],
 .account-card button {
-    background: var(--light-background);
-    color: var(--dark-background);
+    background: transparent;
+    color: var(--font-color);
     padding: 0.5rem;
-    border: 1px solid var(--dark-background);
+    border: 1px solid var(--font-color);
     border-radius: 0.5rem;
     cursor: pointer;
     font-size: 1.1rem;
@@ -860,7 +858,7 @@ td {
 .account-card input[type="submit"]:active,
 .account-card button:hover,
 .account-card input[type="submit"]:hover {
-    background: var(--dark-background);
+    background: var(--font-color);
     color: var(--light-background);
 }
 
@@ -1473,7 +1471,6 @@ dialog button i {
     /* Account Card Wrapper */
     .account-card {
         width: 90%;
-        padding: 1.5rem;
         font-size: 1rem;
     }
 

@@ -9,16 +9,19 @@
         <h2 class="subheading">Dashboard</h2>
     </section>
     <div class="dashboard-wrapper">
+        {% comment %} Dashboard Sidebar {% endcomment %}
         {% include 'account/includes/dashboard_sidebar.html' %}
         <section class="dashboard-page">
-            <h3>Sun & Peaches</h3>
+            <h3>Sun&Peaches</h3>
             <div class="order-detail-wrapper">
+                <!-- Order Invoice -->
                 <ul class="order-invoice">
                     <li><strong>Order Number: </strong>{{ order.order_number }}</li>
                     <li><strong>Transaction ID: </strong>{{ order.payment.payment_id }}</li>
                     <li><strong>Order Date: </strong>{{ order.created_at | date:"M d, Y" }}</li>
                     <li><strong>Status: </strong>{{ order.payment.status | capfirst }}</li>
                 </ul>
+                <!-- Order Details Table -->
                 <table>
                     <thead class="table-head">
                         <tr>
@@ -31,10 +34,12 @@
                         {% for item in order_detail %}
                             <tr>
                                 <td>
+                                    <!-- Product Information -->
                                     <div class="product-order-cart">
                                         <a href="{{ item.product.get_absolute_url }}"><img src="{{ item.product.image.url }}" alt=" product image" width="55" class="custom-pointer"></a>
                                         <div>
                                             <a href="{{ item.product.get_absolute_url }}" class="custom-pointer"><strong>{{ item.product.product_name }}</strong></a>
+                                            {% comment %} Render product variations if exists {% endcomment %}
                                             {% if item.variations.all %}
                                             <br>
                                                 {% for i in item.variations.all %}
@@ -55,6 +60,7 @@
                             </tr>
                         {% endfor %}
                     </tbody>
+                    <!-- Table Footer With Prices -->
                     <tfoot>
                         <tr>
                             <th colspan="2" class="text-right">Total Price:</th>
