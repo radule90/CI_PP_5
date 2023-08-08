@@ -19,13 +19,11 @@ class Cart(models.Model):
 class CartItem(models.Model):
     '''
     CartItem model representing products added to a cart.
+    Each item  is associated with a user, a product, and cart
     '''
-    user = models.ForeignKey(Account, on_delete=models.CASCADE,
-                             related_name='cart_items', null=True)
-    product = models.ForeignKey(
-        Product, on_delete=models.CASCADE, related_name='cart_items')
-    cart = models.ForeignKey(
-        Cart, on_delete=models.CASCADE, related_name='cart_items', null=True)
+    user = models.ForeignKey(Account, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, null=True)
     variations = models.ManyToManyField(Variation)
     quantity = models.PositiveIntegerField()
     is_active = models.BooleanField(default=True)
