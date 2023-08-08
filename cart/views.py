@@ -29,21 +29,24 @@ def add(request, product_id):
     if current_user.is_authenticated:
         product_variation = []
         if request.method == 'POST':
-            # Loop through the POST data to find variations and add them to the 'product variation list'.
+            # Loop through the POST data to find variations and
+            # add them to the 'product variation list'.
             for item in request.POST:
                 key = item
                 value = request.POST[key]
                 try:
                     variation = Variation.objects.get(product=product,
-                                                    category__iexact=key,
-                                                    value__iexact=value)
+                                                      category__iexact=key,
+                                                      value__iexact=value)
                     product_variation.append(variation)
-                except:
+                except Variation.DoesNotExist:
                     pass
-        
-        item_already_in_cart = CartItem.objects.filter(product=product, user=current_user).exists()
+
+        item_already_in_cart = CartItem.objects.filter(
+            product=product, user=current_user).exists()
         if item_already_in_cart:
-            cart_item = CartItem.objects.filter(product=product, user=current_user)
+            cart_item = CartItem.objects.filter(
+                product=product, user=current_user)
             ex_var_list = []
             id = []
             for item in cart_item:
@@ -78,16 +81,17 @@ def add(request, product_id):
     else:
         product_variation = []
         if request.method == 'POST':
-            # Loop through the POST data to find variations and add them to the 'product variation list'.
+            # Loop through the POST data to find variations and
+            # add them to the 'product variation list'.
             for item in request.POST:
                 key = item
                 value = request.POST[key]
                 try:
                     variation = Variation.objects.get(product=product,
-                                                    category__iexact=key,
-                                                    value__iexact=value)
+                                                      category__iexact=key,
+                                                      value__iexact=value)
                     product_variation.append(variation)
-                except:
+                except Variation.DoesNotExist:
                     pass
 
         try:
@@ -96,8 +100,9 @@ def add(request, product_id):
             # If the cart with does not exist, create a new cart.
             cart = Cart.objects.create(cart_id=_cart_id(request))
         cart.save()
-        
-        item_already_in_cart = CartItem.objects.filter(product=product, cart=cart).exists()
+
+        item_already_in_cart = CartItem.objects.filter(
+            product=product, cart=cart).exists()
         if item_already_in_cart:
             cart_item = CartItem.objects.filter(product=product, cart=cart)
             ex_var_list = []
@@ -139,14 +144,16 @@ def remove(request, product_id, cart_item_id):
     try:
         product = Product.objects.get(id=product_id)
         if request.user.is_authenticated:
-            cart_item = CartItem.objects.get(product=product, user=request.user, id=cart_item_id)
+            cart_item = CartItem.objects.get(
+                product=product, user=request.user, id=cart_item_id)
         else:
             cart = Cart.objects.get(cart_id=_cart_id(request))
-            cart_item = CartItem.objects.get(product=product, cart=cart, id=cart_item_id)
+            cart_item = CartItem.objects.get(
+                product=product, cart=cart, id=cart_item_id)
 
     except (Product.DoesNotExist, Cart.DoesNotExist, CartItem.DoesNotExist):
         raise Http404
-    
+
     if cart_item.quantity > 1:
         cart_item.quantity -= 1
         cart_item.save()
@@ -163,10 +170,12 @@ def remove_item(request, product_id, cart_item_id):
     try:
         product = Product.objects.get(id=product_id)
         if request.user.is_authenticated:
-            cart_item = CartItem.objects.get(product=product, user=request.user, id=cart_item_id)
+            cart_item = CartItem.objects.get(
+                product=product, user=request.user, id=cart_item_id)
         else:
             cart = Cart.objects.get(cart_id=_cart_id(request))
-            cart_item = CartItem.objects.get(product=product, cart=cart, id=cart_item_id)
+            cart_item = CartItem.objects.get(
+                product=product, cart=cart, id=cart_item_id)
     except (Product.DoesNotExist, Cart.DoesNotExist, CartItem.DoesNotExist):
         raise Http404
 
@@ -183,10 +192,11 @@ def cart(request, total=0, quantity=0, cart_items=None):
     price_without_tax = 0
     try:
         if request.user.is_authenticated:
-            cart_items = CartItem.objects.filter(user=request.user, is_active=True)
+            cart_items = CartItem.objects.filter(
+                user=request.user, is_active=True)
         else:
             cart = Cart.objects.get(cart_id=_cart_id(request))
-            
+
             # Filter all active cart items for that cart.
             cart_items = CartItem.objects.filter(cart=cart, is_active=True)
 
@@ -221,10 +231,11 @@ def checkout(request, total=0, quantity=0, cart_items=None):
     price_without_tax = 0
     try:
         if request.user.is_authenticated:
-            cart_items = CartItem.objects.filter(user=request.user, is_active=True)
+            cart_items = CartItem.objects.filter(
+                user=request.user, is_active=True)
         else:
             cart = Cart.objects.get(cart_id=_cart_id(request))
-            
+
             # Filter all active cart items for that cart.
             cart_items = CartItem.objects.filter(cart=cart, is_active=True)
 
