@@ -1450,14 +1450,9 @@ dialog button i {
 /* For Screens Up To 550px */
 @media (max-width: 550px) {
 
-    /* Main */
-    main {
-        margin-top: 69.5px;
-    }
-
     /* Header, Navbar */
     .logo {
-        font-size: .75rem;
+        font-size: 1rem;
         margin-inline-end: .5rem;
     }
 
@@ -1465,10 +1460,10 @@ dialog button i {
     .icons a {
         margin-inline-start: 0.1rem;
         margin-block: 0.1rem;
-        font-size: 1rem;
-        height: 2rem;
-        line-height: 2rem;
-        width: 2rem;
+        font-size: 1.25rem;
+        height: 2.5rem;
+        line-height: 2.5rem;
+        width: 2.5rem;
     }
 
     /* Product Detail Page */
@@ -1531,6 +1526,34 @@ dialog button i {
     }
 }
 
+
+/* For Screens Up To 500px */
+@media (max-width: 500px) {
+
+    /* Header, Navbar */
+    .header-wrapper {
+        flex-direction: column;
+    }
+
+    .logo {
+        margin-inline-end: 0;
+    }
+
+    .icons i,
+    .icons a {
+        margin-inline-start: 0;
+    }
+
+    .icons {
+        display: block;
+    }
+
+    /* Main */
+    main {
+        margin-top: 124.69px;
+    }
+}
+
 /* For Screens Up To 425px */
 @media (max-width: 425px) {
 
@@ -1556,11 +1579,6 @@ dialog button i {
 
 /* For Screens Up To 390px */
 @media (max-width: 390px) {
-
-    /* Main */
-    main {
-        margin-top: 107px;
-    }
 
     /* Subscription */
     .subscription-inner-wrapper {
