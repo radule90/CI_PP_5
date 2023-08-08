@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
+
+
+{% comment %} Template for 404 page, when user tries to visit non existing page {% endcomment %}
+
+
 {% block head_title %}404 - Page Not Found{% endblock head_title %}
 
 {% block content %}
 <div class="wrapper">
-    <div class="account-card">
+    <section class="account-card">
         <h2>404 - Page Not Found</h2>
         <br>
         <br>
@@ -14,8 +19,8 @@
         <br>
         <p>Click the button below to be redirected to our home page.</p>
         <div class="center">
-            <a href="{% url 'homepage' %}" class="btn btn-add error-btn custom-pointer">HOME</a>
+            <a href="{% url 'homepage' %}" class="btn btn-add error-btn custom-pointer" aria-label="Go to the home page">HOME</a>
         </div>
-    </div>
+    </section>
 </div>
 {% endblock content %}

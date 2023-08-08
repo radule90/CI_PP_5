@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
+
+
+{% comment %} Template for 403 page, when user tries to forbidden page {% endcomment %}
+
+
 {% block head_title %}403 - Forbidden{% endblock head_title %}
 
 {% block content %}
 <div class="wrapper">
-    <div class="account-card">
+    <section class="account-card">
         <h2>403 - Forbidden</h2>
         <br>
         <br>
@@ -16,8 +21,8 @@
         <br>
         <p>Click the button below to be redirected to our home page.</p>
         <div class="center">
-            <a href="{% url 'homepage' %}" class="btn btn-add error-btn custom-pointer">HOME</a>
+            <a href="{% url 'homepage' %}" class="btn btn-add error-btn custom-pointer" aria-label="Go to the home page">HOME</a>
         </div>
-    </div>
+    </section>
 </div>
 {% endblock content %}

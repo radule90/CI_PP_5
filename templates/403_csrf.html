@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
+
+
+{% comment %} Template for 403 CSRF page, when user tries POST request to forbidden page without CSRF validation {% endcomment %}
+
+
 {% block head_title %}403 - Forbidden: CSRF Verification Failed{% endblock head_title %}
 
 {% block content %}
 <div class="wrapper">
-    <div class="account-card">
-        <h2>403 - Forbidden:<br>SRF Verification Failed</h2>
+    <section class="account-card">
+        <h2>403 - Forbidden:<br>CSRF Verification Failed</h2>
         <br>
         <br>
         <h3>Oops!</h3>
@@ -14,8 +19,8 @@
         <br>
         <p>Click the button below to be redirected to our home page.</p>
         <div class="center">
-            <a href="{% url 'homepage' %}" class="btn btn-add error-btn custom-pointer">HOME</a>
+            <a href="{% url 'homepage' %}" class="btn btn-add error-btn custom-pointer" aria-label="Go to the home page">HOME</a>
         </div>
-    </div>
+    </section>
 </div>
 {% endblock content %}
