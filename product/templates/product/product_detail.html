@@ -78,7 +78,11 @@
                         <hr class="break">
                     {% endif %}
                     <div class="addcart-wrapper">
+                    {% if product.stock >= 1 %}
                         <button type="submit" class="btn btn-add custom-pointer">Add to Cart</button>
+                    {% else %}
+                        <h4>Product is currently out of stock!</h4>
+                    {% endif %}
                     </div>
                 </form>
             </div>
