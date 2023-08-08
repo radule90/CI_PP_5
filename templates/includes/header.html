@@ -2,8 +2,10 @@
 <header class="header">
     <div class="wrapper header-wrapper">
         <a href="{% url 'homepage' %}" class="logo custom-pointer">
-            <h1>Sun & Peaches</h1>
+            <h1>Sun&Peaches</h1>
         </a>
+        <!-- Main Navigation Links -->
+        {% comment %} Conditional to render links with class active {% endcomment %}
         <nav class="navbar">
             <a href="{% url 'homepage' %}" class="{% if active_homepage %} active {% endif %} custom-pointer">Home</a>
             <a href="{% url 'shop' %}" class="{% if active_shop %} active {% endif %} custom-pointer">Shop</a>
@@ -12,17 +14,17 @@
 
         <div class="icons">
             <!-- Menu Bars For Small Screen -->
-            <i class="fa-solid fa-bars custom-pointer" id="menu-bars"></i>
+            <i class="fa-solid fa-bars custom-pointer" id="menu-bars" aria-label="Menu for small screens"></i>
 
             <!-- Icon Links For Profile, Logout, Cart, Search -->
             {% if request.user.is_authenticated %}
-            <a href="{% url 'dashboard' %}" class="fa-solid fa-user custom-pointer"></a>
-            <a href="{% url 'signout' %}" class="fa-solid fa-arrow-right-to-bracket custom-pointer"></a>
+            <a href="{% url 'dashboard' %}" class="fa-solid fa-user custom-pointer" aria-label="Request user dashboard"></a>
+            <a href="{% url 'signout' %}" class="fa-solid fa-arrow-right-to-bracket custom-pointer" aria-label="Signout from page"></a>
             {% else %}
-            <a href="{% url 'signin' %}" class="fa-solid fa-user custom-pointer"></a>
+            <a href="{% url 'signin' %}" class="fa-solid fa-user custom-pointer" aria-label="Sign in"></a>
             {% endif %}  
-            <a href="" id="search-icon" class="fa-solid fa-magnifying-glass custom-pointer"></a>
-            <a href="{% url 'cart' %}" class="fa-solid fa-cart-shopping custom-pointer"></a>
+            <a href="" id="search-icon" class="fa-solid fa-magnifying-glass custom-pointer" aria-label="Search the site"></a>
+            <a href="{% url 'cart' %}" class="fa-solid fa-cart-shopping custom-pointer" aria-label="View shopping cart"></a>
         </div>
 
         <!-- Search Form -->
