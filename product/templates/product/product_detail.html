@@ -145,6 +145,12 @@
                                 </div>
                                 <br>
                                 <p>{{ review.review }}</p>
+                                {% comment %} Render delet button to logged in user who is author of review {% endcomment %}
+                                {% if request.user.is_authenticated and request.user.id == review.user.id %}
+                                <div class="btn-right">
+                                    <a href="{% url 'delete_review' review.id %}" class="btn btn-remove custom-pointer">Delete</a>
+                                </div>
+                                {% endif %}
                             </div>
                         {% endfor %}
                     {% else %}

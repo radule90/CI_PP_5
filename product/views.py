@@ -161,3 +161,31 @@ def create_review(request, product_id):
                 # Display a success message and redirect to the referrer URL
                 messages.success(request, 'Review created successfully.')
                 return redirect(url)
+
+
+@login_required(login_url='signin')
+def delete_review(request, review_id):
+    '''
+    Function based view to delete a review
+    '''
+    # Get the URL of the previous page (referrer)
+    url = request.META.get('HTTP_REFERER')
+
+    try:
+        # Get the review to be deleted if belongs to logged in user
+        review = Review.objects.get(id=review_id, user=request.user)
+        if request.method == 'POST':
+            # Delete the review and show success message
+            review.delete()
+            messages.success(request, 'Review deleted successfully.')
+            return redirect(review.product.get_absolute_url())
+    except Review.DoesNotExist:
+        # If review doesnt exist or doesn't belong to user, show error message
+        messages.error(
+            request,
+            'Review not found or you do not have permission to delete it.')
+    template = 'product/delete_review_confirm.html'
+    context = {
+        'previous_url': url,
+    }
+    return render(request, template, context)

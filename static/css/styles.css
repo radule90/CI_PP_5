@@ -780,15 +780,35 @@ td {
     background: var(--dark-background);
 }
 
-.btn-remove {
+.btn-remove,
+.account-card .btn-remove {
     background: var(--red);
     color: var(--light-background);
+    border: none;
+    padding: .5rem 1rem;
 }
 
-.btn-remove:hover {
+.btn-remove:hover,
+.account-card .btn-remove:hover {
     color: var(--red);
     background: var(--light-background);
 }
+
+.btn-right {
+    margin-block-start: 1rem;
+    text-align: right;
+}
+
+.btn-cancel {
+    background: var(--dark-background);
+    color: var(--white);
+}
+
+.btn-cancel:hover {
+    background: var(--light-background);
+    color: var(--dark-background);
+}
+
 
 /* Checkout Page*/
 .checkout-billing {
@@ -856,7 +876,6 @@ td {
     border: 1px solid var(--font-color);
     border-radius: 0.5rem;
     cursor: pointer;
-    font-size: 1.1rem;
     width: fit-content;
 }
 

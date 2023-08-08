@@ -9,5 +9,7 @@ urlpatterns = [
          views.product_detail, name='product_detail'),
     path('search/', views.search, name='search'),
     path('create_review/<int:product_id>/', views.create_review,
-         name='create_review')
+         name='create_review'),
+    path('delete_review/<int:review_id>/', views.delete_review,
+         name='delete_review')
 ]
