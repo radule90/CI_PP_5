@@ -30,7 +30,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get("DEBUG", False)
 
 ALLOWED_HOSTS = ['sun-and-peaches-72eca0ee8a6a.herokuapp.com',
-                 '8000-radule90-ci-pp-5-rbkhrj4fkf.us2.codeanyapp.com', 'localhost']
+                 '8000-radule90-ci-pp-5-rbkhrj4fkf.us2.codeanyapp.com',
+                 'localhost']
 
 
 # Application definition
@@ -69,7 +70,7 @@ ROOT_URLCONF = 'sun_and_peaches.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'),],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -114,16 +115,16 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',  # noqa
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',  # noqa
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',  # noqa
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',  # noqa
     },
 ]
 
@@ -203,8 +204,8 @@ TINYMCE_DEFAULT_CONFIG = {
     "width": '100%',
     "height": "500px",
     "menubar": False,
-    "plugins": "advlist,autolink,lists,link,image,charmap,print,preview,anchor,"
-    "searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,"
+    "plugins": "advlist,autolink,lists,link,image,charmap,print,preview,anchor,"  # noqa
+    "searchreplace,visualblocks,code,fullscreen,insertdatetime,media,table,paste,"  # noqa
     "code,help,wordcount",
     "toolbar": "undo redo | formatselect | "
     "bold italic backcolor | alignleft aligncenter "
