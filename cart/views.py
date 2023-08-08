@@ -21,11 +21,11 @@ def add(request, product_id):
     '''
     Function based view to add product in cart
     Creates new cart if does not exist
-    Increments quantity
+    Increments quantity of products by one
     '''
     current_user = request.user
     product = Product.objects.get(id=product_id)
-    # Check authenticated user
+    # Check if user authenticated
     if current_user.is_authenticated:
         product_variation = []
         if request.method == 'POST':
@@ -41,9 +41,10 @@ def add(request, product_id):
                     product_variation.append(variation)
                 except Variation.DoesNotExist:
                     pass
-
+        # Check if the product is already in the cart.
         item_already_in_cart = CartItem.objects.filter(
             product=product, user=current_user).exists()
+        # If product exists, prepare to update its quantity.
         if item_already_in_cart:
             cart_item = CartItem.objects.filter(
                 product=product, user=current_user)
@@ -53,6 +54,8 @@ def add(request, product_id):
                 existing_variation = item.variations.all()
                 ex_var_list.append(list(existing_variation))
                 id.append(item.id)
+
+            # If this product variation exists in the cart, update its quantity
             if product_variation in ex_var_list:
                 index = ex_var_list.index(product_variation)
                 item_id = id[index]
@@ -60,6 +63,7 @@ def add(request, product_id):
                 item.quantity += 1
                 item.save()
             else:
+                # If variation doesn't exist, create a new cart item.
                 item = CartItem.objects.create(
                     product=product, quantity=1, user=current_user)
                 if len(product_variation) > 0:
@@ -67,6 +71,7 @@ def add(request, product_id):
                     item.variations.add(*product_variation)
                 item.save()
         else:
+            # If product doesn't exist in the cart, create a new cart item.
             cart_item = CartItem.objects.create(
                 product=product,
                 user=current_user,
@@ -94,6 +99,7 @@ def add(request, product_id):
                 except Variation.DoesNotExist:
                     pass
 
+        # Try to get the cart for the current session or create a new one.
         try:
             cart = Cart.objects.get(cart_id=_cart_id(request))
         except Cart.DoesNotExist:
@@ -142,6 +148,7 @@ def remove(request, product_id, cart_item_id):
     Function based view to decrement quantity of product from the cart.
     '''
     try:
+        # Try to fetch product, cart, cart_item for logged or non logged user
         product = Product.objects.get(id=product_id)
         if request.user.is_authenticated:
             cart_item = CartItem.objects.get(
@@ -152,8 +159,11 @@ def remove(request, product_id, cart_item_id):
                 product=product, cart=cart, id=cart_item_id)
 
     except (Product.DoesNotExist, Cart.DoesNotExist, CartItem.DoesNotExist):
+        # If one of instances does not exist raise 404 error
         raise Http404
 
+    # Check quantity of the cart item if it is greated then 1 subtract for one
+    # If it is 1 delete from cart
     if cart_item.quantity > 1:
         cart_item.quantity -= 1
         cart_item.save()
@@ -168,6 +178,7 @@ def remove_item(request, product_id, cart_item_id):
     Function based view to handle removing product completely from the cart.
     '''
     try:
+        # Try to fetch product, cart, cart_item for logged or non logged user
         product = Product.objects.get(id=product_id)
         if request.user.is_authenticated:
             cart_item = CartItem.objects.get(
@@ -177,8 +188,10 @@ def remove_item(request, product_id, cart_item_id):
             cart_item = CartItem.objects.get(
                 product=product, cart=cart, id=cart_item_id)
     except (Product.DoesNotExist, Cart.DoesNotExist, CartItem.DoesNotExist):
+        # If one of instances does not exist raise 404 error
         raise Http404
 
+    # Delete fetched cart item
     cart_item.delete()
 
     return redirect('cart')
@@ -188,13 +201,16 @@ def cart(request, total=0, quantity=0, cart_items=None):
     '''
     Function based view to display cart with cart items
     '''
+    # Initialize variables for tax and price without tax
     tax = 0
     price_without_tax = 0
     try:
         if request.user.is_authenticated:
+            # Fetch all active items for logged in user
             cart_items = CartItem.objects.filter(
                 user=request.user, is_active=True)
         else:
+            # For non logged in users, fetch the cart ID from the session.
             cart = Cart.objects.get(cart_id=_cart_id(request))
 
             # Filter all active cart items for that cart.
@@ -227,13 +243,19 @@ def cart(request, total=0, quantity=0, cart_items=None):
 
 @login_required(login_url='signin')
 def checkout(request, total=0, quantity=0, cart_items=None):
+    '''
+    Function based view to display the checkout page with cart details.
+    '''
+    # Initialize variables for tax and price without tax
     tax = 0
     price_without_tax = 0
     try:
         if request.user.is_authenticated:
+            # Fetch all active items for logged in user
             cart_items = CartItem.objects.filter(
                 user=request.user, is_active=True)
         else:
+            # For non logged in users, fetch the cart ID from the session.
             cart = Cart.objects.get(cart_id=_cart_id(request))
 
             # Filter all active cart items for that cart.
