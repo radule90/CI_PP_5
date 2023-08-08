@@ -7,6 +7,9 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class Payment(models.Model):
+    '''
+    Model represents payment details when a user makes a transaction
+    '''
     user = models.ForeignKey(Account, on_delete=models.CASCADE)
     payment_id = models.CharField(max_length=100)
     payment_method = models.CharField(max_length=100)
@@ -19,6 +22,9 @@ class Payment(models.Model):
 
 
 class Order(models.Model):
+    '''
+    Model represents details of order made by a user
+    '''
     STATUS = (
         ('New', 'New'),
         ('Accepted', 'Accepted'),
@@ -50,9 +56,15 @@ class Order(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def full_name(self):
+        '''
+        Method that returns full name of customer
+        '''
         return f'{self.first_name} {self.last_name}'
 
     def full_address(self):
+        '''
+        Method that returns full address of customer
+        '''
         return f'{self.address_line_1} {self.address_line_2}'
 
     def __str__(self):
@@ -60,6 +72,9 @@ class Order(models.Model):
 
 
 class OrderProduct(models.Model):
+    '''
+    Model represents producst in order
+    '''
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     payment = models.ForeignKey(Payment, on_delete=models.SET_NULL, blank=True,
                                 null=True)
