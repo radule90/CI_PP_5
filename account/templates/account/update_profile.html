@@ -9,10 +9,12 @@
         <h2 class="subheading">Dashboard</h2>
     </section>
     <div class="dashboard-wrapper">
+        {% comment %} Dashboard Sidebar {% endcomment %}
         {% include 'account/includes/dashboard_sidebar.html' %}
         <section class="dashboard-page">
             <h3>Update Your Profile</h3>
-            <div class="">
+            <div>
+                <!-- Profile Update Form -->
                 <form action="{% url 'update_profile' %}" method="POST">
                     {% csrf_token %}
                     <div class="form-row">

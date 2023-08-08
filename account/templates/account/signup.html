@@ -4,24 +4,26 @@
 
 {% block content %}
 <div class="wrapper">
-    <div class="account-card">
-    <h2>Sign Up</h2>
-    <br>
-    <p>Already have an account? Then please <a href="{% url 'signin' %}" class="sign-link custom-pointer">sign in</a>.</p>
-    <br>
-    <br>
-    <form action="{% url 'signup' %}" method="POST">
-        {% csrf_token %}
-        {% for field in form %}
-        <div class="field-wrapper">
-            {{ field.errors }}
-            {{ field }}
-        </div>
-        {% endfor %}
+    <section class="account-card">
+        <h2>Sign Up</h2>
+        <br>
+        <p>Already have an account? Then please <a href="{% url 'signin' %}" class="sign-link custom-pointer">sign in</a>.</p>
         <br>
         <br>
-        <button type="submit" class="custom-pointer">Sign Up &raquo;</button>
-    </form>
-    </div>
+        <!-- Sign Up Form -->
+        <form action="{% url 'signup' %}" method="POST">
+            {% csrf_token %}
+            {% comment %} Render Registration Form Fields {% endcomment %}
+            {% for field in form %}
+            <div class="field-wrapper">
+                {{ field.errors }}
+                {{ field }}
+            </div>
+            {% endfor %}
+            <br>
+            <br>
+            <button type="submit" class="custom-pointer">Sign Up &raquo;</button>
+        </form>
+    </section>
 </div>
 {% endblock content %}
