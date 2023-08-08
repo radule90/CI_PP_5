@@ -84,21 +84,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// dashboard.addEventListener('mouseover', (event) => {
-//     event.preventDefault();
-//     dashboard.classList.toggle("fa-bounce");
-// });
-
-// dashboard.addEventListener('mouseout', (event) => {
-//     event.preventDefault();
-//     dashboard.classList.toggle("fa-bounce");
-// });
-
-// dashboard.onclick = (event) => {
-//     event.preventDefault();
-//     dashboardNav.classList.toggle("active");
-// };
-
 
 // Footer
 // Add Current Year In Footer Section
