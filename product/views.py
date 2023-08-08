@@ -9,16 +9,22 @@ from django.core.paginator import Paginator
 from order.models import OrderProduct
 
 # Create your views here.
+
+
 def shop(request, category_slug=None):
     '''
     Function based view to list products in shop
     And filter products by category
     Gives number of products in shop or category
     '''
+    # Initializinz category and products
     category = None
     products = None
-    if category_slug != None:
+    if category_slug is not None:
+        # If a category slug is provided in the URL, get category object
         category = get_object_or_404(Category, slug=category_slug)
+
+        # Filter products by the selected category that are available
         products = Product.objects.filter(category=category, is_available=True)
 
         # Paginator setup
@@ -26,8 +32,10 @@ def shop(request, category_slug=None):
         page = request.GET.get('page')
         page_obj = paginator.get_page(page)
 
+        # Count number of available products for category
         product_count = products.count()
     else:
+        # If no category slug is provided, get all available products
         products = Product.objects.all().filter(is_available=True)
 
         # Paginator setup
@@ -35,6 +43,7 @@ def shop(request, category_slug=None):
         page = request.GET.get('page')
         page_obj = paginator.get_page(page)
 
+        # Count number of all available products
         product_count = products.count()
 
     template = 'product/shop.html'
@@ -54,14 +63,19 @@ def product_detail(request, category_slug, product_slug):
     If not found raise 404 error
     '''
     try:
-        product = Product.objects.get(category__slug=category_slug, slug=product_slug)
+        # Try to fetch product with category slug and product slug
+        product = Product.objects.get(
+            category__slug=category_slug, slug=product_slug)
     except Product.DoesNotExist:
+        # If the product doesn't exist, raise a 404 error
         raise Http404('Product does not exist!')
-    
+
     # Check if the user has bought product, so that can leave review
     if request.user.is_authenticated:
         try:
-            order_product = OrderProduct.objects.filter(user=request.user, product_id=product.id).exists()
+            # Checking if user has bought that product
+            order_product = OrderProduct.objects.filter(
+                user=request.user, product_id=product.id).exists()
         except OrderProduct.DoesNotExist:
             order_product = None
     else:
@@ -84,23 +98,27 @@ def search(request):
     '''
     Function based view to handle product search
     '''
+    # Initializinz products, product_count and page_obj
     products = None
     product_count = 0
     page_obj = None
     if 'q' in request.GET:
+        # Check if q parameter is present in the GET request
         query = request.GET['q']
         if query:
+            # If a q is present, perform search on various fields
             products = Product.objects.filter(
                 Q(product_name__icontains=query) |
                 Q(description__icontains=query) |
                 Q(price__icontains=query))
+            # Count the number of search results
             product_count = products.count()
 
             # Paginator setup
             paginator = Paginator(products, 10)
             page = request.GET.get('page')
             page_obj = paginator.get_page(page)
-    
+
     template = 'product/shop.html'
 
     context = {
@@ -111,17 +129,23 @@ def search(request):
 
 
 def create_review(request, product_id):
+    '''
+    Function based view to create or update review for a product.
+    '''
+    # Get the URL of the previous page (referrer)
     url = request.META.get('HTTP_REFERER')
     if request.method == 'POST':
         try:
-        # If user already left review, then update existing
-            review = Review.objects.get(user__id=request.user.id, product__id=product_id)
+            # If user already left review, then update existing
+            review = Review.objects.get(
+                user__id=request.user.id, product__id=product_id)
+            # Update the existing review and send success message
             form = ReviewForm(request.POST, instance=review)
             form.save()
             messages.success(request, 'Review updated successfully.')
             return redirect(url)
         except Review.DoesNotExist:
-        # If user didn't leave review, create new
+            # If user didn't leave review, create new
             form = ReviewForm(request.POST)
             if form.is_valid():
                 review = Review()
@@ -132,5 +156,6 @@ def create_review(request, product_id):
                 review.product_id = product_id
                 review.user_id = request.user.id
                 review.save()
+                # Display a success message and redirect to the referrer URL
                 messages.success(request, 'Review created successfully.')
                 return redirect(url)

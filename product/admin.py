@@ -14,6 +14,7 @@ class ProductAdmin(admin.ModelAdmin):
                    'is_available')
     list_editable = ('is_available',)
 
+
 class VariationAdmin(admin.ModelAdmin):
     list_display = ('product', 'category', 'value', 'is_active')
     list_editable = ('is_active',)
