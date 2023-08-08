@@ -971,6 +971,10 @@ dialog button i {
 }
 
 /* Dashboard Navigation */
+#dashboard-nav-icon {
+    display: none;
+}
+
 .dashboard-nav {
     flex-basis: 20%;
     font-size: 1.25rem;
@@ -1332,12 +1336,6 @@ dialog button i {
         display: block;
         margin-inline: auto;
     }
-
-    /* Dashboard */
-    .dashboard-nav ul {
-        position: sticky;
-        top: 100px;
-    }
 }
 
 /* For Screens Up To 768px */
@@ -1403,10 +1401,37 @@ dialog button i {
     }
 
     /* Dashboard */
-
+    .dashboard-wrapper {
+        flex-direction: column;
+    }
     .dashboard-nav {
-        flex-basis: 15%;
-        font-size: 1rem;
+        position: relative;
+    }
+
+    #dashboard-nav-icon {
+        display: inline-block;
+        font-size: 3rem;
+        color: var(--light-background);
+        padding: .5rem;
+        background-color: var(--dark-background);
+        border-radius: .5rem;
+        margin-block-end: 3rem;
+    }
+
+    .dashboard-list {
+        transition: none;
+        position: absolute;
+        top: 4rem;
+        left: 0;
+        right: 0;
+        z-index: 1000000;
+        width: 50%;
+        background: var(--light-background);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    .dashboard-list.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
 
     .dasboard-inner-wrapper {

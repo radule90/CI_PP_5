@@ -63,6 +63,23 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// Dashboard Collapsable Menu
+const dashboard = document.querySelector("#dashboard-nav-icon");
+const dashboardNav = document.querySelector(".dashboard-list");
+
+dashboard.addEventListener('mouseover', () => {
+    dashboard.classList.toggle("fa-bounce");
+});
+
+dashboard.addEventListener('mouseout', () => {
+    dashboard.classList.toggle("fa-bounce");
+});
+
+dashboard.onclick = (event) => {
+    event.preventDefault();
+    dashboardNav.classList.toggle("active");
+};
+
 
 // Footer
 // Add Current Year In Footer Section
