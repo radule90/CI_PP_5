@@ -10,6 +10,7 @@
     <!-- Contact Section -->
     <div class="contact-wrapper">
         <section class="contact-form">
+            <!-- Contact Form -->
             <form action="{% url 'contact' %}" method="POST">
                 {% csrf_token %}
                 {% comment %}Full name and email field are prefilled if user is registred and logged in{% endcomment %}
@@ -20,11 +21,12 @@
                 <button type="submit" class="btn btn-checkout custom-pointer">Send Message</button>
             </form>
         </section>
+        <!-- Store Address Informations -->
         <aside class="address-page">
             <h3>Visit Us</h3>
             <br>
             <address>
-                Sun & Peaches Jewelry Store<br>
+                Sun&Peaches Jewelry Store<br>
                 123 Sparkle Street<br>
                 Gemstone City<br>
                 Luxuria 98765<br>
