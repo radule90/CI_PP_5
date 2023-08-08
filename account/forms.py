@@ -16,6 +16,7 @@ class SignupForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(SignupForm, self).__init__(*args, **kwargs)
+        # Placeholders for form fields to display as hints in input fields
         placeholders = {
             'first_name': 'First Name',
             'last_name': 'Last Name',
@@ -24,6 +25,7 @@ class SignupForm(forms.ModelForm):
             'password': 'Password',
             'confirm_password': 'Confirm Password'
         }
+        # Set placeholders and hide labels for each form field
         for field in self.fields:
             if self.fields[field].required:
                 placeholder = f'{placeholders[field]} *'
@@ -33,16 +35,19 @@ class SignupForm(forms.ModelForm):
             self.fields[field].label = False
 
     def clean(self):
+        # Custom validation method
         cleaned_data = super().clean()
         password = cleaned_data.get('password')
         confirm_password = cleaned_data.get('confirm_password')
 
+        # Check if password and confirm_password match
         if password != confirm_password:
             self.add_error('confirm_password', 'Password does not match!')
 
         return cleaned_data
 
     def save(self, commit=True):
+        # Custom save method to handle user data
         user = super(SignupForm, self).save(commit=False)
         user.first_name = self.cleaned_data['first_name']
         user.last_name = self.cleaned_data['last_name']
@@ -67,13 +72,14 @@ class UserProfileForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(UserProfileForm, self).__init__(*args, **kwargs)
+        # Placeholders for form fields to display as hints in input fields
         placeholders = {
             'first_name': 'First Name',
             'last_name': 'Last Name',
             'email': 'Email Address',
             'phone_number': 'Phone Number',
         }
-
+        # Set placeholders and hide labels for each form field
         for field in self.fields:
             if self.fields[field].required:
                 placeholder = f'{placeholders[field]} *'
@@ -94,6 +100,7 @@ class ProfileForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(ProfileForm, self).__init__(*args, **kwargs)
+        # Placeholders for form fields to display as hints in input fields
         placeholders = {
             'address_line_1': 'Address Line 1',
             'address_line_2': 'Address Line 2',
@@ -102,6 +109,7 @@ class ProfileForm(forms.ModelForm):
             'state': 'State / County',
             'country': 'Country'
         }
+        # Set placeholders and hide labels for each form field
         for field in self.fields:
             if self.fields[field].required:
                 placeholder = f'{placeholders[field]} *'

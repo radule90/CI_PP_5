@@ -4,17 +4,20 @@ from .models import Account, Profile
 
 # Register your models here.
 
+
 class AccountAdmin(UserAdmin):
     '''
     Customizing Django Admin panel
     '''
-    list_display = ('email', 'first_name', 'last_name', 'username', 'last_login', 'is_active')
+    list_display = ('email', 'first_name', 'last_name',
+                    'username', 'last_login', 'is_active')
     filter_horizontal = ()
     list_filter = ('is_admin', 'is_staff', 'is_active')
     # Grouping fields
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ('first_name', 'last_name', 'phone_number')}),
+        ('Personal info', {
+         'fields': ('first_name', 'last_name', 'phone_number')}),
         ('Permissions', {'fields': ('is_admin', 'is_staff', 'is_active')}),
     )
     # Set as readonly
