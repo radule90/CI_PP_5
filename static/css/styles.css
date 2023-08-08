@@ -350,6 +350,10 @@ main {
 }
 
 /* Filters */
+#filter-nav-icon {
+    display: none;
+}
+
 .filter-group {
     width: fit-content;
     padding: 2rem;
@@ -1372,6 +1376,14 @@ dialog button i {
     }
 
     /* Shop */
+    .shop-section {
+        flex-direction: column;
+        gap: 0;
+    }
+    .shop-section aside {
+        position: relative;
+    }
+    
     .product-grid {
         grid-template-columns: repeat(1, 1fr);
     }
@@ -1408,7 +1420,9 @@ dialog button i {
         position: relative;
     }
 
-    #dashboard-nav-icon {
+    /* Dashboard and Filter collapsable menu icon */
+    #dashboard-nav-icon,
+    #filter-nav-icon {
         display: inline-block;
         font-size: 3rem;
         color: var(--light-background);
@@ -1418,7 +1432,14 @@ dialog button i {
         margin-block-end: 3rem;
     }
 
-    .dashboard-list {
+    #filter-nav-icon {
+        margin-block-end: 2rem;
+    }
+
+    /* Dashboard and Filter collapsable menu items */
+
+    .dashboard-list,
+    .filter-group {
         transition: none;
         position: absolute;
         top: 4rem;
@@ -1430,7 +1451,8 @@ dialog button i {
         clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
     }
 
-    .dashboard-list.active {
+    .dashboard-list.active,
+    .filter-group.active {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
     }
 
@@ -1557,18 +1579,6 @@ dialog button i {
 /* For Screens Up To 425px */
 @media (max-width: 425px) {
 
-    /* Filters */
-    .filter-group {
-        padding: 1rem;
-    }
-
-    .filter-group h3 {
-        font-size: 1.25rem;
-    }
-
-    .filter-object {
-        font-size: 1rem;
-    }
     /* Account Card Forgot Password */
     .secondaryAction {
         display: block;

@@ -84,6 +84,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Shop Filter Collapsable Menu
+document.addEventListener('DOMContentLoaded', function() {
+    const filterIcon = document.querySelector("#filter-nav-icon");
+    const filterGroup = document.querySelector(".filter-group");
+
+    if (filterIcon) {
+        filterIcon.addEventListener('mouseover', () => {
+            filterIcon.classList.toggle("fa-bounce");
+        });
+
+        filterIcon.addEventListener('mouseout', () => {
+            filterIcon.classList.toggle("fa-bounce");
+        });
+
+        filterIcon.onclick = (event) => {
+            event.preventDefault();
+            filterGroup.classList.toggle("active");
+        };
+    }
+});
 
 // Footer
 // Add Current Year In Footer Section
