@@ -4,7 +4,8 @@
 
 {% block content %}
 <div class="wrapper">
-    <div class="account-card">
+    <!-- Successfull payment message card -->
+    <section class="account-card">
         <h2><i class="fa-regular fa-circle-check icon-confirm"></i> Payment Successful!</h2>
         <br>
         <br>
@@ -16,7 +17,7 @@
         <div class="center">
             <a href="{% url 'homepage' %}" class="btn btn-more">HOME</a>
         </div>
-    </div>
+    </section>
 </body>
 </div>
 {% endblock content %}
