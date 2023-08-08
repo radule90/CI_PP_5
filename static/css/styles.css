@@ -1345,10 +1345,24 @@ dialog button i {
 
     /* Header, Navbar */
     #search-form #close {
-        top: 1rem;
-        right: 1rem;
+        top: .75rem;
+        right: .75rem;
+        font-size: 3rem;
     }
 
+    #search-form #search-box,
+    #search-form button {
+        font-size: 2rem;
+    }
+
+    #search-form #search-box {
+        padding: .5rem 0;
+    }
+    
+    #search-form #search-box::placeholder {
+        font-size: 1.25rem;
+    }
+    
     /* Subscription */
     .subscription-inner-wrapper {
         padding-inline: 3rem;
