@@ -1,7 +1,9 @@
 <!-- Dashboard Navigation -->
 <aside class="dashboard-nav">
   <ul>
+    {% comment %} Most of the links have conditional rendering of class active to set it for active link {% endcomment %}
     <a href="{% url 'dashboard' %}" class="{% if dashboard_active %} active {% endif %} custom-pointer"><li>Dasboard</li></a>
+    {% comment %} Newsletter Link (Only shown to admin users) {% endcomment %}
     {% if request.user.is_admin %}
         <a href="{% url 'newsletter' %}" class="{% if newsletter_active %} active {% endif %} custom-pointer"><li>Newsletter</li></a>
     {% endif %}
