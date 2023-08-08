@@ -4,8 +4,7 @@
 {% block content %}
 <div class="wrapper">
     <!-- Product Detail -->
-    <section>
-        <div class="product-detail-wrapper">
+        <section class="product-detail-wrapper">
             <div class="left-detail">
                 <img src="{{ product.image.url }}" alt="{{ product.product_name }} Product Image">
             </div>
@@ -13,7 +12,9 @@
                 <form action="{% url 'add' product.id %}" method="POST">
                     {% csrf_token %}
                     <div>
+                        <!-- Product Info -->
                         <h2>{{ product.product_name }}</h2>
+                        <!-- Star Rating -->
                         <div class="rating-star">
                             <span>
                                 <i class="fa fa-star{% if product.average_rating < 0.5 %}-o{% elif product.average_rating >= 0.5 and product.average_rating < 1 %}-half-o {% endif %}" aria-hidden="true"></i>
@@ -22,11 +23,13 @@
                                 <i class="fa fa-star{% if product.average_rating < 3.5 %}-o{% elif product.average_rating >= 3.5 and product.average_rating < 4 %}-half-o {% endif %}" aria-hidden="true"></i>
                                 <i class="fa fa-star{% if product.average_rating < 4.5 %}-o{% elif product.average_rating >= 4.5 and product.average_rating < 5 %}-half-o {% endif %}" aria-hidden="true"></i>
                             </span>
+                            <!-- Review Count -->
                             <div class="review-count">{{ product.reveiw_count }} Review{{ product.reveiw_count | pluralize }}</div>
                         </div>
                         <h3 class="product-detail-price"><strong>€ {{ product.price }}</strong></h3>
                     </div>
                     <hr class="break">
+                    <!-- Product Description -->
                     <p class="product-decription">
                         {{ product.description }}
                     </p>
@@ -37,6 +40,7 @@
                         <p><strong>Stock: </strong>{{ product.stock }}</p>
                     </div>
                     <hr class="break">
+                    {% comment %} Render product variations if they exist {% endcomment %}
                     {% if product.variations.sizes %}
                     <div class="variation-wrapper">
                         <h4>Size:</h4>
@@ -78,18 +82,17 @@
                     </div>
                 </form>
             </div>
-        </div>
-    </section>
+        </section>
     <!-- Review Section -->
-    <section>
-        <div class="review-wrapper">
+        <section class="review-wrapper">
             <h2>Product Reviews</h2>
             <div class="comments-wrapper">
                 <div class="comment-inputs">
                     <h3>Leave a Review</h3>
+                    <!-- Review Input Form -->
                     <form action="{% url 'create_review' product.id %}" method="POST">
                         {% csrf_token %}
-                        <input type="subject" id="subject" name="subject" placeholder="Subject *" required>
+                        <input type="text" id="subject" name="subject" placeholder="Subject *" required>
                         <br>
                         <br>
                         <textarea id="review" name="review" rows="5" placeholder="Product Review *" required></textarea>
@@ -109,6 +112,7 @@
 						</div>
                         <br>
                         <br>
+                        {% comment %} Conditional Rendering of review submit button {% endcomment %}
                         {% if request.user.is_authenticated %}
                             {% if order_product %}
                                 <button type="submit" class="btn btn-add custom-pointer">Submit</button>
@@ -121,6 +125,7 @@
                     </form>
                 </div>
                 <div class="user-comments-wrapper">
+                    {% comment %} Conditional Rendering of reviews if they exist, if not then message {% endcomment %}
                     {% if reviews %}
                         {% for review in reviews %}
                             <div class="comment">
@@ -148,7 +153,6 @@
                     {% endif %}
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 </div>
 {% endblock content %}
