@@ -7,6 +7,7 @@ from .forms import ReviewForm
 from category.models import Category
 from django.core.paginator import Paginator
 from order.models import OrderProduct
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -128,6 +129,7 @@ def search(request):
     return render(request, template, context)
 
 
+@login_required(login_url='signin')
 def create_review(request, product_id):
     '''
     Function based view to create or update review for a product.
