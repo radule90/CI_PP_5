@@ -5,6 +5,7 @@ from django.core.validators import validate_email
 from .models import Subscriber
 from .forms import NewsletterForm
 from django.core.mail import EmailMessage
+from django.contrib.auth.decorators import user_passes_test
 
 # Create your views here.
 
@@ -52,6 +53,15 @@ def subscribe(request):
         return redirect('homepage')
 
 
+def is_admin(user):
+    '''
+    Function to check if user is admin
+    '''
+    return user.is_authenticated and user.is_admin
+
+
+@user_passes_test(is_admin, login_url='signin')
+# Check if use is admin and logged in
 def newsletter(request):
     '''
     Function based view to handle newsletter
