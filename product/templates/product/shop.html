@@ -6,23 +6,29 @@
     <!-- Page Heading -->
     <section class="page-heading">
         {% if 'search' in request.path %}
+            <!-- Display search results heading if products found -->
             {% if products %}
                 <h2 class="subheading">Search Results</h2>
             {% else %}
+                <!-- Display no matching items message if no products found -->
                 <h3 class="subheading">No matching items found.</h3>
             {% endif %}
         {% else %}
+            <!-- Display main shop heading -->
             <h2 class="subheading">Shop</h2>
         {% endif %}
     </section>
     <!-- Shop Filters -->
     <div class="shop-section">
         <aside>
+            <!-- Filter icon for mobile view -->
             <i class="fa-solid fa-filter" id="filter-nav-icon"></i>
             <div class="filter-group">
                 <h3>Categories</h3>
                 <ul class="filter-list">
+                    <!-- Link to show all products -->
                     <li class="filter-object"><a href="{% url 'shop' %}" class="custom-pointer">All Products</a></li>
+                    {% comment %} Loop through category links {% endcomment %}
                     {% for category_link in links %}
                         <li class="filter-object"><a href="{{ category_link.get_absolute_url }}" class="custom-pointer">{{ category_link.category_name }}</a></li>
                     {% endfor %}
@@ -31,10 +37,12 @@
         </aside>
         <!-- Product List -->
         <section class="product-list">
+            <!-- Display the total number of products in the shop -->
             <p class="items-shop">
                 {{ product_count }} Product{{ product_count | pluralize }} in Shop
             </p>
             <div class="product-grid">
+                 {% comment %} Loop through products and create product cards {% endcomment %}
                 {% for product in products %}
                 <div class="product-card">
                     <div class="img-wrapper">
@@ -49,15 +57,17 @@
                 </div>
                 {% endfor %}
             </div>
-            <!-- Page Pagination -->
+            <!-- Page Pagination Renders if there is more then one page -->
             {% if products.has_other_pages %}
                 <nav class="custom-pagination">
                     <ul>
+                        <!-- Previous page link -->
                         {% if products.has_previous %}
                             <li class="page-item">
                                 <a class="custom-pointer" href="?page={{ products.previous_page_number }}&q={{ request.GET.q }}">Previous</a>
                             </li>
                         {% endif %}
+                        <!-- Loop through page numbers -->
                         {% for page_number in products.paginator.page_range %}
                             {% if page_number <= products.number|add:3 and page_number >= products.number|add:-3 %}
                                 {% if products.number == page_number %}
@@ -71,6 +81,7 @@
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
+                        <!-- Next page link -->
                         {% if products.has_next %}
                             <li class="page-item">
                                 <a class="custom-pointer" href="?page={{ products.next_page_number }}&q={{ request.GET.q }}">Next</a>
