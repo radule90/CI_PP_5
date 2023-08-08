@@ -94,10 +94,13 @@ table {
 }
 .messages li {
     width: fit-content;
-    padding: .75em 1rem;
+    padding: 1rem;
     border-radius: .5rem;
     color: var(--white);
     font-size: 1.15rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .errorlist,
@@ -111,6 +114,13 @@ table {
 
 .success {
     background-color: var(--green);
+}
+
+.close-message {
+    background: transparent;
+    color: var(--white);
+    font-size: 1.15rem;
+    margin-inline-start: 1rem;
 }
 
 /* Custom Pointer For Links */
