@@ -802,6 +802,7 @@ td {
 .btn-cancel {
     background: var(--dark-background);
     color: var(--white);
+    font-size: 1.1rem;
 }
 
 .btn-cancel:hover {
@@ -877,6 +878,7 @@ td {
     border-radius: 0.5rem;
     cursor: pointer;
     width: fit-content;
+    font-size: 1.1rem;
 }
 
 .account-card button:active,
