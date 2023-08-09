@@ -274,6 +274,18 @@ main {
 }
 
 /* Home Page */
+/* Introduction */
+.introduction-wrapper {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-block-end: 4rem;
+    width: 60%;
+    margin-inline: auto;
+}
+
+.introduction-wrapper h2 {
+    margin-block-end: 1rem;
+}
 
 /* Subscription wrapper */
 .subscription-wrapper {
@@ -1384,6 +1396,12 @@ dialog button i {
     
     #search-form #search-box::placeholder {
         font-size: 1.25rem;
+    }
+    
+    /* Intorduction */
+    .introduction-wrapper {
+        width: 100%;
+        font-size: 1rem;
     }
     
     /* Subscription */
