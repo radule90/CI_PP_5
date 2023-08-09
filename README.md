@@ -162,6 +162,15 @@
   ![Laila Font](static/images/readme/laila.png)   
 
 ### Icons  
+- As Favicon and cursor I chose to use peach to create playful visual experience that aligns with the brand's identity.
+- Peach cursor adds a touch of uniqueness to user interaction, enhancing the overall user experience.  
+  ![Peach](static/images/readme/peach.png)
+
+- For pointer cursor I opted for a sun to provide clear feedback to users when they hover over elements like buttons and links.  
+  ![Sun](static/images/readme/sun.png)  
+
+- In the future, I plan to introduce a feature that allows users to choose between custom cursors and the standard cursors used on websites.
+- This customization option will provide users with the flexibility to select their preferred cursor style.
 
 ---  
 
