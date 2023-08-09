@@ -396,6 +396,30 @@ main {
     color: var(--white);
 }
 
+/* Text scroll */
+.free-shiping {
+    margin-block-start: 2rem;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.text-scroll {
+    color: var(--red);
+    font-size: 1.25rem;
+    display: inline-block;
+    animation: messageScroll 15s linear infinite;
+}
+
+@keyframes messageScroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
 /* Filters */
 #filter-nav-icon {
     display: none;
