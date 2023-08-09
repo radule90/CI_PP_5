@@ -126,11 +126,22 @@
 
 ---  
 
-## Design
-
+## Design  
 
 ### Wireframes  
-
+- The initial project wireframes. As they are created in the early planning stages, they will differ from the final project.  
+  #### Desktop Wireframes
+  ![Desktop Home](static/images/wireframes/pc-Home.png)   
+  ![Desktop Shop](static/images/wireframes/pc-Shop.png)   
+  ![Desktop Product Details](static/images/wireframes/pc-Product.png)   
+  ![Desktop Contact Page](static/images/wireframes/pc-Contact.png)   
+  ![Desktop Profile Page](static/images/wireframes/pc-Profile.png)    
+  #### Mobile Sketches
+  ![Mobile Home](static/images/wireframes/Mobile-Home.png)   
+  ![Mobile Shop](static/images/wireframes/Mobile-Shop.png)   
+  ![Mobile Product Details](static/images/wireframes/Mobile-Product.png)   
+  ![Mobile Contact Page](static/images/wireframes/Mobile-Contact.png)   
+  ![Mobile Profile Page](static/images/wireframes/Mobile-Profile.png)    
 
 ### Database Schema
 
