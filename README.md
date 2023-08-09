@@ -73,8 +73,11 @@
 ## UX  
 
 ### Visitor Goals  
-
-
+- Visitors of all ages interested in modern but dreamy jewelry - that is affordable
+- Visitors who support slow fashion and sustainability
+- Visitors who exclusively buy brands that harm none during the production process
+- Visitors who support novelty, creativity and stepping out of a cliché
+- Visitors who are seeking freedom and inspiration all the time in various colours and shapes in handmade products
 
 ### Business Goals  
 
