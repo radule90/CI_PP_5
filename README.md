@@ -115,8 +115,14 @@
 - As a **Site Administrator** I want **to have rich text editor** so that **I can send styled newsletter**
 - As a **Registered User** I can **delete my own product review** so that **I can manage the content associated with my account**
 
-
 ### Agile Development  
+- During the development of the Sun&Peaches fashion jewelry e-commerce project, I followed an Agile approach to manage the project effectively.
+- The project's development workflow was organised through GitHub Projects and Issues.
+- Most of the time I focused on user stories to quickly plan the project due to time constraints
+- Later in the development, I switched to the MOSCOW system to prioritize tasks better. This categorization method helped me decide what aspects were crucial (Must-Have), important (Should-Have), optional (Could-Have), or not needed (Won't-Have).
+- I also started using GitHub Issues labels to organize tasks effectively, making it easier to see importance and type.
+- I continuously assessed and adjusted the project. This allowed me to make real time changes based on feedback and insights.
+- By applying Agile methodologies, I managed to create a functional e-commerce platform for Sun&Peaches. But, there is room for improvement to fully aligns with the brand's identity and meets all user requirements.
 
 ---  
 
