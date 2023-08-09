@@ -70,8 +70,7 @@
   
 ---  
   
-## UX
-
+## UX  
 
 ### Visitor Goals  
 
@@ -130,26 +129,34 @@
 
 ### Wireframes  
 - The initial project wireframes. As they are created in the early planning stages, they will differ from the final project.  
-  #### Desktop Wireframes
+
+  #### Desktop Wireframes   
   ![Desktop Home](static/images/wireframes/pc-Home.png)   
   ![Desktop Shop](static/images/wireframes/pc-Shop.png)   
   ![Desktop Product Details](static/images/wireframes/pc-Product.png)   
   ![Desktop Contact Page](static/images/wireframes/pc-Contact.png)   
   ![Desktop Profile Page](static/images/wireframes/pc-Profile.png)    
-  #### Mobile Sketches
+  
+  #### Mobile Sketches  
   ![Mobile Home](static/images/wireframes/Mobile-Home.png)   
   ![Mobile Shop](static/images/wireframes/Mobile-Shop.png)   
   ![Mobile Product Details](static/images/wireframes/Mobile-Product.png)   
   ![Mobile Contact Page](static/images/wireframes/Mobile-Contact.png)   
   ![Mobile Profile Page](static/images/wireframes/Mobile-Profile.png)    
 
-### Database Schema
+### Database Schema  
 
 ### Colors  
 
 
 ### Fonts  
+- I chose [Quicksand Google Font](https://fonts.google.com/specimen/Quicksand?query=quick) for its modern and clean appearance. This font's readability and simplicity enhance the user experience, making content easy to read and comprehend.    
 
+  ![Quicksand Font](static/images/readme/quicksand.png)   
+  
+- For headings and important elements I chose [Laila Google Font](https://fonts.google.com/specimen/Laila?query=laila), as its elegant and distinctive style emphasizes key sections of the Sun&Peaches e-commerce.   
+
+  ![Laila Font](static/images/readme/laila.png)   
 
 ### Icons  
 
