@@ -4,6 +4,9 @@ from django.db import models
 
 
 class Subscriber(models.Model):
+    '''
+    Model representing a subscriber for the newsletter.
+    '''
     full_name = models.CharField(max_length=120)
     email = models.EmailField(max_length=100, unique=True)
     created_at = models.DateTimeField(auto_now_add=True)

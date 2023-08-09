@@ -9,11 +9,13 @@
         <h2 class="subheading">Dashboard</h2>
     </section>
     <div class="dashboard-wrapper">
+        {% comment %} Dashboard Sidebar {% endcomment %}
         {% include 'account/includes/dashboard_sidebar.html' %}
         <section class="dashboard-page">
             <h3>Send Newsletter</h3>
             <div class="dasboard-inner-wrapper">
-                <form action="" method="POST">
+                <!-- Newsletter Form -->
+                <form method="POST">
                     {% csrf_token %}
                     {{ form }}
                     {{ form.media }}
