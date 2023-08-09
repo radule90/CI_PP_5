@@ -140,7 +140,7 @@
   ![Desktop Contact Page](static/images/wireframes/pc-Contact.png)   
   ![Desktop Profile Page](static/images/wireframes/pc-Profile.png)    
   
-  #### Mobile Sketches  
+  #### Mobile Wireframes   
   ![Mobile Home](static/images/wireframes/Mobile-Home.png)   
   ![Mobile Shop](static/images/wireframes/Mobile-Shop.png)   
   ![Mobile Product Details](static/images/wireframes/Mobile-Product.png)   
@@ -150,7 +150,13 @@
 ### Database Schema  
 
 ### Colors  
-
+- I selected these pastel colors that contribute to the overall visual appeal of the Sun&Peaches.
+- I chose peach like color (#ff9c7f) because it looked playful and energitic and making it ideal for main heading.
+- Light green (#8cada4) was chosen because it brings harmonious nature feel.
+- Light brown (#bea494) allows the content and visuals to stand out while maintaining a calm ambiance.
+- Dark brown (#4c413b), wekk this pastel color is legable and readable.
+- They might initially appear distinct, but when combined, they create a harmonious appearance.   
+  ![Color Pallete](static/images/readme/colors.png)
 
 ### Fonts  
 - I chose [Quicksand Google Font](https://fonts.google.com/specimen/Quicksand?query=quick) for its modern and clean appearance. This font's readability and simplicity enhance the user experience, making content easy to read and comprehend.    
@@ -162,6 +168,7 @@
   ![Laila Font](static/images/readme/laila.png)   
 
 ### Icons  
+- Icons used on this website are from [SVG Repo](www.svgrepo.com)
 - As Favicon and cursor I chose to use peach to create playful visual experience that aligns with the brand's identity.
 - Peach cursor adds a touch of uniqueness to user interaction, enhancing the overall user experience.  
   ![Peach](static/images/readme/peach.png)
@@ -170,7 +177,7 @@
   ![Sun](static/images/readme/sun.png)  
 
 - In the future, I plan to introduce a feature that allows users to choose between custom cursors and the standard cursors used on websites.
-- This customization option will provide users with the flexibility to select their preferred cursor style.
+- This customization option will provide users with the flexibility to select their preferred cursor style.  
 
 ---  
 
@@ -234,7 +241,7 @@
   
 ---   
 
-## Tools and Platforms
+## Tools and Platforms   
 - [Codeaynwhere](https://codeanywhere.com/) - IDE for project development
 - [Github](https://github.com/) - Storing code remotely
 - [Heroku](https://heroku.com/) - Deployment
@@ -262,7 +269,7 @@
 
 ---
 
-## Content and Credits
+## Content and Credits  
 - The following articles and tutorials helped me arrive at the final code solution
   - [Code Institute](https://codeinstitute.net/de/)
   - Rory Patrick Sheridan (Mentor) - Great advice and guidance
@@ -283,7 +290,7 @@
 
 ---
 
-## Media
+## Media   
   - [babs the label](https://babsthelabel.com/) - Product pictures, description
   - [SVG Repo](www.svgrepo.com) - Mouse cursors, favicon
   - [FontAwsome](https://fontawesome.com/) - Social network icons
