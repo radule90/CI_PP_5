@@ -80,8 +80,14 @@
 - Visitors who are seeking freedom and inspiration all the time in various colours and shapes in handmade products
 
 ### Business Goals  
-
-
+- To introduce itself as a sustainable brand on the market 
+- To make sure that its products are available in online purchase in every country 
+- To always promote its philosophy of handcrafted goods 
+- To promote its creativity, uniquness and simplicity at the same time 
+- To attract visitors' attention with calm and warm atmosphere of its website
+- To make the online shopping as simplest as possible
+- To provide regular sales
+- To position itself  as a trendsetter in slow fashion  domain  only  with intention of attracting new visitors  too  
 
 ### User Stories  
 - As a **Site User** I can **view the homepage** so that **I can see the newest items in shop**  
