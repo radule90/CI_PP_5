@@ -1228,6 +1228,12 @@ dialog button i {
     border-block-end: 1px solid var(--footer-color);
 }
 
+.quick-links a {
+    display: block;
+    width: fit-content;
+    color: var(--footer-color);
+}
+
 .footer-social {
     list-style-type: none;
 }

@@ -15,8 +15,14 @@
             </section>
             <!-- Quick Links Section -->
 
-            <section class="box">
+            <section class="box quick-links">
                 <h3>Quick Links</h3>
+                <!-- Link to show all products -->
+                <a href="{% url 'shop' %}" class="custom-pointer">All Products</a>
+                {% comment %} Loop through category links {% endcomment %}
+                {% for category_link in links %}
+                   <a href="{{ category_link.get_absolute_url }}" class="custom-pointer">{{ category_link.category_name }}</a>
+                {% endfor %}
             </section>
             <!-- Contact Details Section -->
             <section class="box">
