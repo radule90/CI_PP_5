@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -241,10 +242,26 @@ def password_reset_validation(request, uidb64, token):
 def set_new_password(request):
     '''
     Function based view to handle setting a new password.
+    https://stackoverflow.com/questions/26823766/re-search-password-checking-error
+    Password control:
+    - Contains at least one number
+    - Contains at least one capital letter
+    - Contains at least one special symbol
+    - Is at least 6 characters long
     '''
     if request.method == 'POST':
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
+        # Check for strong password criteria
+        if not re.search('[0-9]', password) or \
+           not re.search('[A-Z]', password) or \
+           not re.search('[!@#$%^&*()_+{}:<>?]', password) or \
+           len(password) < 6:
+            messages.error(
+                request, 'Password must contain at least one number, '
+                         'one capital letter, one special symbol, '
+                         'and be at least 6 characters long.')
+            return redirect('set_new_password')
         # Comparing password with confirmed
         if password == confirm_password:
             # For matching password get uid from session to fetch user
