@@ -1,8 +1,9 @@
 [Responsive image]  
 
-[Sun&Peaches Ecommerce]() About
+[Sun&Peaches Ecommerce](https://sun-and-peaches-72eca0ee8a6a.herokuapp.com/) About
 
-[Here you have a live version of the project.]()  
+
+[Here you have a live version of the project.](https://sun-and-peaches-72eca0ee8a6a.herokuapp.com/)  
 
 ---  
 
@@ -81,6 +82,39 @@
 
 
 ### User Stories  
+- As a **Site User** I can **view the homepage** so that **I can see the newest items in shop**  
+- As a **Site Administrator** I can **manage user accounts** so that **I can maintain the integrity and security of the website and ensure a smooth user experience.**
+- As a **Site User** I can **use search functionality** so that **I can find specific items in the shop**
+- As a **Site User** I can **view a list of products** so that **I can browse and explore the list of products and find those that suit me**
+- As a **Site User** I can **view detailed information about the product** so that **I can confirm that the product is suitable for me**
+- As a **Site User** I can **view multiple images of product** so that **I can have better sense of product appearance**
+- As a **Site User** I can **sign up for an account** so that **I can view my profile page**
+- As a **Registered User,** I can **easily login and logout** so that **I can access my account information**
+- As a **Registered User** I can **recover my password** so that **I can regain access to the account**
+- As a **Site User** I can **receive a register confirmation email** so that **I am sure that registration went well**
+- As a **Registered User** I can **view and update my account details** so that **I can keep information up to date**
+- As a **Registered User** I can **leave reviews and ratings for products that I have bought** so that **I can share feedback with other customers**
+- As a **Site User** I can **contact the owner through the contact form** so that **I can get more information, assistance or send complaints**
+- As a **Site User** I can **filter products based on parameters(e.g. Brand)** so that **I can find specific items**
+- As a **Site User** I can **easily sign up for a newsletter subscription** so that **I can receive updates on new products, promotions, sales**
+- As a **Site User** I can **view a size guide for products** so that **I can choose right product size**
+- As a **Site User** I can **view customer reviews of products** so that **I find out more about the quality of the product**
+- As a **Registered User** I can **easily add product to the cart** so that **purchase is fast and simple as possible**
+- As a **Registered User** I can **track my order history** so that **I have an overview of my previous purchases**
+- As a **Registered User** I can **add products to my wishlist** so that **I can save them for future purchase**
+- As a **Site Administrator** I can **access and manage all important options on the admin panel** so that **I can easily manage products, users, orders content**
+- As a **Site Administrator** I can **add, delete, and update products on the front-end** so that **I should be able to access a user-friendly interface that allows me to do CRUD functionalities for products**
+- As a **Registered User** I can **make secure payments using Stripe** so that **I can have confidence that my payment information is handled securely and my purchase is protected**
+- As a **Site User** I can **seamlessly navigate the website with a clear header, navbar, and footer** so that **I can quickly navigate to what interests me and visit social networks**
+- As a **Site Owner** I **need to have ReadMe document** so that **I have thorough and well-organized documentation for efficient website management**
+- As a **Site Administrator** I can **create and manage product categories** so that **products are well organized and can be easily navigated**
+- As a **Site Visitor** I can **easily navigate through product list** so that **I can browse through the entire product list fast**
+- As a **Site Owner** I can **I want to have custom 403, 403_CSRF and 404 error pages** so that **visitors encountering these issues will have a better understanding of the problem.**
+- As a **Site Owner** I want **to ensure that the codebase is well-organized, neatly formatted, and extensively commented** so that **it can be easily understood and maintained by other developers**
+- As a **Registered User,** I can **change my password** so that **I can maintain the security of my account**
+- As a **Site Administrator** I want **to have rich text editor** so that **I can send styled newsletter**
+- As a **Registered User** I can **delete my own product review** so that **I can manage the content associated with my account**
+
 
 ### Agile Development  
 
