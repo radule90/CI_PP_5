@@ -166,8 +166,9 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.save()
         messages.success(
-            request, 'Welcome to Sun & Peaches! '
-            'Your account has been activated successfully.')
+            request,
+            mark_safe('Welcome to Sun & Peaches!<br>'
+                      'Your account has been activated successfully.'))
         return redirect('signin')
     else:
         # If user or token are invalid send error message
@@ -204,8 +205,8 @@ def password_reset(request):
             send_email.send()
             messages.success(
                 request,
-                'An email has been sent to your account '
-                'with instructions to reset your password.')
+                mark_safe('An email has been sent to your account<br>'
+                          'with instructions to reset your password.'))
             return redirect('signin')
         else:
             # If email doesn't exist in database, send error message
@@ -260,9 +261,10 @@ def set_new_password(request):
            not re.search('[!@#$%^&*()_+{}:<>?]', password) or \
            len(password) < 6:
             messages.error(
-                request, 'Password must contain at least one number, '
-                         'one capital letter, one special symbol, '
-                         'and be at least 6 characters long.')
+                request,
+                mark_safe('New password must contain at least one number,<br>'
+                          'one capital letter, one special symbol,<br>'
+                          'and be at least 6 characters long.'))
             return redirect('set_new_password')
 
         # Comparing password with confirmed
