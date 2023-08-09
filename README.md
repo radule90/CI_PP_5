@@ -154,6 +154,8 @@
   ![Mobile Profile Page](static/images/wireframes/Mobile-Profile.png)    
 
 ### Database Schema  
+- We've created an Entity-Relationship Diagram (ERD) as part of our planning process to map out the relationships between different data entities in the system. This ERD serves as a blueprint that guides the development of the project. As we continue to refine and enhance the platform, any potential modifications or updates to the ERD will help ensure that the deployed site remains aligned with our evolving goals and requirements.   
+  ![ERD](static/images/readme/erd.png)   
 
 ### Colors  
 - I selected these pastel colors that contribute to the overall visual appeal of the Sun&Peaches.
