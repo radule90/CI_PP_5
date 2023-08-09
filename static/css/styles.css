@@ -289,17 +289,37 @@ main {
 
 /* Swiper JS */
 .swiper-main-wrapper {
-    margin-block-end: 4rem;
+    margin-block-end: 5rem;
 }
 
 .swiper {
-    width: 600px;
-    height: 300px;
-}
+    width: 100%;
+    height: 100%;
+  }
+
+.swiper-slide {
+    background: var(--light-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swiper-slide a img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: .5rem;
+  }
 
 .swiper-button-prev,
 .swiper-button-next {
     color: var(--green);
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    transform: scale(1.5);
 }
 
 /* Subscription wrapper */
@@ -1286,7 +1306,12 @@ dialog button i {
 
 /* For Screens Up To 1220px */
 @media (max-width: 1220px) {
-
+    
+    /* Swiper JS */
+    .swiper-button-prev,
+    .swiper-button-next {
+        color: var(--white);
+    }
     /* Account Card Wrapper */
     .account-card {
         width: 60%;

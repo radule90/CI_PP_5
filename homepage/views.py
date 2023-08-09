@@ -6,14 +6,25 @@ from .models import Subscriber
 from .forms import NewsletterForm
 from django.core.mail import EmailMessage
 from django.contrib.auth.decorators import user_passes_test
+from product.models import Product
+from django.http import Http404
 
 # Create your views here.
 
 
 def homepage(request):
+    '''
+    Function based view for the homepage.
+    Retrieves products with banner images and renders the homepage
+    '''
+    try:
+        products_with_banner = Product.objects.exclude(banner='')
+    except Product.DoesNotExist:
+        raise Http404
     template = 'homepage/index.html'
     context = {
         'active_homepage': 'active_homepage',
+        'products_with_banner': products_with_banner,
     }
     return render(request, template, context)
 
@@ -87,7 +98,7 @@ def newsletter(request):
     form.fields['recipients'].initial = ','.join(
         sub.email for sub in subscribers)
     template = 'homepage/newsletter.html'
-    context = {  
+    context = {
         'form': form,
         'newsletter_active': 'newsletter_active',
     }

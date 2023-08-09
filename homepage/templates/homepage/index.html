@@ -11,21 +11,28 @@
         <p>Arnau Araya created Sun&Peaches in 2019 out of a need to make her creativity alive and express passion for colourful and attention - grabbing jewelry.</p>
         <p>Each piece is handmade in Barcelona, in the workshop located in Carrer dels Mirallers.</p>
     </section>
+    {% comment %} Render section only if there are products with banner images {% endcomment %}
+    {% if products_with_banner %}
     <section class="swiper-main-wrapper">
         <!-- Slider main container -->
         <div class="swiper">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                <div class="swiper-slide">Slide 1</div>
-                <div class="swiper-slide">Slide 2</div>
-                <div class="swiper-slide">Slide 3</div>
+                {% for product_with_banner in products_with_banner %}
+                    <div class="swiper-slide">
+                        <a href="{{ product_with_banner.get_absolute_url}}" class="custom-pointer" aria-label="Link to {{ product_with_banner.product_name }}">
+                            <img src="{{ product_with_banner.banner.url }}" class="image-swiper" alt="{{ product_with_banner.product_name }} Image">
+                        </a>
+                    </div>
+                {% endfor %}
             </div>    
             <!-- If we need navigation buttons -->
             <div class="swiper-button-prev custom-pointer"></div>
             <div class="swiper-button-next custom-pointer"></div>
         </div>
     </section>
+    {% endif %}
 </div>
 <div class="subscription-wrapper">
     <section class="subscription-inner-wrapper">
