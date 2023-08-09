@@ -80,6 +80,7 @@
                 {% csrf_token %}
                 <div id="card-element"></div>
                 <button type="submit" class="btn btn-checkout custom-pointer" id="submit-button">Pay Now</button>
+                <img src="{% static 'images/stripe.svg' %}" class="stripe-logo" alt="Stripe logo">
             </form>
         </aside>
     </div>
