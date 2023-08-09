@@ -15,6 +15,8 @@ from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import EmailMessage
 from order.models import Order, OrderProduct
 import requests
+from django.utils.safestring import mark_safe
+
 # Create your views here.
 
 
@@ -262,6 +264,7 @@ def set_new_password(request):
                          'one capital letter, one special symbol, '
                          'and be at least 6 characters long.')
             return redirect('set_new_password')
+
         # Comparing password with confirmed
         if password == confirm_password:
             # For matching password get uid from session to fetch user
@@ -373,12 +376,31 @@ def update_profile(request):
 def password_change(request):
     '''
     Function-based view to handle password changes for authenticated users.
+    https://stackoverflow.com/questions/58415186/how-to-make-a-new-line-in-django-messages-error
+    https://stackoverflow.com/questions/26823766/re-search-password-checking-error
+    Password control:
+    - Contains at least one number
+    - Contains at least one capital letter
+    - Contains at least one special symbol
+    - Is at least 6 characters long
     '''
     if request.method == 'POST':
         # Get current, new and confirmed new password
         password = request.POST.get('password')
         new_password = request.POST.get('new_password')
         confirm_password = request.POST.get('confirm_password')
+
+        # Check for strong password criteria
+        if not re.search('[0-9]', new_password) or \
+           not re.search('[A-Z]', new_password) or \
+           not re.search('[!@#$%^&*()_+{}:<>?]', new_password) or \
+           len(new_password) < 6:
+            messages.error(
+                request,
+                mark_safe('New password must contain at least one number,<br>'
+                          'one capital letter, one special symbol,<br>'
+                          'and be at least 6 characters long.'))
+            return redirect('password_change')
 
         # Get current logged in user
         user = Account.objects.get(username__exact=request.user.username)
