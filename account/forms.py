@@ -1,9 +1,14 @@
+import re
 from django import forms
 from .models import Account, Profile
 from phonenumber_field.formfields import PhoneNumberField
 
 
 class SignupForm(forms.ModelForm):
+    '''
+    Sign up form with password control
+    https://stackoverflow.com/questions/26823766/re-search-password-checking-error
+    '''
     email = forms.EmailField(max_length=200)
     phone_number = PhoneNumberField()
     password = forms.CharField(widget=forms.PasswordInput())
@@ -43,6 +48,17 @@ class SignupForm(forms.ModelForm):
         # Check if password and confirm_password match
         if password != confirm_password:
             self.add_error('confirm_password', 'Password does not match!')
+
+        # Check for strong password criteria
+        # https://stackoverflow.com/questions/26823766/re-search-password-checking-error
+        if not re.search('[0-9]', password) or \
+           not re.search('[A-Z]', password) or \
+           not re.search('[!@#$%^&*()_+{}:<>?]', password) or \
+           len(password) < 6:
+            self.add_error('password',
+                           'Password must contain at least one number, '
+                           'one capital letter, one special symbol, '
+                           'and be at least 6 characters long.')
 
         return cleaned_data
 

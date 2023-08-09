@@ -19,6 +19,22 @@
                 {{ field.errors }}
                 {{ field }}
             </div>
+            {% comment %} List of Password Requirements {% endcomment %}
+            {% if field.name == 'phone_number' %}
+            <div class="requirements-signup">
+                <p><strong>Phone e.g.</strong> +16044011234</p>
+            </div>
+            {% endif %}
+            {% if field.name == 'password' %}
+                <div class="requirements-signup">
+                    <p><strong>Password Requirements:</strong></p>
+                    <p>Minimum length of 6 characters</p>
+                    <p>At least one number</p>
+                    <p>At least one capital letter</p>
+                    <p>At least one special symbol</p>
+                    <small>(! @ # $ % ^ & * _ + {} : &lt;&gt; ?)</small>
+                </div>
+            {% endif %}
             {% endfor %}
             <br>
             <br>
