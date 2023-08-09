@@ -979,7 +979,8 @@ td {
 .secondaryAction {
     margin-inline-end: 0.5rem;
 }
-.requirements-signup {
+.requirements-signup,
+.requirements-phone {
     margin-inline-start: .5rem;
 }
 

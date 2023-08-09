@@ -20,6 +20,7 @@
                     <div class="delivery">
                         <h4>Delivery</h4>
                         <input type="text" name="phone_number" placeholder="Phone Number *" value="{% if request.user.is_authenticated %}{{ request.user.phone_number}}{% endif %}" required>
+                        <p class="requirements-phone"><strong>Phone e.g.</strong> +16044011234</p>
                         <input type="text" name="address_line_1" placeholder="Address Line 1 *" value="{% if request.user.is_authenticated %}{{ request.user.profile.address_line_1}}{% endif %}" required>
                         <input type="text" name="address_line_2" placeholder="Address Line 2" value="{% if request.user.is_authenticated %}{{ request.user.profile.address_line_2}}{% endif %}">
                         <input type="text" name="city" placeholder="City *" value="{% if request.user.is_authenticated %}{{ request.user.profile.city}}{% endif %}" required>
