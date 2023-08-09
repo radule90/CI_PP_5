@@ -287,6 +287,21 @@ main {
     margin-block-end: 1rem;
 }
 
+/* Swiper JS */
+.swiper-main-wrapper {
+    margin-block-end: 4rem;
+}
+
+.swiper {
+    width: 600px;
+    height: 300px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    color: var(--green);
+}
+
 /* Subscription wrapper */
 .subscription-wrapper {
     background: var(--green);
@@ -1403,7 +1418,7 @@ dialog button i {
         width: 100%;
         font-size: 1rem;
     }
-    
+
     /* Subscription */
     .subscription-inner-wrapper {
         padding-inline: 3rem;

@@ -63,8 +63,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// Swiper JS Initialize
+const swiper = new Swiper('.swiper', {
+    // Optional parameters
+    direction: 'horizontal',
+    loop: true,
+
+    // Navigation arrows
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+});
+
 // Dashboard Collapsable Menu
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const dashboard = document.querySelector("#dashboard-nav-icon");
     const dashboardNav = document.querySelector(".dashboard-list");
 
@@ -85,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Shop Filter Collapsable Menu
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const filterIcon = document.querySelector("#filter-nav-icon");
     const filterGroup = document.querySelector(".filter-group");
 
