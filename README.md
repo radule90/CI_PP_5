@@ -1,39 +1,177 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+[Responsive image]  
 
-Welcome,
+[Sun&Peaches Ecommerce]() About
 
-This is the Code Institute student template for Codeanywhere. If you are using Gitpod then you need [this template](https://github.com/Code-Institute-Org/gitpod-full-template) instead.  We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+[Here you have a live version of the project.]()  
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **July 26th, 2023**
+---  
 
-## Codeanywhere Reminders
+## Table of Contents
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere, in the terminal, type:
+1. <details>
+   <summary><a href="#ux">UX</a></summary>
 
-`python3 -m http.server`
+   - [Visitor Goals](#visitor-goals)
+   - [Business Goals](#business-goals)
+   - [User Stories](#user-stories)
+   - [Agile Development](#agile-development)
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+   </details>
+   
+2. <details>
+    <summary><a href="#visual-design">Design</a></summary>
 
-To run a frontend (HTML, CSS, Javascript only) application in Codeanywhere with no-cache, you can use this alias for `python3 -m http.server`.
+      - [Wireframes](#wireframes)
+      - [Database Schema](#database-schema)
+      - [Colors](#colors)
+      - [Fonts](#fonts)
+      - [Icons](#icons)
 
-`http_server`
+</details>
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+1. <details>
+   <summary><a href="#styling-formatting-and-features">Styling, Formating and Features</a></summary> 
+    
+    - [Future Features](#future-features)
 
-A button should appear to click: _Open Preview_ or _Open Browser_.
+</details>
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+4.  <details>
+    <summary><a href="#validation-and-testing">Validation and Testing</a></summary>
+    <ul>
+    <li><a href="#validation">Validation</a></li>
+    <li><a href="#testing">Testing</a></li>
 
-To log into the Heroku toolbelt CLI:
+    <li>
+    <details>
+    <summary><a href="#bugs">Bugs</a></summary>
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+    - [Fixed Bugs](#fixed-bugs)
+    </details>
+    </li>
+    </ul>
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+</details>
+  
+5. <details>
+    <summary> <a href="#deployment">Deployment</a></summary>
+
+      - [Local Deployment](#local-deployment)
+      - [Heroku Deployment](#heroku-deployment)
+
+</details>
+
+6. <a href="#tools-and-platforms">Tools and Platforms</a>
+
+7. <a href="#content-and-credits">Content and Credits</a>
+
+8. <a href="#media">Media</a>
+  
+---  
+  
+## UX
+
+
+### Visitor Goals  
+
+
+
+### Business Goals  
+
+
+
+### User Stories  
+
+### Agile Development  
+
+---  
+
+## Design
+
+
+### Wireframes  
+
+
+### Database Schema
+
+### Colors  
+
+
+### Fonts  
+
+
+### Icons  
+
+---  
+
+
+## Styling, Formatting and Features   
+
+
+### Styling, Formatting, Features
+
+
+
+#### SUBHEADINGS  
+
+
+### Future Features  
+
+---  
+
+## Validation and Testing
+
+### Validation   
+
+### Testing   
+
+<table>
+   <thead>
+     <tr>
+       <th>Expected </th>
+       <th>Testing</th>
+       <th>Result</th>
+       <th>Fix</th>
+   </thead>
+   <tbody>
+     <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+     </tr>
+   </tbody>
+ </table>
+
+
+### Bugs   
+
+
+#### Fixed Bugs  
+
+
+---  
+
+## Deployment  
+#### How to Clone
+
+
+#### How to Fork
+
+
+
+### Heroku Deployment
+  
+---   
+
+## Tools and Platforms
 
 ---
 
-Happy coding!
+## Content and Credits
+
+---
+
+## Media
+
+
