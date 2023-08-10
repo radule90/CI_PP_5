@@ -6,7 +6,7 @@ The inspiration for this project came from my sister's desire to have a platform
 
 I built this ecommerce project for Sun&Peaches using the knowledge I gained from the course "[Python Django Ecommerce | Advanced Django Web App From Basic](https://www.udemy.com/course/django-ecommerce-project-based-course-python-django-web-development/)" I used technologies like HTML, CSS, Django, Python, and JavaScript to create a user-friendly website where you can explore and purchase their fashionable jewelry items.   
 
-Built With:  
+Technologies Used:  
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" align="left" width="30px" style="padding-right: 10px;" />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" align="left" width="30px" style="padding-right: 10px;" />
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" align="left" width="30px" style="padding-right: 10px;" />
@@ -138,6 +138,8 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
 - As a **Registered User,** I can **change my password** so that **I can maintain the security of my account**
 - As a **Site Administrator** I want **to have rich text editor** so that **I can send styled newsletter**
 - As a **Registered User** I can **delete my own product review** so that **I can manage the content associated with my account**
+- As a **Site Visitor** I want **the registration process to enforce strong password requirements** so that **ensure the security of my account**
+- As a **Site User** I want **to see the total count of items in my shopping cart** so that **I can keep track of the quantity of products**.  
 
 ### Agile Development  
 - During the development of the Sun&Peaches fashion jewelry e-commerce project, I followed an Agile approach to manage the project effectively.
@@ -222,15 +224,64 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
 
 ## Styling, Formatting and Features   
 
-
 ### Styling, Formatting, Features
 
+#### Design of Sun&Peaches:
+- I decided to infuse lively colors into the design mix, creating a captivating blend.
+- I went for gentle pastel shades to make everything look even better.
+- The main title got a playful and energetic peachy hue (#ff9c7f) for a lively touch.
+- To keep things in tune with nature, I picked a soothing light green shade (#8cada4).
+- I added light brown (#bea494) to make important stuff stand out while keeping things calm.
+- For easy reading, I added a dark brown shade (#4c413b).
+- All these colors, though different, come together nicely for a balanced look.
 
+#### Technologies Used:
+- I skipped using Bootstrap to challenge myself with pure CSS.
+- I ditched jQuery in favor of JavaScript to keep things simple and interactive.
+- For Django views, I opted for function-based views instead of class-based that I've used in last project.
+- To make sure everything's secure, I used the @login_required decorator and user_passes_test tests in Django's authentication system. This way, only the right users can access the right things.  
 
-#### SUBHEADINGS  
+#### Home Page     
+![Home Respo](static/images/readme/respo2.jpg)  
+
+- In the header section, I've added essential links such as Home, Shop, and Contact as text links. With pure CSS and JS I made these links collapsing within a hamburger menu on smaller screens.
+  ![Navbar](static/images/readme/nav.jpg)  
+  ![Navbar-Mobile](static/images/readme/nav-mob.jpg)  
+- For user profile dashboard, search, and cart functionalities, I've utilized commonly recognized [FontAwesome](https://fontawesome.com/) icons.
+  ![Navbar-Menu-Open](static/images/readme/hamburger-open.jpg)
+- For the search function, I opted to create an overlay with a centered search input that is prominently visible. To enhance the visibility of the search input, I applied a transparent brown overlay that complements the overall design of the site. 
+  ![Search](static/images/readme/search.jpg)  
+- On the homepage, my aim was to greet users with a warm welcome message and provide a brief introduction to the Sun&Peaches ecommerce platform.
+  ![Intro Message](static/images/readme/intro-msg.jpg)  
+- Right after that, I included a captivating product carousel. Each image in the carousel is a link to the corresponding product, ensuring easy exploration 
+  ![Swiper](static/images/readme/swiper.jpg)   
+- I've used for that purpose [Swiper JS](https://swiperjs.com/), which was easy to implement thanks to its excellent documentation.
+
+- For  strategic touch, I added a subscription section that allows users to join and receive newsletters.
+  ![Newsletter](static/images/readme/newsletter.jpg)
+
+- I created a custom functionality that lets me send newsletters directly from the dashboard to all subscribed users, enhancing our marketing efforts.
+  ![Newsletter Send](static/images/readme/newsletter-send.jpg)
+- And improved it with [TinyMCE](https://www.tiny.cloud/) Rich Text Editor, so that sent emails have really styling.
+- For the footer, I opted to provide additional details about Sun&Peaches, including information about the store, address, social media links, as well as quick links to product categories.  
+  ![Footer](static/images/readme/footer.jpg)
+- I utilized a CSS Grid to ensure that the design remains responsive across different devices and screen sizes.
+
+#### Home Page     
+#### Home Page     
+#### Home Page     
+#### Home Page     
+#### Home Page     
+#### Home Page     
+#### Home Page     
+#### Home Page     
 
 
 ### Future Features  
+- Subscription part of the project should be separated in own app
+- Instead relying on form, Newsletters should have own model so that all newsletters are stored in database.
+- Change icons in menu navigation menu with more unique ones
+
 
 ---  
 
@@ -386,6 +437,7 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
 - [Gunicorn](https://gunicorn.org/) - Gunicorn 'Green Unicorn' is a Python WSGI HTTP Server for UNIX
 - [psycopg2](https://github.com/psycopg/psycopg2) - Python-PostgreSQL Database Adapter
 - [DJ-Database-URL](https://github.com/jazzband/dj-database-url)
+- [Swiper JS](https://swiperjs.com/) - Product, Image Slider
 
 ---
 
@@ -413,6 +465,6 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
 ## Media   
   - [babs the label](https://babsthelabel.com/) - Product pictures, description
   - [SVG Repo](www.svgrepo.com) - Mouse cursors, favicon
-  - [FontAwsome](https://fontawesome.com/) - Social network icons
+  - [FontAwesome](https://fontawesome.com/) - Social network icons
   - [Devicon](https://devicon.dev/) - Icons representing programming languages
   - [Wikipedia](https://en.wikipedia.org/wiki/Main_Page) - Antartica map
