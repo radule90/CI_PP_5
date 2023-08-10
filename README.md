@@ -410,33 +410,61 @@ this is probably because they are loaded from other scripts.
         <td></td>
      </tr>
      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-     </tr>
-     <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-     </tr>
-          <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>Redirect to sign-in page</td>
+        <td>
+        Visited URLs protected with login_required decorator (a few exmples):
+            https://sun-and-peaches-72eca0ee8a6a.herokuapp.com/account/dashboard/
+            https://sun-and-peaches-72eca0ee8a6a.herokuapp.com/account/user_orders/
+            https://sun-and-peaches-72eca0ee8a6a.herokuapp.com/account/update_profile
+            https://sun-and-peaches-72eca0ee8a6a.herokuapp.com/account/set_new_password
+            https://sun-and-peaches-72eca0ee8a6a.herokuapp.com/account/password_change
+            https://sun-and-peaches-72eca0ee8a6a.herokuapp.com/newsletter
+        </td>
+        <td>Always redirected to sign-in page</td>
         <td></td>
      </tr>
      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td>Error for non-admin logged-in user when visiting page protected user_passes_test</td>
+        <td>Visited URL protected with user_passes_test (https://sun-and-peaches-72eca0ee8a6a.herokuapp.com/newsletter), logged in as non-admin</td>
+        <td>Received a 404 error page</td>
         <td></td>
      </tr>
      <tr>
+        <td>Access grant for admin logged-in user when visiting page protected user_passes_test</td>
+        <td>Visited URL protected with user_passes_test, logged in as admin</td>
+        <td>Successfully accessed the page	</td>
         <td></td>
+     </tr>
+     <tr>
+        <td>Only the author of a review can delete it.</td>
+        <td>I attempted to directly delete a review from another user:
+https://sun-and-peaches-72eca0ee8a6a.herokuapp.com/shop/delete_review/14/</td>
+        <td>I was unable to delete the review and received a message stating that the review either doesn't exist or I don't have permission to delete it.</td>
         <td></td>
+     </tr>
+     <tr>
+        <td>The number of purchased products should be deducted from the stock.</td>
+        <td>I purchased several products,</td>
+        <td>The stock of those products was appropriately reduced.</td>
         <td></td>
+     </tr>
+     <tr>
+        <td>The registration form enforces password criteria: minimum length of 6 characters, at least one number, at least one capital letter, and at least one special symbol. If passwords do not match or meet the criteria, the form submission is blocked.</td>
+        <td>I attempted registration with passwords that did not match. I also tried registering with matching passwords that lacked at least one of the mandatory conditions.</td>
+        <td>I was only able to successfully register when I satisfied all password criteria, ensuring the form submission was successful and I received a registration confirmation email.</td>
+        <td></td>
+     </tr>
+     <tr>
+        <td>The search functionality allows users to search by product name, product description, price, and category. When entering values that do not exist in the search, the system should provide no results. When entering values that match existing products, the system should display results according to the search condition.</td>
+        <td>I entered various values that were not present in the search. I also entered values that matched existing products in the search.</td>
+        <td>As expected, entering values that do not exist resulted in no search results being displayed.
+When entering values that matched existing products, the search results were displayed based on the search criteria.</td>
+        <td></td>
+     </tr>
+     <tr>
+        <td>As a logged-in admin, I should be able to send styled newsletters using the Rich Text Editor. The recipients' input field should be automatically filled with subscribers' email addresses.</td>
+        <td>I attempted to send a newsletter and observed the behavior.</td>
+        <td>The newsletter email was successfully styled using the Rich Text Editor, and the recipients' input field was pre-filled with the email addresses of subscribers.</td>
         <td></td>
      </tr>
    </tbody>
@@ -444,11 +472,36 @@ this is probably because they are loaded from other scripts.
 
 
 ### Bugs   
-
+- Currently, there is no quantity control for product variations, I consider adding a stock variation field to the model and implementing a method to calculate the total stock for the product. This will allow for better control and management of product variations' stock levels. This fix is planned for the next update.
+- Maybe it's not a bug, but the custom cursor can probably bother users. In the next upgrade remove or maybe allow the user to click a switch to choose what they want to use
 
 #### Fixed Bugs  
+- Bug: I was using "except ObjectNotExist" which caused an error.
+- Fix: After researching, I realized that the correct exception is "ObjectDoesNotExist," so I updated the code to use "except ObjectDoesNotExist" instead.
 
+- Bug: Custom cursor was not precise.
+- Fix: After reading https://bengammon.co.uk/custom-css-cursors-and-offset/, I followed the instructions to center the custom cursor and improve its precision.
+  ```
+  cursor: url(cursor.png) 15 15, pointer;
+  ```
+- Bug: Search function resulted in local variable 'products' and 'product_count' being referenced before assignment.
+- Fix: I declared and assigned the variables 'products' and 'product_count' with default values of 0 to avoid the referenced before assignment error in the search function.
 
+- Bug: On the checkout page, the form field was named "phone" which did not match the model field "phone_number".
+- Fix: Changed the form field name to "phone_number" to match the model field and ensure proper data binding on the checkout page.
+
+- Bug: The search functionality was not displaying products on the next page when paginating.
+- Fix: Added the query parameter to the pagination links so that the search query is preserved on the next page using &q={{ request.GET.q }}.
+
+Bug: scripts.js:70 Uncaught TypeError: Cannot read properties of null (reading 'addEventListener')
+```
+  const dashboard = document.querySelector("#dashboard-nav-icon");
+  const dashboardNav = document.querySelector(".dashboard-list");
+  dashboard.addEventListener('mouseover', () => { dashboard.classList.toggle("fa-bounce"); }); 
+  dashboard.addEventListener('mouseout', () => { dashboard.classList.toggle("fa-bounce"); });
+  dashboard.onclick = (event) => { event.preventDefault(); dashboardNav.classList.toggle("active"); }; 
+```
+- Fix: Wrapping the code in the 'DOMContentLoaded' event listener, the script will execute only after all DOM elements are ready and accessible, preventing the error.
 ---  
 
 ## Deployment  
