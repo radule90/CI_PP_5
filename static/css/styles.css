@@ -1854,6 +1854,7 @@ dialog button i {
             -ms-flex-direction: column;
                 flex-direction: column;
     }
+    
     .dashboard-nav {
         position: relative;
     }

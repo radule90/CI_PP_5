@@ -186,7 +186,7 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
   ![Mobile Profile Page](static/images/wireframes/Mobile-Profile.png)    
 
 ### Database Schema  
-- We've created an Entity-Relationship Diagram (ERD) as part of our planning process to map out the relationships between different data entities in the system. This ERD serves as a blueprint that guides the development of the project. As we continue to refine and enhance the platform, any potential modifications or updates to the ERD will help ensure that the deployed site remains aligned with our evolving goals and requirements.   
+- I've created an Entity-Relationship Diagram (ERD) as part of planning process to map out the relationships between different data entities in the system. This ERD serves as a blueprint that guides the development of the project. As I continue to refine and enhance the platform, any potential modifications or updates to the ERD will help ensure that the deployed site remains aligned with evolving goals and requirements.   
   ![ERD](static/images/readme/erd.png)   
 
 ### Colors  
@@ -244,26 +244,26 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
 #### Home Page     
 ![Home Respo](static/images/readme/respo2.jpg)  
 
-- In the header section, I've added essential links such as Home, Shop, and Contact as text links. With pure CSS and JS I made these links collapsing within a hamburger menu on smaller screens.
-  ![Navbar](static/images/readme/nav.jpg)  
-  ![Navbar-Mobile](static/images/readme/nav-mob.jpg)  
-- For user profile dashboard, search, and cart functionalities, I've utilized commonly recognized [FontAwesome](https://fontawesome.com/) icons.
+- In the header section, I've added essential links such as Home, Shop, and Contact as text links. With pure CSS and JS I made these links collapsing within a hamburger menu on smaller screens.   
+  ![Navbar](static/images/readme/nav.jpg)    
+  ![Navbar-Mobile](static/images/readme/nav-mob.jpg)   
+- For user profile dashboard, search, and cart functionalities, I've utilized commonly recognized [FontAwesome](https://fontawesome.com/) icons.    
   ![Navbar-Menu-Open](static/images/readme/hamburger-open.jpg)
-- For the search function, I opted to create an overlay with a centered search input that is prominently visible. To enhance the visibility of the search input, I applied a transparent brown overlay that complements the overall design of the site. 
+- For the search function, I opted to create an overlay with a centered search input that is prominently visible. To enhance the visibility of the search input, I applied a transparent brown overlay that complements the overall design of the site.   
   ![Search](static/images/readme/search.jpg)  
-- On the homepage, my aim was to greet users with a warm welcome message and provide a brief introduction to the Sun&Peaches ecommerce platform.
+- On the homepage, my aim was to greet users with a warm welcome message and provide a brief introduction to the Sun&Peaches ecommerce platform.     
   ![Intro Message](static/images/readme/intro-msg.jpg)  
-- Right after that, I included a captivating product carousel. Each image in the carousel is a link to the corresponding product, ensuring easy exploration 
+- Right after that, I included a captivating product carousel. Each image in the carousel is a link to the corresponding product, ensuring easy exploration     
   ![Swiper](static/images/readme/swiper.jpg)   
 - I've used for that purpose [Swiper JS](https://swiperjs.com/), which was easy to implement thanks to its excellent documentation.
 
-- For  strategic touch, I added a subscription section that allows users to join and receive newsletters.
+- For  strategic touch, I added a subscription section that allows users to join and receive newsletters.     
   ![Newsletter](static/images/readme/newsletter.jpg)
 
-- I created a custom functionality that lets me send newsletters directly from the dashboard to all subscribed users, enhancing our marketing efforts.
+- I created a custom functionality that lets me send newsletters directly from the dashboard to all subscribed users, enhancing our marketing efforts.    
   ![Newsletter Send](static/images/readme/newsletter-send.jpg)
 - And improved it with [TinyMCE](https://www.tiny.cloud/) Rich Text Editor, so that sent emails have really styling.
-- For the footer, I opted to provide additional details about Sun&Peaches, including information about the store, address, social media links, as well as quick links to product categories.  
+- For the footer, I opted to provide additional details about Sun&Peaches, including information about the store, address, social media links, as well as quick links to product categories.     
   ![Footer](static/images/readme/footer.jpg)
 - I utilized a CSS Grid to ensure that the design remains responsive across different devices and screen sizes.
 
@@ -271,28 +271,28 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
 
   ![Shop Responsive](static/images/readme/shop-respo.jpg)   
   
-- The shop page was structured with a side panel featuring category filters, allowing users to easily navigate through different product types. 
+- The shop page was structured with a side panel featuring category filters, allowing users to easily navigate through different product types.     
   ![Categories](static/images/readme/categories.jpg)
 - I've used context processors to ensure that category links are accessible throughout the entire website, enabling display of categories across different pages.
-- On smaller screens, I chose to collapes filter section to optimize space, and I used Font Awesome icons with animation to make it more intersting.
+- On smaller screens, I chose to collapes filter section to optimize space, and I used Font Awesome icons with animation to make it more intersting.      
   ![Categories-Mobile](static/images/readme/categories-mob.jpg)
   
 - The main product list displays links to individual products.
-- I added conditional rendering, if there aren no products message will be displayed
+- I added conditional rendering, if there are no products message will be displayed.     
   ![Shop](static/images/readme/shop.jpg)
 - I deliberately omitted the "Add to Cart" option on this page.   
-- Instead, users are encouraged to click on products to access their detailed descriptions, especially for items with variations.   
+- Instead, users are encouraged to click on products to access their detailed descriptions, especially for items with variations.      
 
 ![Product Details](static/images/readme/product-details-respo.jpg)
-- For the product detail page, I prioritized showcasing the product itself 
+- For the product detail page, I prioritized showcasing the product itself     
   ![Product Details](static/images/readme/product-detail.jpg)
-- For most of the part I've used CSS Flexbox, as my favourite, for responsive design
+- For most of the part I've used CSS Flexbox, as my favourite, for responsive design.    
    ![Product Details](static/images/readme/product-detail-respo.jpg)
 
 - Variations for products have been implemented; however, I realized that I overlooked the implementation of stock tracking for each variation. This will be addressed in the next update by adding a "stock" field to the Variation models and defining a method in the product model to calculate the total stock of all variations for that specific product.
-- I implemented a review star system inspired by [Python Django Ecommerce | Advanced Django Web App From Basic](https://www.udemy.com/course/django-ecommerce-project-based-course-python-django-web-development/), ensuring that only users who have purchased the product can leave reviews. 
+- I implemented a review star system inspired by [Python Django Ecommerce | Advanced Django Web App From Basic](https://www.udemy.com/course/django-ecommerce-project-based-course-python-django-web-development/), ensuring that only users who have purchased the product can leave reviews.    
   ![Review](static/images/readme/review.jpg)
-- All product reviews are stored in the database using a model specifically designed to handle reviews.
+- All product reviews are stored in the database using a model specifically designed to handle reviews.     
   ![Review Respo](static/images/readme/review-respo.jpg)
 - I have implemented messages to be displayed to users who are not signed in or haven't purchased the product, ensuring that only signed-in users who have made a purchase are allowed to leave a review.
 - For cases where a review has already been submitted, I've enabled the functionality to update the existing review. I accomplished this by creating a function based view called 'create_review' and securing it with the login decorator for more security.
@@ -304,23 +304,60 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
 ![Contact Page Respo](static/images/readme/contact-respo.jpg)
 - I have incorporated a contact page as an essential component of the website.
 - I opted for a separate app to ensure easy scalability and potential future enhancements such as an AI chatbot
-- This contact page allows users to send messages, and all the messages are stored in the database for record-keeping.
+- This contact page allows users to send messages, and all the messages are stored in the database for record-keeping.     
   ![Contact Page](static/images/readme/contact.jpg)
 - I have included placeholder contact information and a map of Antarctica for now, with the intention of integrating Google Maps for actual projects to display accurate location information.
 - I've implemented conditional rendering for the full name field and email, ensuring they are prefilled if the user is signed in.
 
+#### Dashboard / Account / Orders List      
+- I decided to only let registered users shop for now, I think it is a good security measure. I might allow non-registered users to shop in the future.   
+  ![Sign In](static/images/readme/signin.jpg)   
+  ![Sign Out](static/images/readme/signout.jpg)
+- I created a custom way for users to sign up using a [Python Django Ecommerce | Advanced Django Web App From Basic](https://www.udemy.com/course/django-ecommerce-project-based-course-python-django-web-development/).     
+- I also added requirements for stronger passwords (I've used [stackoverflow](https://stackoverflow.com/questions/26823766/re-search-password-checking-error)):
+  - It needs to have at least one number.
+  - It needs to have at least one capital letter.
+  - It needs to have at least one special symbol.
+  - It needs to be at least 6 characters long.     
+ 
+  ![Sign Up](static/images/readme/signup.jpg)
+- After submitting the completed form, I wanted to provide new users with clear instructions on the next steps to take.    
+  ![SignUp Confirm](static/images/readme/signup-confirm.jpg)    
+  ![SignUp Confirm mail](static/images/readme/signup-confirm-mail.jpg)   
+- I also added a feature for users who forget their password. 
+- They can request a reset link, which they get through email.     
+  ![Pass-reset](static/images/readme/passreset.jpg)
+  ![Pass-reset-mail](static/images/readme/passreset-mail.jpg)
+  ![Set New Pass](static/images/readme/setnew.jpg)
+- I thought that is also nice feature to add to allow users can change their password if they want to.
+- In a future update, I'll also give users the option to delete their account. Which I didn't get to implement due to time constraints.   
+  ![Password Change](static/images/readme/change-pass.jpg)
+- When a user signs up, a profile is created for them. They can save their shipping information to make shopping easier.
+  ![Profile](static/images/readme/update-profile.jpg)
+- Initially, in the user dashboard, I wanted users to see their order history and shipping details. As probably the most important user data. I thought it made sense to have all the options in one menu so users can easily change or view their information. That's why decided to make dashboard.   
+  ![Dashboard](static/images/readme/dashboard.jpg)
+- I primarily achieved responsiveness using CSS Flexbox, which I find to be my preferred method for positioning and layout due to its flexibility and adaptability. In addition I also used absolute and relative positioning where apropriate (e.g. collapsable menu icon).   
+- Although it would have been easier if I had done the site with the help of Bootstrap, I did the whole site with custom CSS, in order to challenge myself and thus renew and learn new things.  
+- Same reason for using function based views in Django instead of class based, as I feel more comfortable doing class based views so I wanted to challenge myself
+  ![Dashboard](static/images/readme/dash-mob.jpg)
+- I've secured the dashboard and the majority of its associated links by applying the login_required decorator, ensuring that only authenticated users can access these protected areas and functionalities.   
+  ![Orders List](static/images/readme/orders.jpg)    
+- I thought it was important for the user to have an overview of his previous purchases, so I decided and created a list of orders where the user can click on the order number to see all the important details. 
+  ![Order Details](static/images/readme/order-details.jpg)   
 
-
-
-
-
-
-#### Home Page     
-#### Home Page     
-#### Home Page     
-#### Home Page     
-#### Home Page     
-
+#### Cart / Payments    
+- The functionality for "Add to Cart" and "Place Orders" has been developed based on a [Python Django Ecommerce | Advanced Django Web App From Basic](https://www.udemy.com/course/django-ecommerce-project-based-course-python-django-web-development/).
+![Cart Empty](static/images/readme/cart-empty.jpeg)   
+- To indicate that a product has been added, I chose to subtly update the item count in the header of the cart icon.   
+![Cart Count](static/images/readme/cart-count.jpg)
+- Shipping costs are not included in this project due to the ecommerce's business policy.
+  ![Cart](static/images/readme/cart.jpg)
+- The integration of Stripe for payment processing was adapted from the Boutique Ado project, although without incorporating webhooks at this stage, which are intended for implementation in the future.   
+![Checkout](static/images/readme/checkout.jpg)
+- I utilized the [`<dialog>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) element to present Stripe error messages. While I considered using it previously, it appeared suitable for this particular scenario.  
+![Payment](static/images/readme/payment.jpg)
+![Payment Success](static/images/readme/payment-success.jpg)
+![Order Confirm](static/images/readme/order-confirm-mail.jpg)
 
 ### Future Features  
 - Subscription part of the project should be separated in own app
@@ -465,6 +502,7 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
 - [Heroku](https://heroku.com/) - Deployment
 - [ElephantSQL](https://www.elephantsql.com) - Database hosting service
 - [AWS](https://aws.amazon.com/) 
+- [Stripe](https://stripe.com/en-gb-de)
 - [Django](https://www.djangoproject.com) - Python web framework
 - [CI Python Linter](https://pep8ci.herokuapp.com/)
 - [JSHint](https://jshint.com/) - JSHint, a JavaScript Code Quality Tool
@@ -475,7 +513,7 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
 - [Balsamiq Wireframes](https://balsamiq.com/) - Wireframes
 - [DrawSQL](https://drawsql.app/) - Database diagrams
 - [Python](https://www.python.org/)
-- [SVG Repo](www.svgrepo.com)
+- [SVG Repo](https://www.svgrepo.com)
 - [SVG to CSS converter](https://www.svgbackgrounds.com/tools/svg-to-css/)
 - [FireShot: Full Webpage Screenshots + Annotations](https://getfireshot.com/) - Screen Capture
 - [cloudconvert](https://cloudconvert.com/png-to-webp) - Online png to webp converter  
@@ -501,7 +539,7 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
   - [Django Mastery](https://www.youtube.com/@djangomastery) - Great tutorials and learning resource
   - [Dennis Ivy](https://www.youtube.com/@DennisIvy) - Tutorials and learning resource
   - [Django Countries](https://pypi.org/project/django-countries/) - Django application that provides country choices for use with forms
-  - [SVG Repo](www.svgrepo.com)
+  - [SVG Repo](https://www.svgrepo.com)
   - [SVG to CSS converter](https://www.svgbackgrounds.com/tools/svg-to-css/)
   - [django-phonenumber-field](https://pypi.org/project/django-phonenumber-field/6.2.0/)
   - [Django Slug Tutorial](https://learndjango.com/tutorials/django-slug-tutorial)  
@@ -511,7 +549,7 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
 
 ## Media   
   - [babs the label](https://babsthelabel.com/) - Product pictures, description
-  - [SVG Repo](www.svgrepo.com) - Mouse cursors, favicon
+  - [SVG Repo](https://www.svgrepo.com) - Mouse cursors, favicon
   - [FontAwesome](https://fontawesome.com/) - Social network icons
   - [Devicon](https://devicon.dev/) - Icons representing programming languages
   - [Wikipedia](https://en.wikipedia.org/wiki/Main_Page) - Antartica map
