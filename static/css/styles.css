@@ -399,7 +399,7 @@ main {
 /* Introduction */
 .introduction-wrapper {
     text-align: center;
-    font-size: 1.1rem;
+    font-weight: 700;
     -webkit-margin-after: 4rem;
             margin-block-end: 4rem;
     width: 60%;
