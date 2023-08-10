@@ -54,9 +54,9 @@
                     <h3>
                         <a href="{{ product.get_absolute_url }}" class="custom-pointer">{{ product.product_name }}</a>
                     </h3>
-                    <h4><a href="{{ category_link.get_absolute_url }}" class="custom-pointer">{{ product.category }}</a></h4>
+                    <h4><a href="{{ product.category.get_absolute_url }}" class="custom-pointer">{{ product.category }}</a></h4>
                     <p><strong>€ {{ product.price }}</strong></p>
-                    <a href="{{ product.get_absolute_url }}" class="btn btn-more custom-pointer">More</a>
+                    <a href="{{ product.get_absolute_url }}" class="btn btn-more custom-pointer" aria-label="View product details of {{ product.product_name }}">View Product</a>
                 </div>
                 {% endfor %}
             </div>
