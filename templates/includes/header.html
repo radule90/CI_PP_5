@@ -24,8 +24,9 @@
             <a href="{% url 'signin' %}" class="fa-solid fa-user custom-pointer" aria-label="Sign in"></a>
             {% endif %}  
             <a href="" id="search-icon" class="fa-solid fa-magnifying-glass custom-pointer" aria-label="Search the site"></a>
-            <a href="{% url 'cart' %}" class="fa-solid fa-cart-shopping custom-pointer" aria-label="View shopping cart"></a>
-            {{ cart_count }}
+            <a href="{% url 'cart' %}" class="fa-solid fa-cart-shopping custom-pointer cart-counter-position" aria-label="View shopping cart">
+                <span class="cart-counter">{{ cart_count }}</span>
+            </a>
         </div>
 
         <!-- Search Form -->

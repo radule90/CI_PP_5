@@ -204,6 +204,26 @@ table {
     display: none;
 }
 
+/* Product Cart Counter */
+.cart-counter-position {
+    position: relative;
+}
+
+.cart-counter {
+    position: absolute;
+    top: -0.5rem;
+    right: -0.5rem;
+    font-size: 0.6em;
+    width: 2em;
+    height: 2em;
+    background: var(--peach);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Search Form */
 #search-form {
     position: fixed;
@@ -1684,6 +1704,11 @@ dialog button i {
         display: block;
     }
 
+    /* Product Cart Counter */
+    .cart-counter {
+        font-size: 0.5em;
+    }
+    
     /* Main */
     main {
         margin-top: 124.69px;
