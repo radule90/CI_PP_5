@@ -133,7 +133,7 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
 - As a **Site Owner** I **need to have ReadMe document** so that **I have thorough and well-organized documentation for efficient website management**
 - As a **Site Administrator** I can **create and manage product categories** so that **products are well organized and can be easily navigated**
 - As a **Site Visitor** I can **easily navigate through product list** so that **I can browse through the entire product list fast**
-- As a **Site Owner** I can **I want to have custom 403, 403_CSRF and 404 error pages** so that **visitors encountering these issues will have a better understanding of the problem.**
+- As a **Site Owner** I want **to have custom 403, 403_CSRF and 404 error pages** so that **visitors encountering these issues will have a better understanding of the problem.**
 - As a **Site Owner** I want **to ensure that the codebase is well-organized, neatly formatted, and extensively commented** so that **it can be easily understood and maintained by other developers**
 - As a **Registered User,** I can **change my password** so that **I can maintain the security of my account**
 - As a **Site Administrator** I want **to have rich text editor** so that **I can send styled newsletter**
@@ -300,9 +300,15 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
    
 - While initially planning to include an image gallery, it's currently scheduled for implementation in the future due to time constraints.
   
+#### Contact Page     
+![Contact Page Respo](static/images/readme/contact-respo.jpg)
+- I have incorporated a contact page as an essential component of the website.
+- I opted for a separate app to ensure easy scalability and potential future enhancements such as an AI chatbot
+- This contact page allows users to send messages, and all the messages are stored in the database for record-keeping.
+  ![Contact Page](static/images/readme/contact.jpg)
+- I have included placeholder contact information and a map of Antarctica for now, with the intention of integrating Google Maps for actual projects to display accurate location information.
 
 
-#### Home Page     
 #### Home Page     
 #### Home Page     
 #### Home Page     
