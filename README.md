@@ -16,6 +16,7 @@
    - [Business Goals](#business-goals)
    - [User Stories](#user-stories)
    - [Agile Development](#agile-development)
+   - [Marketing](#marketing)
 
    </details>
    
@@ -131,6 +132,19 @@
 - I also started using GitHub Issues labels to organize tasks effectively, making it easier to see importance and type.
 - I continuously assessed and adjusted the project. This allowed me to make real time changes based on feedback and insights.
 - By applying Agile methodologies, I managed to create a functional e-commerce platform for Sun&Peaches. But, there is room for improvement to fully aligns with the brand's identity and meets all user requirements.
+
+### Marketing  
+- Marketing in slow fashion is also "slow" , soft and definitely not for the masses.
+- The photos chosen here are supposed to attract free spirit visitors that are looking for inspiration in authenticity and creativity.
+- All these in a subtle way, that doesn't require demands and doesn't set the patterns followed by crowds 
+
+- I've created custom subscription app that efficiently delivers newsletters to our audience, enhancing our communication and engagement.
+  ![Newsletter](static/images/readme/newsletter.jpg)
+- I've created a Facebook mockup page for our Sun&Peaches jewelry store, encapsulating our brand's authentic charm and creative inspiration to resonate with our target audience
+  ![Facebook Mockup](static/images/readme/facebook.png)
+
+- I've strategically incorporated SEO-friendly keywords and crafted a captivating description that embodies Sun&Peaches' unique handcrafted jewelry inspired by nature, targeting free-spirited individuals seeking authenticity and creativity in their fashion choices
+- Additionally, I've included a robots.txt and a sitemap.xml to optimize visibility on Google search engines.  
 
 ---  
 
