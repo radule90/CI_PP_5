@@ -1,8 +1,18 @@
-[Responsive image]  
+![Responsive image](static/images/readme/respo.jpg)  
 
-[Sun&Peaches Ecommerce](https://sun-and-peaches-72eca0ee8a6a.herokuapp.com/) About
+[Sun&Peaches Ecommerce](https://sun-and-peaches-72eca0ee8a6a.herokuapp.com/) represents a unique fashion jewelry brand characterized by its distinctive design and timeless essence. Enriched with an array of colors, mermaids, and stars, it offers a canvas for creative combinations, appealing to individuals who cherish personal expression and freedom.  
 
+The inspiration for this project came from my sister's desire to have a platform like this. She wanted a place where people could explore and purchase unique and stylish jewelry items, leading me to create the Sun&Peaches ecommerce website.  
 
+I built this ecommerce project for Sun&Peaches using the knowledge I gained from the course "[Python Django Ecommerce | Advanced Django Web App From Basic](https://www.udemy.com/course/django-ecommerce-project-based-course-python-django-web-development/)" I used technologies like HTML, CSS, Django, Python, and JavaScript to create a user-friendly website where you can explore and purchase their fashionable jewelry items.   
+
+Built With:  
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" align="left" width="30px" style="padding-right: 10px;" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" align="left" width="30px" style="padding-right: 10px;" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" align="left" width="30px" style="padding-right: 10px;" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" align="left" width="30px" style="padding-right: 10px;" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" align="left" width="30px" style="padding-right: 10px;" />    
+<br>
 [Here you have a live version of the project.](https://sun-and-peaches-72eca0ee8a6a.herokuapp.com/)  
 
 ---  
