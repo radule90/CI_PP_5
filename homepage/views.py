@@ -5,7 +5,7 @@ from django.core.validators import validate_email
 from .models import Subscriber
 from .forms import NewsletterForm
 from django.core.mail import EmailMessage
-from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import user_passes_test, login_required
 from product.models import Product
 from django.http import Http404
 
@@ -70,8 +70,8 @@ def is_admin(user):
     '''
     return user.is_authenticated and user.is_admin
 
-
-@user_passes_test(is_admin, login_url='signin')
+@login_required(login_url='signin')
+@user_passes_test(is_admin)
 # Check if use is admin and logged in
 def newsletter(request):
     '''

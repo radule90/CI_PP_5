@@ -378,10 +378,21 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
 ---  
 
 ## Validation and Testing
-
+ 
 ### Validation   
+- Python files have passed validation through [CI Python Linter](https://pep8ci.herokuapp.com/), for some lines of code longer than 79 characters `# noqa` to ignore warnings in `settings.py`
+- JavaScript when tested with [JSHint](https://jshint.com/) shows:  
+   `One undefined variable Swiper`    
+   `One unused variable`  
+   `Two undefined variables Stripe and orderId`  
+this is probably because they are loaded from other scripts.
+- First I used [Autoprefixer](https://autoprefixer.github.io/) to add vendor prefixes and then validate with [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/) and it shows no errors.  
+- I tested the HTML page by page by copying the source code and directly input validating at [W3C Markup Validation Service](https://validator.w3.org).
+- On Google Lighthouse, the results varied between 90 and 100, with the fact that for mobile devices the performance tests sometimes dropped to lower numbers which is probably due to unoptimized images, unfortunately I didn't have time to convert them to webp format and adjust them, while for other items they remained in the range of 90 to 100. It has been prioritized to be improved in the next version.
 
 ### Testing   
+- Regarding responsiveness, the site was tested on several different devices and proved to be satisfactory, although there is room for improvement.   
+- Creating a user and getting a welcome email based on testing so far works well, although the message needs to be formatted better.  
 
 <table>
    <thead>
@@ -392,6 +403,36 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
        <th>Fix</th>
    </thead>
    <tbody>
+     <tr>
+        <td>Incorrect URL / 404 Error Page</td>
+        <td>Entered incorrect URL by deleting/inserting a letter</td>
+        <td>404 Error Page displayed</td>
+        <td></td>
+     </tr>
+     <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+     </tr>
+     <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+     </tr>
+          <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+     </tr>
+     <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+     </tr>
      <tr>
         <td></td>
         <td></td>
