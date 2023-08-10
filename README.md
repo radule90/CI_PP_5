@@ -15,6 +15,11 @@ Built With:
 <br>
 [Here you have a live version of the project.](https://sun-and-peaches-72eca0ee8a6a.herokuapp.com/)  
 
+When testing interactively, use a card number, such as [4242 4242 4242 4242](https://stripe.com/docs/testing?testing-method=card-numbers#visa). Enter the card number in the Dashboard or in any payment form.
+- Use a valid future date, such as **12/34**.
+- Use any three-digit CVC (four digits for American Express cards).
+- Use any value you like for other form fields.   
+
 ---  
 
 ## Table of Contents
