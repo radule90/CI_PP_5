@@ -358,14 +358,22 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
 ![Payment](static/images/readme/payment.jpg)
 ![Payment Success](static/images/readme/payment-success.jpg)
 ![Order Confirm](static/images/readme/order-confirm-mail.jpg)
+- I've utilized Django messages to provide reports for most of the events in the project ([New line in django messages](https://stackoverflow.com/questions/58415186/how-to-make-a-new-line-in-django-messages-error)).  
 
 ### Future Features  
-- Subscription part of the project should be separated in own app
-- Instead relying on form, Newsletters should have own model so that all newsletters are stored in database.
-- Change icons in menu navigation menu with more unique ones
-- Product Variation Stock
-- Product Image Gallery
-- Optimize image size
+- Separate the subscription functionality into its own app.
+- Replace reliance on forms by creating a dedicated model for newsletters to store them in the database.
+- Enhance the icons in the navigation menu for a more unique and engaging design.
+- Implement product variation stock management to accurately track available quantities.
+- Integrate a product image gallery to showcase multiple images for each product.
+- Optimize image sizes to improve website performance and loading times.
+- Enhance the style of emails sent for registration and order confirmation
+- Divide CSS and JavaScript files so that they load only when needed for specific apps
+- Allow non-registered users to shop
+- Improve filtering of products
+- Implement a wishlist functionality that allows users to save and track their favorite products 
+- Like / dislake reviews functionality
+- Add list of countries with [Django Countries](https://pypi.org/project/django-countries/)
 
 ---  
 
