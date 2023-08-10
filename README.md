@@ -191,10 +191,10 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
 
 ### Colors  
 - I selected these pastel colors that contribute to the overall visual appeal of the Sun&Peaches.
-- I chose peach like color (#ff9c7f) because it looked playful and energitic and making it ideal for main heading.
+- I chose peach like color (#ff9c7f) because it looked playful and energetic and making it ideal for main heading.
 - Light green (#8cada4) was chosen because it brings harmonious nature feel.
-- Light brown (#bea494) allows the content and visuals to stand out while maintaining a calm ambiance.
-- Dark brown (#4c413b), wekk this pastel color is legable and readable.
+- Light brown (#bea494) allows the content and visuals to stand out while maintaining a calm ambience.
+- Dark brown (#4c413b), while this pastel color is legable and readable.
 - They might initially appear distinct, but when combined, they create a harmonious appearance.   
   ![Color Pallete](static/images/readme/colors.png)
 
