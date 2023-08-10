@@ -152,6 +152,7 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
 - Marketing in slow fashion is also "slow" , soft and definitely not for the masses.
 - The photos chosen here are supposed to attract free spirit visitors that are looking for inspiration in authenticity and creativity.
 - All these in a subtle way, that doesn't require demands and doesn't set the patterns followed by crowds 
+- Free shipping, in this case, would be the only option. Otherwise, I wouldn't represent anymore what I stand for.  
 
 - I've created custom subscription app that efficiently delivers newsletters to our audience, enhancing our communication and engagement.
   ![Newsletter](static/images/readme/newsletter.jpg)
