@@ -267,8 +267,41 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
   ![Footer](static/images/readme/footer.jpg)
 - I utilized a CSS Grid to ensure that the design remains responsive across different devices and screen sizes.
 
-#### Home Page     
-#### Home Page     
+#### Shop     
+
+  ![Shop Responsive](static/images/readme/shop-respo.jpg)   
+  
+- The shop page was structured with a side panel featuring category filters, allowing users to easily navigate through different product types. 
+  ![Categories](static/images/readme/categories.jpg)
+- I've used context processors to ensure that category links are accessible throughout the entire website, enabling display of categories across different pages.
+- On smaller screens, I chose to collapes filter section to optimize space, and I used Font Awesome icons with animation to make it more intersting.
+  ![Categories-Mobile](static/images/readme/categories-mob.jpg)
+  
+- The main product list displays links to individual products.
+- I added conditional rendering, if there aren no products message will be displayed
+  ![Shop](static/images/readme/shop.jpg)
+- I deliberately omitted the "Add to Cart" option on this page.   
+- Instead, users are encouraged to click on products to access their detailed descriptions, especially for items with variations.   
+
+![Product Details](static/images/readme/product-details-respo.jpg)
+- For the product detail page, I prioritized showcasing the product itself 
+  ![Product Details](static/images/readme/product-detail.jpg)
+- For most of the part I've used CSS Flexbox, as my favourite, for responsive design
+   ![Product Details](static/images/readme/product-detail-respo.jpg)
+
+- Variations for products have been implemented; however, I realized that I overlooked the implementation of stock tracking for each variation. This will be addressed in the next update by adding a "stock" field to the Variation models and defining a method in the product model to calculate the total stock of all variations for that specific product.
+- I implemented a review star system inspired by [Python Django Ecommerce | Advanced Django Web App From Basic](https://www.udemy.com/course/django-ecommerce-project-based-course-python-django-web-development/), ensuring that only users who have purchased the product can leave reviews. 
+  ![Review](static/images/readme/review.jpg)
+- All product reviews are stored in the database using a model specifically designed to handle reviews.
+  ![Review Respo](static/images/readme/review-respo.jpg)
+- I have implemented messages to be displayed to users who are not signed in or haven't purchased the product, ensuring that only signed-in users who have made a purchase are allowed to leave a review.
+- For cases where a review has already been submitted, I've enabled the functionality to update the existing review. I accomplished this by creating a function based view called 'create_review' and securing it with the login decorator for more security.
+- Additionally, users who have posted reviews are granted the ability to delete their reviews, with this functionality also protected by a login decorator.
+   
+- While initially planning to include an image gallery, it's currently scheduled for implementation in the future due to time constraints.
+  
+
+
 #### Home Page     
 #### Home Page     
 #### Home Page     
@@ -281,7 +314,9 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
 - Subscription part of the project should be separated in own app
 - Instead relying on form, Newsletters should have own model so that all newsletters are stored in database.
 - Change icons in menu navigation menu with more unique ones
-
+- Product Variation Stock
+- Product Image Gallery
+- Optimize image size
 
 ---  
 
