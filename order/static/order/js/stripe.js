@@ -112,5 +112,8 @@ form.addEventListener('submit', function (ev) {
                 form.submit();
             }
         }
+    }).catch(function (error) {
+        // Reload the page or perform other actions
+        location.reload();
     });
 });
