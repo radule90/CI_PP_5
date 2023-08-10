@@ -111,7 +111,8 @@ def search(request):
             products = Product.objects.filter(
                 Q(product_name__icontains=query) |
                 Q(description__icontains=query) |
-                Q(price__icontains=query))
+                Q(price__icontains=query) |
+                Q(category__category_name__icontains=query))
             # Count the number of search results
             product_count = products.count()
 

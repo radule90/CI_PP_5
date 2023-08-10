@@ -307,6 +307,12 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
 - This contact page allows users to send messages, and all the messages are stored in the database for record-keeping.
   ![Contact Page](static/images/readme/contact.jpg)
 - I have included placeholder contact information and a map of Antarctica for now, with the intention of integrating Google Maps for actual projects to display accurate location information.
+- I've implemented conditional rendering for the full name field and email, ensuring they are prefilled if the user is signed in.
+
+
+
+
+
 
 
 #### Home Page     
