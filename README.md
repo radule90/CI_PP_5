@@ -269,14 +269,96 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
 
 ## Deployment  
 #### How to Clone
+1. Go to the repository of [project](https://github.com/radule90/CI_PP_5)
+    
+2. Click on the Code button above the list of files
+    
+3. Choose one of remote URL: HTTPS, SSH, GitHub CLI and click the copy button or download a copy of the [project repository](https://github.com/radule90/CI_PP_5/archive/refs/heads/main.zip) and extract the zip file to your base folder.
+    
+4. In your IDE Terminal change the current working directory to the one where you want the clone
+    
+5. Type following code (for example is used GitHub CLI URL) in Git Bash/Terminal of IDE and press Enter:
+    
+    ```
+    https://github.com/radule90/CI_PP_5.git
+    ```
+    
+6. In order to work properly, it needs to be installed project requirements, type following code in Git Bash/Terminal:
+    
+    ```
+    pip3 install -r requirements.txt
+    ```
+    
+7. Update `ALLOWED_HOSTS` in `settings.py`, and create evn.py file and change values:
+    
+    ```
+    import os
+    
+    os.environ["DATABASE_URL"] = "Your URL of ElephantSQL instance"  
+    os.environ["SECRET_KEY"] = "Your secret key"  
+    
+    # For Debug to be True in production and False in deployment
+    os.environ.setdefault("DEBUG", "True")
+    
+    # Please note that the email provider only uses password authentication, 2-factor authentication will not work
+    os.environ["EMAIL_HOST_USER"] = "Your email address"
+    os.environ["EMAIL_HOST_PASSWORD"] = "Your email password"
 
+    # AWS credentials
+    os.environ["AWS_ACCESS_KEY_ID"] = "Your AWS access key"
+    os.environ["AWS_SECRET_ACCESS_KEY"] = "Your AWS secret key"
+
+    Stripe credentials
+    os.environ["STRIPE_PUBLIC_KEY"] = "Your stripe public key"
+    os.environ["STRIPE_SECRET_KEY"] = "Your stripe secret key"
+    ```
+
+8. Run the migrate command to create the data tables.  
+    `python3 manage.py migrate`
+    
+9. Create a superuser: `python3 manage.py createsuperuser`
+    
+10.  Run the local server:  
+    `python3 manage.py runserver`
+    
 
 #### How to Fork
 
+1. Go to the repository of [project](https://github.com/radule90/CI_PP_5)
+2. Bellow navigation bar on the top of the page in right corner you will locate Fork button
+3. When clicked, you should have a copy of repository in your GitHub
 
 
 ### Heroku Deployment
-  
+- A requirements.txt file created with pip3 freeze > requirements.txt.
+    
+- Procfile `web: gunicorn sun_and_peaches.wsgi:application`
+    
+- Create a new [Heroku](https://heroku.com/) app, select name and region
+    
+- Add Config Var to Heroku settings, where key is PORT and the value is 8000 and also add Congig Vars for:
+    
+    ```
+    DATABASE_URL            "Your URL of ElephantSQL instance"  
+    EMAIL_HOST_PASSWORD     "Your email password"    
+    EMAIL_HOST_USER         "Your email address"   
+    SECRET_KEY              "Your secret key"  
+    AWS_ACCESS_KEY_ID       "Your AWS access key"
+    AWS_SECRET_ACCESS_KEY   "Your AWS secret key"
+    STRIPE_PUBLIC_KEY       "Your stripe public key"
+    STRIPE_SECRET_KEY       "Your stripe secret key"
+    ```
+    
+- In Settings, set the buildpacks to Python
+    
+- In Deploy section, select the Github repository from the menu
+    
+- Link the Heroku app to the Github repository
+    
+- Deploy the repository
+    
+- Click the View App button to see live version of the project   
+
 ---   
 
 ## Tools and Platforms   
