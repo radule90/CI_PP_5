@@ -14,7 +14,7 @@
 
         <div class="icons">
             <!-- Menu Bars For Small Screen -->
-            <i class="fa-solid fa-bars custom-pointer" id="menu-bars" aria-label="Menu for small screens"></i>
+            <i class="fa-solid fa-bars custom-pointer" id="menu-bars"></i>
 
             <!-- Icon Links For Profile, Logout, Cart, Search -->
             {% if request.user.is_authenticated %}
@@ -23,7 +23,7 @@
             {% else %}
             <a href="{% url 'signin' %}" class="fa-solid fa-user custom-pointer" aria-label="Sign in"></a>
             {% endif %}  
-            <a href="" id="search-icon" class="fa-solid fa-magnifying-glass custom-pointer" aria-label="Search the site"></a>
+            <i id="search-icon" class="fa-solid fa-magnifying-glass custom-pointer"></i>
             <a href="{% url 'cart' %}" class="fa-solid fa-cart-shopping custom-pointer cart-counter-position" aria-label="View shopping cart">
                 <span class="cart-counter">{{ cart_count }}</span>
             </a>
@@ -32,7 +32,7 @@
         <!-- Search Form -->
         <form action="{% url 'search' %}" id="search-form" method="GET">
             <input type="search" name="q" id="search-box" placeholder="Search..." autofocus>
-            <button type="submit" class="fa-solid fa-magnifying-glass custom-pointer"></button>
+            <button type="submit" class="fa-solid fa-magnifying-glass custom-pointer" aria-label="Search submit"></button>
             <i class="fa-solid fa-xmark custom-pointer" id="close"></i>
         </form>
     </div>
