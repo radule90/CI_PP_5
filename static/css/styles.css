@@ -2078,7 +2078,13 @@ dialog button i {
 
 /* For Screens Up To 425px */
 @media (max-width: 425px) {
-
+    
+    /* Shop */
+    .dashboard-list,
+    .filter-group {
+        width: 90%;
+    }
+    
     /* Account Card Forgot Password */
     .secondaryAction {
         display: block;
