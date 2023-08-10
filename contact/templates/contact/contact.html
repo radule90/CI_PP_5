@@ -9,7 +9,7 @@
     </section>
     <!-- Contact Section -->
     <div class="contact-wrapper">
-        <section class="contact-form">
+        <div class="contact-form">
             <!-- Contact Form -->
             <form action="{% url 'contact' %}" method="POST">
                 {% csrf_token %}
@@ -20,7 +20,7 @@
                 <textarea id="message" name="message" rows="10" placeholder="Your message..." required></textarea>
                 <button type="submit" class="btn btn-checkout custom-pointer">Send Message</button>
             </form>
-        </section>
+        </div>
         <!-- Store Address Informations -->
         <aside class="address-page">
             <h3>Visit Us</h3>

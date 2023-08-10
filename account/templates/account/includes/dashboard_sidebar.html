@@ -1,16 +1,16 @@
 <!-- Dashboard Navigation -->
 <aside class="dashboard-nav">
     <i class="fa-solid fa-gear custom-pointer" id="dashboard-nav-icon" aria-label="Dashboard menu for small screens"></i>
-    <ul class="dashboard-list">
+    <div class="dashboard-list">
         {% comment %} Most of the links have conditional rendering of class active to set it for active link {% endcomment %}
-        <a href="{% url 'dashboard' %}" class="{% if dashboard_active %} active {% endif %} custom-pointer"><li>Dasboard</li></a>
+        <a href="{% url 'dashboard' %}" class="{% if dashboard_active %} active {% endif %} custom-pointer">Dasboard</a>
         {% comment %} Newsletter Link (Only shown to admin users) {% endcomment %}
         {% if request.user.is_admin %}
-            <a href="{% url 'newsletter' %}" class="{% if newsletter_active %} active {% endif %} custom-pointer"><li>Newsletter</li></a>
+            <a href="{% url 'newsletter' %}" class="{% if newsletter_active %} active {% endif %} custom-pointer">Newsletter</a>
         {% endif %}
-        <a href="{% url 'update_profile' %}" class="{% if user_profile_active %} active {% endif %} custom-pointer"><li>Profile</li></a>
-        <a href="{% url 'user_orders' %}" class="{% if user_orders_active %} active {% endif %} custom-pointer"><li>Orders</li></a>
-        <a href="{% url 'password_change' %}" class="c{% if change_password_active %} active {% endif %} custom-pointer"><li>Change Password</li></a>
-        <a href="{% url 'signout' %}" class="custom-pointer"><li><i class="fa-solid fa-power-off"></i> Sign Out</li></a>
-    </ul>
+        <a href="{% url 'update_profile' %}" class="{% if user_profile_active %} active {% endif %} custom-pointer">Profile</a>
+        <a href="{% url 'user_orders' %}" class="{% if user_orders_active %} active {% endif %} custom-pointer">Orders</a>
+        <a href="{% url 'password_change' %}" class="c{% if change_password_active %} active {% endif %} custom-pointer">Change Password</a>
+        <a href="{% url 'signout' %}" class="custom-pointer"><i class="fa-solid fa-power-off"></i> Sign Out</a>
+    </div>
 </aside>

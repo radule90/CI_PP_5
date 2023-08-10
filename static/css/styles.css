@@ -1355,39 +1355,35 @@ dialog button i {
     font-size: 1.25rem;
 }
 
-.dashboard-nav ul {
-    list-style-type: none;
-    text-align: center;
-}
-
-.dashboard-nav ul a li {
+.dashboard-nav .dashboard-list a {
+    display: block;
     border: 1px solid var(--dark-background);
     padding: 1rem;
 }
 
-.dashboard-nav ul a:first-child li {
+.dashboard-nav .dashboard-list a:first-child {
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
 }
 
-.dashboard-nav ul a:last-child li {
+.dashboard-nav .dashboard-list a:last-child {
     border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
 }
 
-.dashboard-nav ul a {
+.dashboard-nav .dashboard-list a {
     color: var(--font-color);
 }
 
-.dashboard-nav ul a i,
-.dashboard-nav ul a i::before {
+.dashboard-nav .dashboard-list a i,
+.dashboard-nav .dashboard-list a i::before {
     -webkit-transition: none !important;
     -o-transition: none !important;
     transition: none !important;
 }
 
-.dashboard-nav ul a li:hover,
-.dashboard-nav ul a.active li {
+.dashboard-nav .dashboard-list a:hover,
+.dashboard-nav .dashboard-list a.active {
     background: var(--dark-background);
     color: var(--white);
 }
