@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /account/
+Disallow: /cart/
+Disallow: /order/
+Sitemap: https://sun-and-peaches-72eca0ee8a6a.herokuapp.com/sitemap.xml
