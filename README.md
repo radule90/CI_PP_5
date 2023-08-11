@@ -208,7 +208,7 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
   ![Laila Font](static/images/readme/laila.png)   
 
 ### Icons  
-- Icons used on this website are from [SVG Repo](www.svgrepo.com)
+- Icons used on this website are from [SVG Repo](https://www.svgrepo.com)
 - As Favicon and cursor I chose to use peach to create playful visual experience that aligns with the brand's identity.
 - Peach cursor adds a touch of uniqueness to user interaction, enhancing the overall user experience.  
   ![Peach](static/images/readme/peach.png)
@@ -358,7 +358,170 @@ When testing interactively, use a card number, such as [4242 4242 4242 4242](htt
 ![Payment](static/images/readme/payment.jpg)
 ![Payment Success](static/images/readme/payment-success.jpg)
 ![Order Confirm](static/images/readme/order-confirm-mail.jpg)
-- I've utilized Django messages to provide reports for most of the events in the project ([New line in django messages](https://stackoverflow.com/questions/58415186/how-to-make-a-new-line-in-django-messages-error)).  
+- I've utilized Django messages to provide reports for most of the events in the project ([New line in django messages](https://stackoverflow.com/questions/58415186/how-to-make-a-new-line-in-django-messages-error)).   
+
+#### Database    
+- Here is a representation of the final model database solution.
+
+##### Account Model    
+|Column Name|Validation|Field Type|
+|---|---|---|
+|first_name|max_length=50|CharField|
+|last_name|max_length=50|CharField|
+|username|max_length=50, unique=True|CharField|
+|email|max_length=100, unique=True|EmailField|
+|phone_number||PhoneNumberField|
+|date_joined|auto_now_add=True|DateTimeField|
+|last_login|auto_now_add=True|DateTimeField|
+|is_admin|default=False|BooleanField|
+|is_staff|default=False|BooleanField|
+|is_active|default=False|BooleanField|
+|is_superadmin|default=False|BooleanField|
+
+
+##### Profile     
+|Column Name|Validation|Field Type|
+|---|---|---|
+|user|on_delete=models.CASCADE|OneToOneField (Account)|
+|address_line_1|max_length=50, blank=True|CharField|
+|address_line_2|max_length=50, blank=True|CharField|
+|city|max_length=50, blank=True|CharField|
+|postcode|max_length=20, blank=True|CharField|
+|state|max_length=50, blank=True|CharField|
+|country|max_length=50, blank=True|CharField|
+|created_at|auto_now_add=True|DateTimeField|
+|updated_at|auto_now=True|DateTimeField|
+
+- In addition to the custom models, I've also implemented a custom manager in Django to manage various functionalities (e.g. create_user, create_superuser).
+- Also for all models I've created some custom methods for exmaple to get full_address, to get_absolute_address etc.   
+
+##### Cart    
+|Column Name|Validation|Field Type|
+|---|---|---|
+|cart_id|max_length=250, blank=True|CharField|
+|created_at|auto_now_add=True|DateField|
+
+##### CartItem
+|Column Name|Validation|Field Type|
+|---|---|---|
+|user|on_delete=models.CASCADE, null=True|ForeignKey (Account)|
+|product|on_delete=models.CASCADE|ForeignKey (Product)|
+|cart|on_delete=models.CASCADE|ForeignKey (Cart)|
+|variations||ManyToManyField (Variation)|
+|quantity||PositiveIntegerField|
+|is_active|default=True|BooleanField|
+|created_at|auto_now_add=True|DateTimeField|
+
+##### Category      
+|Column Name|Validation|Field Type|
+|---|---|---|
+|category|max_length=50, unique=True|CharField|
+|slug|max_length=100, unique=True|SlugField|
+
+##### Contact      
+|Column Name|Validation|Field Type|
+|---|---|---|
+|full_name|max_length=150, blank=False|CharField|
+|email|max_length=150, blank=False|EmailField|
+|subject|max_length=100, blank=False|CharField|
+|message|blank=False|TextField|
+|is_answered|default=False|BooleanField|
+|created_at|auto_now_add=True|DateTimeField|
+
+##### Subscriber       
+|Column Name|Validation|Field Type|
+|---|---|---|
+|full_name|max_length=120|CharField|
+|email|max_length=100, unique=True|EmailField|
+|created_at|auto_now_add=True|DateTimeField|
+
+##### Payment      
+|Column Name|Validation|Field Type|
+|---|---|---|
+|user|on_delete=models.CASCADE, null=True|ForeignKey (Account)|
+|payment_id|max_length=100|CharField|
+|payment_method|max_length=100|CharField|
+|amount_paid|max_length=100|CharField|
+|status|max_length=100|CharField|
+|created_at|auto_now_add=True|DateTimeField|
+
+##### Order      
+|Column Name|Validation|Field Type|
+|user|on_delete=models.SET_NULL, null=True|ForeignKey (Account)|
+|payment|on_delete=models.SET_NULL, null=True, blank=True|ForeignKey (Payment)|
+|order_number|max_length=20|CharField|
+|first_name|max_length=50|CharField|
+|last_name|max_length=50|CharField|
+|phone_number||PhoneNumberField|
+|email|max_length=50|EmailField|
+|address_line_1|max_length=50|CharField|
+|address_line_2|max_length=50, blank=True|CharField|
+|country|max_length=50|CharField|
+|state|max_length=50, blank=True, blank=True|CharField|
+|city|max_length=50|CharField|
+|postcode|max_length=20|CharField|
+|order_note|max_length=100, blank=True|CharField|
+|order_total|max_digits=10, decimal_places=2|DecimalField|
+|tax|max_digits=10, decimal_places=2|DecimalField|
+|status|max_length=10, choices=STATUS, default='New'|CharField|
+|ip|max_length=20, blank=True|CharField|
+|is_ordered|default=False|BooleanField|
+|created_at|auto_now_add=True|DateTimeField|
+|updated_at|auto_now=True|DateTimeField|
+
+##### OrderProduct      
+|Column Name|Validation|Field Type|
+|---|---|---|
+|order|on_delete=models.CASCADE|ForeignKey (Order)|
+|payment|on_delete=models.SET_NULL, null=True, blank=True, null=True|ForeignKey (Payment)|
+|user|on_delete=models.CASCADE|ForeignKey (Account)|
+|product|on_delete=models.CASCADE|ForeignKey (Product)|
+|variations||ManyToManyField (Variation)|
+|quantity||IntegerField|
+|product_price|max_digits=10, decimal_places=2|DecimalField|
+|ordered|default=False|BooleanField|
+|created_at|auto_now_add=True|DateTimeField|
+|updated_at|auto_now=True|DateTimeField|
+
+##### Product      
+|Column Name|Validation|Field Type|
+|---|---|---|
+|product_name|max_length=100, unique=True|CharField|
+|slug|max_length=150, unique=True|SlugField|
+|category|on_delete=models.CASCADE|ForeignKey (Category)|
+|description|blank=True|TextField|
+|price|max_digits=10, decimal_places=2|DecimalField|
+|image|upload_to='images/product', blank=False|ImageField|
+|banner|upload_to='banner/product', blank=True|ImageField|
+|stock||PositiveIntegerField|
+|is_available|default=True|BooleanField|
+|created_at|auto_now_add=True|DateTimeField|
+|updated_at|auto_now=True|DateTimeField|
+
+##### Variation      
+|Column Name|Validation|Field Type|
+|---|---|---|
+|product|on_delete=models.CASCADE, related_name='variations'|ForeignKey (Product)|
+|category|on_delete=models.CASCADE|ForeignKey (Category)|
+|value|max_length=50|CharField|
+|is_active|default=True|BooleanField|
+|created_at|auto_now_add=True|DateTimeField|
+
+- I've also implemented a custom manager, VariationManager, in Django to filter variations based on category.
+
+##### Review      
+|Column Name|Validation|Field Type|
+|---|---|---|
+|product|on_delete=models.CASCADE|ForeignKey (Product)|
+|user|on_delete=models.CASCADE, null=True|ForeignKey (Account)|
+|subject|max_length=20, blank=True|CharField|
+|review|blank=True|TextField|
+|rating|validators=[MinValueValidator(0.0), MaxValueValidator(5.0)], default=0.0|FloatField|
+|ip|max_length=20, blank=True|CharField|
+|status|default=True|BooleanField|
+|created_at|auto_now_add=True|DateTimeField|
+|updated_at|auto_now=True|DateTimeField|
+
 
 ### Future Features  
 - Separate the subscription functionality into its own app.
